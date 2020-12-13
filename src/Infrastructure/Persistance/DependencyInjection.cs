@@ -1,5 +1,6 @@
 ﻿namespace Persistance
 {
+    using Common.General;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -9,9 +10,9 @@
     {
         public static IServiceCollection AddPersistance(this IServiceCollection services, IConfiguration configuration)
         {
-            var appOptions = configuration.GetSection("AppOptions:DatabaseConnectionString");
-            var connectionStrings = appOptions.Value;
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionStrings));
+            var appOptions = configuration.GetSection(nameof(AppOptions)).Get<AppOptions>();
+
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(appOptions.DatabaseConnectionString));
 
             services.AddScoped<IAppDbContext, AppDbContext>();
 

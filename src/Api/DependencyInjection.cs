@@ -118,7 +118,9 @@
 
         public static IApplicationBuilder UseSwagger(this IApplicationBuilder app, IConfiguration configuration, IApiVersionDescriptionProvider provider)
         {
-            if (configuration.Get<bool>(nameof(AppOptions.ActivateSwagger)))
+            var appOptions = configuration.GetSection(nameof(AppOptions)).Get<AppOptions>();
+
+            if (appOptions.ActivateSwagger)
             {
                 app.UseSwagger();
                 app.UseSwaggerUI(
