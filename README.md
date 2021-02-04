@@ -1,2 +1,2 @@
 # CleanArchitecture-Template
-an implementation of clean architecture in asp.net core web api
+an implementation of clean architecture with asp.net core 3.1
