@@ -1,6 +1,7 @@
 ﻿using Application.Common.Exceptions;
 using Domain.Entities.dbo.Products;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using Persistance.Db;
 using System;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace Application.Products.Command.AddProduct
     public class AddProductCommandHandler : IRequestHandler<AddProductCommand, int>
     {
         private readonly IAppDbContext dbContext;
+        private readonly ILogger<AddProductCommandHandler> logger;
 
-        public AddProductCommandHandler(IAppDbContext dbContext)
+        public AddProductCommandHandler(IAppDbContext dbContext, ILogger<AddProductCommandHandler> logger)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<int> Handle(AddProductCommand request, CancellationToken cancellationToken)
@@ -34,6 +37,9 @@ namespace Application.Products.Command.AddProduct
             };
 
             await dbContext.Set<Product>().AddAsync(product);
+
+            logger.LogInformation("Product Inserted", product);
+
             return product.Id;
         }
     }
