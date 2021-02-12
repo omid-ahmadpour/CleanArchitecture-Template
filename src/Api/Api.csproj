@@ -31,7 +31,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Core\Application\Application.csproj" />
-    <ProjectReference Include="..\Infrastructure\Communication\Communication.csproj" />
   </ItemGroup>
 
 </Project>

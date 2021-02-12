@@ -3,7 +3,6 @@ namespace Api
     using Api.Filters;
     using Application;
     using Common;
-    using Communication;
     using Domain;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -27,7 +26,6 @@ namespace Api
         {
             services.AddWebApi(Configuration);
             services.AddPersistance(Configuration);
-            services.AddCommunication(Configuration);
             services.AddCommon(Configuration);
             services.AddDomain(Configuration);
             services.AddApplication(Configuration);
