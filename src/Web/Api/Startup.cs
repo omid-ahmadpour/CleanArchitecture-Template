@@ -9,7 +9,6 @@ namespace Api
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.IdentityModel.Logging;
     using Persistance;
 
     public class Startup
