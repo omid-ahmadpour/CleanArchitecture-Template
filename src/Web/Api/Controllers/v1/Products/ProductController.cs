@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace Api.Controllers.v1.Products
 {
     [ApiVersion("1")]
+    [Route("[controller]")]
     [AllowAnonymous]
     public class ProductController : BaseController
     {
@@ -21,14 +22,14 @@ namespace Api.Controllers.v1.Products
 
         }
 
-        [HttpGet("product")]
+        [HttpGet()]
         public async Task<ApiResult<ProductQueryModel>> GetByIdAsync([FromRoute] int productId)
         {
             var result = await Mediator.Send(new GetProductByIdQuery() { ProductId = productId });
             return new ApiResult<ProductQueryModel>(result);
         }
 
-        [HttpPost("product")]
+        [HttpPost()]
         public async Task<ApiResult<int>> AddAsync(AddProductRequest request)
         {
             var command = new AddProductCommand
