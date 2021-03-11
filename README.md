@@ -10,7 +10,6 @@ If you like or are using this project to learn or start your solution, please gi
 
 * ASP.NET Core
 * Entity Framework Core
-* CQRS
 * MediatR
 * Swagger
 * Api Versioning
@@ -19,10 +18,11 @@ If you like or are using this project to learn or start your solution, please gi
 * Elasticsearch(for writing Logs)
 * AutoMapper
 
-## Software Development Best Practices used:
+## Software Development Best Practices and Design Principles used:
 
 * Clean Architecture
 * Clean Code
+* CQRS
 * Solid Principles
 * REST API Naming Conventions
 * Use multiple environments in ASP.NET Core(Development,Production,Staging,etc)
