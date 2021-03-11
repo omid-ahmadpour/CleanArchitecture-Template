@@ -1,5 +1,5 @@
 # CleanArchitecture-Template
-This is a solution template for implementation of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) with ASP.NET Core Web Api
+This is a solution template for [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) implementation with ASP.NET Core Web Api
 
 ## Technologies used:
 
