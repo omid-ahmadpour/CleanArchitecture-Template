@@ -25,6 +25,7 @@ If you like or are using this project to learn or start your solution, please gi
 * Clean Code
 * Solid Principles
 * REST API Naming Conventions
+* Use multiple environments in ASP.NET Core(Development,Production,Staging,etc)
 * Modular Design
 * Custom Exceptions
 * Custom Exception Handling
