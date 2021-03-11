@@ -3,6 +3,8 @@ This is a solution template for [Clean Architecture](https://blog.cleancoder.com
 
 ![CleanArchitecture](https://user-images.githubusercontent.com/42376112/110762993-a61b1580-8266-11eb-9ac1-438072319971.jpg)
 
+## Give a Star! ⭐
+If you like or are using this project to learn or start your solution, please give it a star. Thanks!
 
 ## Technologies used:
 
@@ -15,6 +17,7 @@ This is a solution template for [Clean Architecture](https://blog.cleancoder.com
 * FluentValidation
 * Serilog
 * Elasticsearch(for writing Logs)
+* AutoMapper
 
 ## Software Development Best Practices used:
 
