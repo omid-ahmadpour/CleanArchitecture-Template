@@ -1,7 +1,7 @@
 # CleanArchitecture-Template
 This is a solution template for implementation of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) with ASP.NET Core Web Api
 
-##Technologies used in it
+## Technologies used in it
 
 * ASP.NET Core
 * Entity Framework Core
@@ -13,7 +13,7 @@ This is a solution template for implementation of [Clean Architecture](https://b
 * Serilog
 * Elasticsearch(for writing Logs)
 
-##Best Practices
+## Best Practices
 
 * Clean Architecture
 * Clean Code
