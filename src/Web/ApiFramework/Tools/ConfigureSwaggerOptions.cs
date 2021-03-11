@@ -1,13 +1,11 @@
-﻿namespace Api.Tools
+﻿namespace ApiFramework.Tools
 {
-    using Swashbuckle.AspNetCore.SwaggerGen;
-
-    using System;
-
-    using Microsoft.OpenApi.Models;
-    using Microsoft.Extensions.Options;
     using Microsoft.AspNetCore.Mvc.ApiExplorer;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Options;
+    using Microsoft.OpenApi.Models;
+    using Swashbuckle.AspNetCore.SwaggerGen;
+    using System;
     public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
     {
         readonly IApiVersionDescriptionProvider _provider;

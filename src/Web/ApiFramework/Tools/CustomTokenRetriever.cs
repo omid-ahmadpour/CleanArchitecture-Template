@@ -1,4 +1,4 @@
-﻿namespace Api.Tools
+﻿namespace ApiFramework.Tools
 {
     using System;
     using Microsoft.AspNetCore.Http;

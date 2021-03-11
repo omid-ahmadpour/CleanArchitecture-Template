@@ -1,10 +1,11 @@
 ﻿namespace Api.Controllers.v1
 {
+    using ApiFramework.Attributes;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
-    [ApiController]
+    [ValidateModelState]
     [Route("api/v{v:apiVersion}/{controller}")]
     public class BaseController : ControllerBase
     {

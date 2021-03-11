@@ -5,29 +5,34 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Api.Tools
+namespace ApiFramework.Tools
 {
-    public class ApiResult : ApiResult<object>
+    public class PagedApiResult : PagedApiResult<object>
     {
-        public ApiResult(object data, int statusCode = StatusCodes.Status200OK, string[] errors = null) : base(data, statusCode, errors)
+        public PagedApiResult(object data, int? total = null, int statusCode = StatusCodes.Status200OK, string[] messages = null, string[] errors = null) : base(data, total, statusCode, messages, errors)
         {
 
         }
     }
 
-    public class ApiResult<T> : IActionResult, IDisposable, IStatusCodeActionResult
+    public class PagedApiResult<T> : IActionResult, IDisposable, IStatusCodeActionResult
     {
         public string[] Errors { get; set; }
 
         public T Data { get; set; }
 
-        public int? StatusCode { get; set; }
+        public string[] Messages { get; set; }
 
-        public ApiResult(T data, int statusCode = StatusCodes.Status200OK, string[] errors = null)
+        public int? StatusCode { get; set; }
+        public int? Total { get; set; }
+
+        public PagedApiResult(T data, int? total = null, int statusCode = StatusCodes.Status200OK, string[] messages = null, string[] errors = null)
         {
             Data = data;
             StatusCode = statusCode;
+            Messages = messages;
             Errors = errors;
+            Total = total;
         }
 
         public async Task ExecuteResultAsync(ActionContext context)

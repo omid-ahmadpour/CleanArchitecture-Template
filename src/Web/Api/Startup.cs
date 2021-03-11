@@ -6,11 +6,9 @@ namespace Api
     using Domain;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc.ApiExplorer;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.IdentityModel.Logging;
     using Persistance;
 
     public class Startup
@@ -33,12 +31,10 @@ namespace Api
             services.AddControllers(options =>
                 options.Filters.Add(new ApiExceptionFilter()));
 
-            //Console log visibility
-            IdentityModelEventSource.ShowPII = true;
             services.AddCors();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment() || env.IsStaging())
             {
@@ -53,7 +49,7 @@ namespace Api
                 .AllowAnyHeader();
             });
 
-            app.UseWebApi(Configuration, provider);
+            app.UseWebApi(Configuration);
         }
     }
 }
