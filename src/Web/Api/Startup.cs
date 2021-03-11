@@ -25,7 +25,6 @@ namespace Api
             services.AddWebApi(Configuration);
             services.AddPersistance(Configuration);
             services.AddCommon(Configuration);
-            services.AddDomain(Configuration);
             services.AddApplication(Configuration);
 
             services.AddControllers(options =>
