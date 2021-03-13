@@ -7,6 +7,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
+    using System;
 
     public static class DependencyInjection
     {
@@ -55,7 +56,18 @@
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanTemplate.WebUI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "CleanTemplate.WebUI",
+                    Description = "This is a solution template for Clean Architecture implementation with ASP.NET Core Web Api",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Omid Ahmadpour",
+                        Email = "ahmadpooromid@gmail.com",
+                        Url = new Uri("https://github.com/omidah"),
+                    },
+                });
             });
 
             return services;
