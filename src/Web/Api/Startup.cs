@@ -3,7 +3,6 @@ namespace Api
     using Api.Filters;
     using Application;
     using Common;
-    using Domain;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
