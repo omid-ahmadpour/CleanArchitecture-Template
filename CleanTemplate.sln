@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistance", "src\Infrastr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{238972C8-A659-488D-9E17-8A1B3E820ECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFramework", "src\Web\ApiFramework\ApiFramework.csproj", "{4323D8A3-82BB-4C33-8687-AF2E5ADFA191}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFramework", "src\Web\ApiFramework\ApiFramework.csproj", "{4323D8A3-82BB-4C33-8687-AF2E5ADFA191}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "src\Web\Api\Api.csproj", "{91374971-8444-4CF7-A21F-5BF08111848E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7C72E0CA-895D-4676-BEBA-2ADB297F1164}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
