@@ -1,6 +1,7 @@
 ﻿using Application.Common.Exceptions;
 using Domain.Entities.dbo.Products;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Persistance.Db;
 using System;
@@ -23,9 +24,9 @@ namespace Application.Products.Command.AddProduct
 
         public async Task<int> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
-            var existingProduct = dbContext.Set<Product>().Where(a =>a.Name.Contains(request.Name,StringComparison.OrdinalIgnoreCase));
+            var existingProduct = await dbContext.Set<Product>().FirstOrDefaultAsync(a => a.Name == request.Name);
 
-            if (!existingProduct.Any())
+            if (existingProduct != null)
             {
                 throw new ExistingRecordException("This Product has been added");
             }
@@ -37,6 +38,7 @@ namespace Application.Products.Command.AddProduct
             };
 
             await dbContext.Set<Product>().AddAsync(product);
+            await dbContext.SaveChangesAsync(cancellationToken);
 
             logger.LogInformation("Product Inserted", product);
 
