@@ -2,6 +2,7 @@
 using ApiFramework.Tools;
 using Application.Products.Command.AddProduct;
 using Application.Products.Query.GetProductById;
+using Application.Products.Query.ReadProductFromRedis;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ namespace Api.Controllers.v1.Products
         }
 
         [HttpGet()]
-        public async Task<ApiResult<ProductQueryModel>> GetByIdAsync([FromRoute] int productId)
+        public async Task<ApiResult<ProductQueryModel>> GetByIdAsync([FromQuery] int productId)
         {
             var result = await Mediator.Send(new GetProductByIdQuery() { ProductId = productId });
             return new ApiResult<ProductQueryModel>(result);
