@@ -12,17 +12,20 @@ If you like or are using this project to learn or start your solution, please gi
 * Entity Framework Core
 * MediatR
 * Swagger
+* Redis(for distributed caching)
 * Api Versioning
 * FluentValidation
 * Serilog
 * Elasticsearch(for writing Logs)
 * AutoMapper
+* Docker
 
 ## Software Development Best Practices and Design Principles used:
 
 * Clean Architecture
 * Clean Code
 * CQRS
+* Distributed caching
 * Solid Principles
 * REST API Naming Conventions
 * Use multiple environments in ASP.NET Core(Development,Production,Staging,etc)
