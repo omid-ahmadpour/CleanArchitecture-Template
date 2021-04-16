@@ -43,5 +43,12 @@ namespace Api.Controllers.v1.Products
 
             return new ApiResult<int>(result);
         }
+
+        [HttpGet("cache-redis")]
+        public async Task<ApiResult<ReadProductFromRedisResponse>> ReadFromCacheAsync([FromQuery] int productId)
+        {
+            var result = await Mediator.Send(new ReadProductFromRedisQuery(productId));
+            return new ApiResult<ReadProductFromRedisResponse>(result);
+        }
     }
 }
