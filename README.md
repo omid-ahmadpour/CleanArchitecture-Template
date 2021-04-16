@@ -12,11 +12,12 @@ If you like or are using this project to learn or start your solution, please gi
 * Entity Framework Core
 * MediatR
 * Swagger
-* Redis(for distributed caching)
+* Redis (for distributed caching)
 * Api Versioning
 * FluentValidation
+* PolyCache (for caching)
 * Serilog
-* Elasticsearch(for writing Logs)
+* Elasticsearch (for writing Logs)
 * AutoMapper
 * Docker
 
@@ -28,7 +29,7 @@ If you like or are using this project to learn or start your solution, please gi
 * Distributed caching
 * Solid Principles
 * REST API Naming Conventions
-* Use multiple environments in ASP.NET Core(Development,Production,Staging,etc)
+* Use multiple environments in ASP.NET Core (Development,Production,Staging,etc)
 * Modular Design
 * Custom Exceptions
 * Custom Exception Handling
