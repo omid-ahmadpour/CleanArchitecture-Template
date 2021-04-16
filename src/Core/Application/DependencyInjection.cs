@@ -1,11 +1,11 @@
 ﻿namespace Application
 {
     using Application.Common.Behaviours;
-    using AutoMapper;
     using FluentValidation;
     using MediatR;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using PolyCache;
     using System.Reflection;
 
     public static class DependencyInjection
@@ -17,6 +17,8 @@
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddPolyCache(configuration);
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
