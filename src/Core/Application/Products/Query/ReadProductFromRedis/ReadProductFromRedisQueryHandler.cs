@@ -18,7 +18,7 @@ namespace Application.Products.Query.ReadProductFromRedis
         private const int CacheExpiryTime = 2; //minitues
 
         public ReadProductFromRedisQueryHandler(IAppDbContext dbContext,
-            IStaticCacheManager staticCacheManager)
+                                                IStaticCacheManager staticCacheManager)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             this.staticCacheManager = staticCacheManager ?? throw new ArgumentNullException(nameof(staticCacheManager));
