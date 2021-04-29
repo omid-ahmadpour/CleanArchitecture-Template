@@ -6,7 +6,7 @@
     using Microsoft.Extensions.Logging;
 
     [ValidateModelState]
-    [Route("api/v{v:apiVersion}/{controller}")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class BaseController : ControllerBase
     {
         internal readonly IMediator Mediator;
