@@ -13,6 +13,8 @@ If you like or are using this project to learn or start your solution, please gi
 * MediatR
 * Swagger
 * Redis (for distributed caching)
+* Jwt Token Auhentication
+* Custome Asp.Net Identity
 * Api Versioning
 * FluentValidation
 * PolyCache (for caching)
@@ -26,6 +28,7 @@ If you like or are using this project to learn or start your solution, please gi
 * Clean Architecture
 * Clean Code
 * CQRS
+* Authentication and Authorization
 * Distributed caching
 * Solid Principles
 * REST API Naming Conventions
