@@ -29,15 +29,7 @@
             services.AddSwaggerOptions();
             services.AddHttpContextAccessor();
 
-            services.AddControllers(options =>
-            {
-                options.Filters.Add(typeof(ValidateModelStateAttribute));
-                options.Filters.Add(new ApiExceptionFilter());
-            })
-            .AddFluentValidation(options =>
-            {
-                options.RegisterValidatorsFromAssemblyContaining<Startup>();
-            });
+            services.AddCleanArchControllers();
 
             return services;
         }
@@ -206,6 +198,18 @@
         }
         #endregion
 
+        public static void AddCleanArchControllers(this IServiceCollection services)
+        {
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(typeof(ValidateModelStateAttribute));
+                options.Filters.Add(new ApiExceptionFilter());
+            })
+            .AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblyContaining<Startup>();
+            });
+        }
     }
 }
 
