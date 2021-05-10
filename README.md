@@ -14,7 +14,7 @@ If you like or are using this project to learn or start your solution, please gi
 * Swagger
 * Redis (for distributed caching)
 * Jwt Token Auhentication
-* Custome Asp.Net Identity
+* Custom Asp.Net Identity
 * Api Versioning
 * FluentValidation
 * PolyCache (for caching)
