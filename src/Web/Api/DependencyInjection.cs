@@ -1,5 +1,6 @@
 ﻿namespace Api
 {
+    using Api.Filters;
     using ApiFramework.Attributes;
     using ApiFramework.Swagger;
     using FluentValidation.AspNetCore;
@@ -31,6 +32,7 @@
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(ValidateModelStateAttribute));
+                options.Filters.Add(new ApiExceptionFilter());
             })
             .AddFluentValidation(options =>
             {

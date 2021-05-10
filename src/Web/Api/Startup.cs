@@ -26,9 +26,6 @@ namespace Api
             services.AddCommon(Configuration);
             services.AddApplication(Configuration);
 
-            services.AddControllers(options =>
-                options.Filters.Add(new ApiExceptionFilter()));
-
             services.AddCors();
         }
 
