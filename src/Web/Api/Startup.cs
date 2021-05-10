@@ -1,8 +1,8 @@
 namespace Api
 {
-    using Api.Filters;
     using Application;
     using Common;
+    using Common.General;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -12,16 +12,19 @@ namespace Api
 
     public class Startup
     {
+        private readonly SiteSettings siteSetting;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            siteSetting = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
         }
 
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddWebApi(Configuration);
+            services.AddWebApi(Configuration, siteSetting);
             services.AddPersistance(Configuration);
             services.AddCommon(Configuration);
             services.AddApplication(Configuration);
