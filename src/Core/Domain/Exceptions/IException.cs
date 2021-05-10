@@ -4,6 +4,7 @@
     public interface IException
     {
         int StatusCode { get; }
+
         IEnumerable<string> Errors { get; }
     }
 }
