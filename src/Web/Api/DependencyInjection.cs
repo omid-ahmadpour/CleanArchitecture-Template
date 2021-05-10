@@ -42,6 +42,14 @@
 
         public static IApplicationBuilder UseWebApi(this IApplicationBuilder app, IConfiguration configuration)
         {
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
+
             app.UseAppSwagger(configuration);
             app.UseStaticFiles();
             app.UseRouting();
