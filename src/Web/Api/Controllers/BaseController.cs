@@ -1,4 +1,4 @@
-﻿namespace Api.Controllers.v1
+﻿namespace Api.Controllers
 {
     using ApiFramework.Attributes;
     using MediatR;
