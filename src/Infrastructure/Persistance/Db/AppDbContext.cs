@@ -1,5 +1,6 @@
 ﻿namespace Persistance.Db
 {
+    using Common.Utilities;
     using Domain.Entities;
     using Domain.Entities.dbo.Products;
     using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,12 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(IEntity).Assembly);
+
+            var entitiesAssembly = typeof(IEntity).Assembly;
+
+            modelBuilder.RegisterAllEntities<IEntity>(entitiesAssembly);
         }
 
         public async Task<int> ExecuteSqlRawAsync(string query, CancellationToken cancellationToken)
