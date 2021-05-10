@@ -1,6 +1,8 @@
 namespace Api
 {
+    using ApiFramework.Configuration;
     using Application;
+    using Autofac;
     using Common;
     using Common.General;
     using Microsoft.AspNetCore.Builder;
@@ -30,6 +32,12 @@ namespace Api
             services.AddApplication(Configuration);
 
             services.AddCors();
+        }
+
+        //Register Services to Autofac ContainerBuilder
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterServices();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

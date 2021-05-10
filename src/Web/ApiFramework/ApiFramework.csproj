@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="Pluralize.NET" Version="1.0.2" />
@@ -19,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.csproj" />
+    <ProjectReference Include="..\..\Core\Application\Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Persistance\Persistance.csproj" />
   </ItemGroup>
 
