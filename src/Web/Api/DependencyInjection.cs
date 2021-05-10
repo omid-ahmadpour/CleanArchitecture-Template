@@ -17,6 +17,7 @@
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
     using Persistance.Contracts;
+    using Persistance.Db;
     using Swashbuckle.AspNetCore.SwaggerGen;
     using Swashbuckle.AspNetCore.SwaggerUI;
     using System;
@@ -42,6 +43,7 @@
 
             services.AddSwaggerOptions();
             services.AddHttpContextAccessor();
+            services.AddCustomIdentity(siteSettings.IdentitySettings);
             services.AddJwtAuthentication(siteSettings.JwtSettings);
             services.AddCleanArchControllers();
 
@@ -62,8 +64,8 @@
             app.UseStaticFiles();
             app.UseRouting();
 
-            //app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -307,6 +309,26 @@
             {
                 options.RegisterValidatorsFromAssemblyContaining<Startup>();
             });
+
+            services.AddCors();
+        }
+
+        public static void AddCustomIdentity(this IServiceCollection services, IdentitySettings settings)
+        {
+            services.AddIdentity<User, Role>(identityOptions =>
+            {
+                //Password Settings
+                identityOptions.Password.RequireDigit = settings.PasswordRequireDigit;
+                identityOptions.Password.RequiredLength = settings.PasswordRequiredLength;
+                identityOptions.Password.RequireNonAlphanumeric = settings.PasswordRequireNonAlphanumeric; //#@!
+                identityOptions.Password.RequireUppercase = settings.PasswordRequireUppercase;
+                identityOptions.Password.RequireLowercase = settings.PasswordRequireLowercase;
+
+                //UserName Settings
+                identityOptions.User.RequireUniqueEmail = settings.RequireUniqueEmail;
+            })
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
         }
     }
 }

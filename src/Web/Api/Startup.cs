@@ -30,8 +30,6 @@ namespace Api
             services.AddPersistance(Configuration);
             services.AddCommon(Configuration);
             services.AddApplication(Configuration);
-
-            services.AddCors();
         }
 
         //Register Services to Autofac ContainerBuilder
