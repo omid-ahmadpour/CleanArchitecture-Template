@@ -6,6 +6,8 @@ namespace Common.General
     {
         public string DatabaseConnectionString { get; set; }
 
+        public string ReadDatabaseConnectionString { get; set; }
+
         public string AuthenticationServerUri { get; set; }
 
         public string AuthenticationServerApiName { get; set; }
