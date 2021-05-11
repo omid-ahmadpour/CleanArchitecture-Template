@@ -31,6 +31,8 @@ If you like or are using this project to learn or start your solution, please gi
 * Authentication and Authorization
 * Distributed caching
 * Solid Principles
+* Separate ReadOnly and Write DbContext
+* Separate ReadOnly and Write Repository
 * REST API Naming Conventions
 * Use multiple environments in ASP.NET Core (Development,Production,Staging,etc)
 * Modular Design
