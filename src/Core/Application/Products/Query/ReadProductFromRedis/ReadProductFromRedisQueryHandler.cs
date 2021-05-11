@@ -12,12 +12,12 @@ namespace Application.Products.Query.ReadProductFromRedis
 {
     public class ReadProductFromRedisQueryHandler : IRequestHandler<ReadProductFromRedisQuery, ReadProductFromRedisResponse>
     {
-        private readonly IAppDbContext dbContext;
+        private readonly CleanArchReadOnlyDbContext dbContext;
         private readonly IStaticCacheManager staticCacheManager;
         private const string CachePrefix = "product_";
         private const int CacheExpiryTime = 2; //minitues
 
-        public ReadProductFromRedisQueryHandler(IAppDbContext dbContext,
+        public ReadProductFromRedisQueryHandler(CleanArchReadOnlyDbContext dbContext,
                                                 IStaticCacheManager staticCacheManager)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));

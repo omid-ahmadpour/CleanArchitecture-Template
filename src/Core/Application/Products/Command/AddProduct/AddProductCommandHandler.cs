@@ -13,10 +13,10 @@ namespace Application.Products.Command.AddProduct
 {
     public class AddProductCommandHandler : IRequestHandler<AddProductCommand, int>
     {
-        private readonly IAppDbContext dbContext;
+        private readonly CleanArchWriteDbContext dbContext;
         private readonly ILogger<AddProductCommandHandler> logger;
 
-        public AddProductCommandHandler(IAppDbContext dbContext, ILogger<AddProductCommandHandler> logger)
+        public AddProductCommandHandler(CleanArchWriteDbContext dbContext, ILogger<AddProductCommandHandler> logger)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));

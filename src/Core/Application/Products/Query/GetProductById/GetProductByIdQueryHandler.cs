@@ -11,21 +11,21 @@ namespace Application.Products.Query.GetProductById
 {
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductQueryModel>
     {
-        private readonly IAppDbContext dbContext;
+        private readonly CleanArchReadOnlyDbContext dbContext;
 
-        public GetProductByIdQueryHandler(IAppDbContext dbContext)
+        public GetProductByIdQueryHandler(CleanArchReadOnlyDbContext dbContext)
         {
             this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<ProductQueryModel> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            var existingProduct = await dbContext.Set<Product>().Where(a => a.Id == request.ProductId).Select( a =>
-                new ProductQueryModel
-                {
-                    Name = a.Name,
-                    Price = a.Price
-                }).FirstOrDefaultAsync();
+            var existingProduct = await dbContext.Set<Product>().Where(a => a.Id == request.ProductId).Select(a =>
+               new ProductQueryModel
+               {
+                   Name = a.Name,
+                   Price = a.Price
+               }).FirstOrDefaultAsync();
 
             return existingProduct;
         }
