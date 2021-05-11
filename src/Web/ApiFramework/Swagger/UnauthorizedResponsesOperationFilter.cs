@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using System;
 using System.Linq;
 
 namespace ApiFramework.Swagger
