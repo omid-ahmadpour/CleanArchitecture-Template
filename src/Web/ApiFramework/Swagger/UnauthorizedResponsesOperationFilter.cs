@@ -34,18 +34,6 @@ namespace ApiFramework.Swagger
                 operation.Responses.TryAdd("401", new OpenApiResponse { Description = "Unauthorized" });
                 operation.Responses.TryAdd("403", new OpenApiResponse { Description = "Forbidden" });
             }
-
-            operation.Security.Add(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Scheme = schemeName,
-                        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "OAuth2" }
-                    },
-                    Array.Empty<string>() //new[] { "readAccess", "writeAccess" }
-                }
-            });
         }
     }
 }
