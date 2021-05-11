@@ -1,10 +1,10 @@
-﻿using Application.Jwt;
-using Autofac;
+﻿using Autofac;
 using Common;
 using Common.General;
 using Domain.Entities;
 using Persistance.Contracts;
 using Persistance.Db;
+using Persistance.Jwt;
 using Persistance.Repositories;
 
 namespace ApiFramework.Configuration

@@ -1,8 +1,8 @@
-﻿using Application.Jwt;
-using Common;
+﻿using Common;
 using Domain.Entities.dbo.Users;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Persistance.Jwt;
 using System.Threading;
 using System.Threading.Tasks;
 
