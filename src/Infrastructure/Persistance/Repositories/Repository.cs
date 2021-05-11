@@ -14,12 +14,12 @@ namespace Persistance.Repositories
     public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class, IEntity
     {
-        protected readonly AppDbContext DbContext;
+        protected readonly CleanArchWriteDbContext DbContext;
         public DbSet<TEntity> Entities { get; }
         public virtual IQueryable<TEntity> Table => Entities;
         public virtual IQueryable<TEntity> TableNoTracking => Entities.AsNoTracking();
 
-        public Repository(AppDbContext dbContext)
+        public Repository(CleanArchWriteDbContext dbContext)
         {
             DbContext = dbContext;
             Entities = DbContext.Set<TEntity>();

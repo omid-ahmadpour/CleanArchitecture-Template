@@ -2,7 +2,6 @@
 {
     using Common.Utilities;
     using Domain.Entities;
-    using Domain.Entities.dbo.Products;
     using Domain.Entities.dbo.Users;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;

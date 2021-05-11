@@ -4,7 +4,7 @@ namespace Common.General
 {
     public class AppOptions
     {
-        public string DatabaseConnectionString { get; set; }
+        public string WriteDatabaseConnectionString { get; set; }
 
         public string ReadDatabaseConnectionString { get; set; }
 

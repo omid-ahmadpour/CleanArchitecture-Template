@@ -12,7 +12,28 @@
         {
             var appOptions = configuration.GetSection(nameof(AppOptions)).Get<AppOptions>();
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(appOptions.DatabaseConnectionString));
+            services.AddScoped((serviceProvider) =>
+            {
+                var option = CreateContextOptions(appOptions.ReadDatabaseConnectionString);
+                return new CleanArchReadOnlyDbContext(option);
+            });
+
+            services.AddScoped((serviceProvider) =>
+            {
+                var option = CreateContextOptions(appOptions.WriteDatabaseConnectionString);
+                return new CleanArchWriteDbContext(option);
+            });
+
+            DbContextOptions<AppDbContext> CreateContextOptions(string connectionString)
+            {
+                var contextOptions = new DbContextOptionsBuilder<AppDbContext>()
+                                     .UseSqlServer(connectionString)
+                                     .Options;
+
+                return contextOptions;
+            }
+
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(appOptions.WriteDatabaseConnectionString));
 
             services.AddScoped<IAppDbContext, AppDbContext>();
 

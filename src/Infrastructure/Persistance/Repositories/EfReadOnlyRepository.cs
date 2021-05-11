@@ -11,15 +11,18 @@ using System.Threading.Tasks;
 
 namespace Persistance.Repositories
 {
-    public class ReanOnlyRepository<TEntity> : IReanOnlyRepository<TEntity>
+    public class EfReadOnlyRepository<TEntity> : IReanOnlyRepository<TEntity>
         where TEntity : class, IEntity
     {
-        protected readonly AppDbContext DbContext;
+        protected readonly CleanArchReadOnlyDbContext DbContext;
+
         public DbSet<TEntity> Entities { get; }
+
         public virtual IQueryable<TEntity> Table => Entities;
+
         public virtual IQueryable<TEntity> TableNoTracking => Entities.AsNoTracking();
 
-        public ReanOnlyRepository(AppDbContext dbContext)
+        public EfReadOnlyRepository(CleanArchReadOnlyDbContext dbContext)
         {
             DbContext = dbContext;
             Entities = DbContext.Set<TEntity>();

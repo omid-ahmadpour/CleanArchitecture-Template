@@ -14,7 +14,7 @@ namespace Data.Repositories
 {
     public class UserRepository : Repository<User>, IUserRepository, IScopedDependency
     {
-        public UserRepository(AppDbContext dbContext)
+        public UserRepository(CleanArchWriteDbContext dbContext)
             : base(dbContext)
         {
         }
