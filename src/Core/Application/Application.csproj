@@ -31,4 +31,8 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Users\Query\" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,6 @@
 ﻿using Api.Controllers.v1.Users.Requests;
 using ApiFramework.Tools;
+using Application.Users.Command.CreateUser;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,17 +18,29 @@ namespace Api.Controllers.v1.Users
             : base(logger, mediator)
         { }
 
-        [HttpPost("login")]
+        [HttpPost("signup")]
         [AllowAnonymous]
         public virtual async Task<ApiResult<bool>> SingUpAsync(SingUpRequest request, CancellationToken cancellationToken)
         {
-            return new ApiResult<bool>(true);
+            var command = new CreateUserCommand
+            {
+                Age = request.Age,
+                Email = request.Email,
+                FullName = request.FullName,
+                Gender = request.Gender,
+                Password = request.Password,
+                UserName = request.UserName
+            };
+
+            var result = await Mediator.Send(command);
+            return new ApiResult<bool>(result);
         }
 
-        [HttpPost("signup")]
+        [HttpPost("login")]
         [AllowAnonymous]
         public virtual async Task<ApiResult<bool>> LoginAsync([FromForm] LoginRequest tokenRequest, CancellationToken cancellationToken)
         {
+
             return new ApiResult<bool>(true);
 
         }
