@@ -40,3 +40,12 @@ If you like or are using this project to learn or start your solution, please gi
 * Custom Exception Handling
 * PipelineBehavior for Validation and Performance tracking.
 
+## For Database Migration:
+  ### First:
+  Set default project to Persistance
+  ### Second:
+  Run following code in Package Manager Console
+  ```ruby
+  > Update-Database -Context CleanArchWriteDbContext
+  ```
+
