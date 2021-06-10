@@ -30,7 +30,7 @@
                 .AddEnvironmentVariables()
                 .Build();
 
-            var appOptions = configuration.GetSection("AppOptions:DatabaseConnectionString");
+            var appOptions = configuration.GetSection("AppOptions:WriteDatabaseConnectionString");
             var connectionString = appOptions.Value;
 
             return Create(connectionString);
