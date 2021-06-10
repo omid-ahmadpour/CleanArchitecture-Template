@@ -1,8 +1,10 @@
 ﻿namespace Api
 {
+    using Api.AutoMapperProfiles.Products;
     using Api.Filters;
     using ApiFramework.Attributes;
     using ApiFramework.Swagger;
+    using AutoMapper;
     using Common;
     using Common.General;
     using Common.Utilities;
@@ -46,6 +48,7 @@
             services.AddCustomIdentity(siteSettings.IdentitySettings);
             services.AddJwtAuthentication(siteSettings.JwtSettings);
             services.AddCleanArchControllers();
+            services.AddAutoMapperConfiguration();
 
             return services;
         }
@@ -354,6 +357,17 @@
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
+        }
+
+        public static void AddAutoMapperConfiguration(this IServiceCollection services)
+        {
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new ProductProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
     }
 }
