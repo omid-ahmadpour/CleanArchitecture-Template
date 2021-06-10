@@ -46,6 +46,6 @@ If you like or are using this project to learn or start your solution, please gi
   ### Second:
   Run following code in Package Manager Console
   ```ruby
-  > Update-Database -Context CleanArchWriteDbContext
+  > Update-Database -Context AppDbContext
   ```
 
