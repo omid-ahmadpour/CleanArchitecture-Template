@@ -1,6 +1,7 @@
 ﻿namespace Api
 {
     using Api.AutoMapperProfiles.Products;
+    using Api.AutoMapperProfiles.Users;
     using Api.Filters;
     using ApiFramework.Attributes;
     using ApiFramework.Swagger;
@@ -361,9 +362,10 @@
 
         public static void AddAutoMapperConfiguration(this IServiceCollection services)
         {
-            var mapperConfig = new MapperConfiguration(mc =>
+            var mapperConfig = new MapperConfiguration(config =>
             {
-                mc.AddProfile(new ProductProfile());
+                config.AddProfile(new ProductProfile());
+                config.AddProfile(new UserProfile());
             });
 
             IMapper mapper = mapperConfig.CreateMapper();

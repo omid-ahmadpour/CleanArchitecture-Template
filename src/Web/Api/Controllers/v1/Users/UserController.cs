@@ -25,15 +25,7 @@ namespace Api.Controllers.v1.Users
         [AllowAnonymous]
         public virtual async Task<ApiResult<bool>> SingUpAsync(SingUpRequest request, CancellationToken cancellationToken)
         {
-            var command = new CreateUserCommand
-            {
-                Age = request.Age,
-                Email = request.Email,
-                FullName = request.FullName,
-                Gender = request.Gender,
-                Password = request.Password,
-                UserName = request.UserName
-            };
+            var command = _mapper.Map<SingUpRequest, CreateUserCommand>(request);
 
             var result = await Mediator.Send(command);
             return new ApiResult<bool>(result);
@@ -43,12 +35,7 @@ namespace Api.Controllers.v1.Users
         [AllowAnonymous]
         public virtual async Task<ApiResult<LoginResponse>> LoginAsync([FromForm] LoginRequest request, CancellationToken cancellationToken)
         {
-            var command = new LoginCommand
-            {
-                Username = request.Username,
-                Password = request.Password,
-                Refresh_token = request.Refresh_token
-            };
+            var command = _mapper.Map<LoginRequest, LoginCommand>(request);
 
             var result = await Mediator.Send(command);
             return new ApiResult<LoginResponse>(result);
