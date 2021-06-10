@@ -23,6 +23,7 @@
 
             modelBuilder.RegisterAllEntities<IEntity>(entitiesAssembly);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(IEntity).Assembly);
+            modelBuilder.AddPluralizingTableNameConvention();
         }
 
         public async Task<int> ExecuteSqlRawAsync(string query, CancellationToken cancellationToken)

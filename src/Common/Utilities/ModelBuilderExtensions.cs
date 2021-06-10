@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Pluralize.NET;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,16 @@ namespace Common.Utilities
 
             foreach (Type type in types)
                 modelBuilder.Entity(type);
+        }
+
+        public static void AddPluralizingTableNameConvention(this ModelBuilder modelBuilder)
+        {
+            Pluralizer pluralizer = new Pluralizer();
+            foreach (IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                string tableName = entityType.GetTableName();
+                entityType.SetTableName(pluralizer.Pluralize(tableName));
+            }
         }
     }
 }
