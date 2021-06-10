@@ -3,6 +3,7 @@ using ApiFramework.Tools;
 using Application.Products.Command.AddProduct;
 using Application.Products.Query.GetProductById;
 using Application.Products.Query.ReadProductFromRedis;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,8 +17,9 @@ namespace Api.Controllers.v1.Products
     public class ProductController : BaseController
     {
         public ProductController(ILogger<ProductController> logger,
-                                 IMediator mediator)
-            : base(logger, mediator)
+                                 IMediator mediator,
+                                 IMapper mapper)
+            : base(logger, mediator, mapper)
         {}
 
         [HttpGet]
@@ -30,11 +32,7 @@ namespace Api.Controllers.v1.Products
         [HttpPost]
         public async Task<ApiResult<int>> AddAsync(AddProductRequest request)
         {
-            var command = new AddProductCommand
-            {
-                Name = request.Name,
-                Price = request.Price
-            };
+            var command = _mapper.Map<AddProductRequest, AddProductCommand>(request);
 
             var result = await Mediator.Send(command);
 

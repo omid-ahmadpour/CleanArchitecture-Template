@@ -2,6 +2,7 @@
 using ApiFramework.Tools;
 using Application.Users.Command.CreateUser;
 using Application.Users.Command.Login;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,12 @@ using System.Threading.Tasks;
 namespace Api.Controllers.v1.Users
 {
     [ApiVersion("1")]
-    public class UsersController : BaseController
+    public class UserController : BaseController
     {
-        public UsersController(ILogger<UsersController> logger,
-                               IMediator mediator)
-            : base(logger, mediator)
+        public UserController(ILogger<UserController> logger,
+                               IMediator mediator,
+                               IMapper mapper)
+            : base(logger, mediator, mapper)
         { }
 
         [HttpPost("signup")]

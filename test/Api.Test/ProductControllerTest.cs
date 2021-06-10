@@ -1,6 +1,7 @@
 using Api.Controllers.v1.Products;
 using ApiFramework.Tools;
 using Application.Products.Query.GetProductById;
+using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -14,12 +15,14 @@ namespace Api.Test
         ProductController productController;
         IMediator mediator;
         ILogger<ProductController> logger;
+        IMapper mapper;
 
         public ProductControllerTest()
         {
             mediator = new Mock<IMediator>().Object;
             logger = new Mock<ILogger<ProductController>>().Object;
-            productController = new ProductController(logger, mediator);
+            mapper = new Mock<IMapper>().Object;
+            productController = new ProductController(logger, mediator,mapper);
         }
 
         [Theory]
