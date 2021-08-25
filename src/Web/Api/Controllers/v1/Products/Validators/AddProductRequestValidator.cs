@@ -8,10 +8,10 @@ namespace Api.Controllers.v1.Products.Validators
         public AddProductRequestValidator()
         {
             RuleFor(x => x.Name)
-                .NotNull().NotEmpty().WithMessage("Name is not valid");
+                .NotNull().NotEmpty().WithMessage("{PropertyName} is not valid");
 
             RuleFor(x => x.Price)
-                .NotNull().NotEmpty().GreaterThan(0).WithMessage("Price is not valid");
+                .NotNull().NotEmpty().GreaterThan(0).WithMessage("{PropertyName} is not valid");
         }
     }
 }
