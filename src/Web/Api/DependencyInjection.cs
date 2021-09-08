@@ -362,14 +362,7 @@
 
         public static void AddAutoMapperConfiguration(this IServiceCollection services)
         {
-            var mapperConfig = new MapperConfiguration(config =>
-            {
-                config.AddProfile(new ProductProfile());
-                config.AddProfile(new UserProfile());
-            });
-
-            IMapper mapper = mapperConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddAutoMapper(typeof(Startup));
         }
     }
 }
