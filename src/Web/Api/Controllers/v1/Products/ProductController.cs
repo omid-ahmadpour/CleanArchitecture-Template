@@ -14,7 +14,7 @@ namespace Api.Controllers.v1.Products
 {
     [ApiVersion("1")]
     [AllowAnonymous]
-    public class ProductController : BaseController
+    public class ProductController : BaseControllerV1
     {
         public ProductController(ILogger<ProductController> logger,
                                  IMediator mediator,
@@ -25,7 +25,7 @@ namespace Api.Controllers.v1.Products
         [HttpGet]
         public async Task<ApiResult<ProductQueryModel>> GetByIdAsync([FromQuery] int productId)
         {
-            var result = await Mediator.Send(new GetProductByIdQuery() { ProductId = productId });
+            var result = await _mediator.Send(new GetProductByIdQuery() { ProductId = productId });
             return new ApiResult<ProductQueryModel>(result);
         }
 
@@ -34,7 +34,7 @@ namespace Api.Controllers.v1.Products
         {
             var command = _mapper.Map<AddProductRequest, AddProductCommand>(request);
 
-            var result = await Mediator.Send(command);
+            var result = await _mediator.Send(command);
 
             return new ApiResult<int>(result);
         }
@@ -42,7 +42,7 @@ namespace Api.Controllers.v1.Products
         [HttpGet("cache-redis")]
         public async Task<ApiResult<ReadProductFromRedisResponse>> ReadFromCacheAsync([FromQuery] int productId)
         {
-            var result = await Mediator.Send(new ReadProductFromRedisQuery(productId));
+            var result = await _mediator.Send(new ReadProductFromRedisQuery(productId));
             return new ApiResult<ReadProductFromRedisResponse>(result);
         }
     }

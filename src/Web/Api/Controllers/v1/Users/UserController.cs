@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 namespace Api.Controllers.v1.Users
 {
     [ApiVersion("1")]
-    public class UserController : BaseController
+    public class UserController : BaseControllerV1
     {
         public UserController(ILogger<UserController> logger,
-                               IMediator mediator,
-                               IMapper mapper)
+                              IMediator mediator,
+                              IMapper mapper)
             : base(logger, mediator, mapper)
         { }
 
@@ -27,7 +27,7 @@ namespace Api.Controllers.v1.Users
         {
             var command = _mapper.Map<SingUpRequest, CreateUserCommand>(request);
 
-            var result = await Mediator.Send(command);
+            var result = await _mediator.Send(command, cancellationToken);
             return new ApiResult<bool>(result);
         }
 
@@ -37,7 +37,7 @@ namespace Api.Controllers.v1.Users
         {
             var command = _mapper.Map<LoginRequest, LoginCommand>(request);
 
-            var result = await Mediator.Send(command);
+            var result = await _mediator.Send(command, cancellationToken);
             return new ApiResult<LoginResponse>(result);
         }
     }
