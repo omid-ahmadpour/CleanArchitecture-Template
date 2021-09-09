@@ -13,7 +13,7 @@ If you like or are using this project to learn or start your solution, please gi
 * MediatR
 * Swagger
 * Redis (for distributed caching)
-* Jwt Token Auhentication
+* Jwt Token Authentication
 * Custom Asp.Net Identity
 * Api Versioning
 * FluentValidation
