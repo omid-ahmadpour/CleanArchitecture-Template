@@ -42,7 +42,7 @@ If you like or are using this project to learn or start your solution, please gi
 
 ## For Database Migration:
   ### First:
-  Set default project to Persistance
+  Set default project to Persistence
   ### Second:
   Run following code in Package Manager Console
   ```ruby
