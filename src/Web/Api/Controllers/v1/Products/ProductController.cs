@@ -5,7 +5,6 @@ using Application.Products.Query.GetProductById;
 using Application.Products.Query.ReadProductFromRedis;
 using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
@@ -13,7 +12,6 @@ using System.Threading.Tasks;
 namespace Api.Controllers.v1.Products
 {
     [ApiVersion("1")]
-    [AllowAnonymous]
     public class ProductController : BaseControllerV1
     {
         public ProductController(ILogger<ProductController> logger,
