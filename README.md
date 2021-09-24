@@ -1,5 +1,5 @@
 # CleanArchitecture-Template
-This is a solution template for [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) implementation with ASP.NET Core Web Api
+This is a solution template for [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) implementation with ASP.NET Core
 
 ![CleanArchitecture](https://user-images.githubusercontent.com/42376112/110762993-a61b1580-8266-11eb-9ac1-438072319971.jpg)
 
@@ -13,7 +13,7 @@ If you like or are using this project to learn or start your solution, please gi
 * MediatR
 * Swagger
 * Redis (for distributed caching)
-* Jwt Token Auhentication
+* Jwt Token Authentication
 * Custom Asp.Net Identity
 * Api Versioning
 * FluentValidation
@@ -42,7 +42,7 @@ If you like or are using this project to learn or start your solution, please gi
 
 ## For Database Migration:
   ### First:
-  Set default project to Persistance
+  Set default project to Persistence
   ### Second:
   Run following code in Package Manager Console
   ```ruby
