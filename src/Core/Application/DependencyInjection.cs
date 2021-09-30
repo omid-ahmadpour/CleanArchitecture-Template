@@ -14,8 +14,6 @@
         {
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-
             services.AddPolyCache(configuration);
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));

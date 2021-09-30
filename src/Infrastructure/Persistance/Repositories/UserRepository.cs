@@ -1,8 +1,8 @@
 ﻿using Common;
 using Common.Utilities;
 using Domain.Entities.Users;
+using Domain.IRepositories;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Contracts;
 using Persistance.Db;
 using Persistance.Repositories;
 using System;

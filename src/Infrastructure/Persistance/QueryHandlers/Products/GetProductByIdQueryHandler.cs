@@ -1,4 +1,5 @@
-﻿using Domain.Entities.Products;
+﻿using Application.Products.Query.GetProductById;
+using Domain.Entities.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Db;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Products.Query.GetProductById
+namespace Persistance.QueryHandlers.Products
 {
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductQueryModel>
     {

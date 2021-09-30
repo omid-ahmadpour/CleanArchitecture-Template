@@ -1,15 +1,15 @@
 ﻿using Application.Common.Exceptions;
+using Application.Products.Command.AddProduct;
 using Domain.Entities.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Persistance.Db;
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Products.Command.AddProduct
+namespace Persistance.CommandHandlers.Products
 {
     public class AddProductCommandHandler : IRequestHandler<AddProductCommand, int>
     {

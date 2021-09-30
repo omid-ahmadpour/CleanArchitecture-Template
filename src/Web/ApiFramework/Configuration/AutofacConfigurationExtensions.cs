@@ -2,7 +2,7 @@
 using Common;
 using Common.General;
 using Domain.Entities;
-using Persistance.Contracts;
+using Domain.IRepositories;
 using Persistance.Db;
 using Persistance.Jwt;
 using Persistance.Repositories;

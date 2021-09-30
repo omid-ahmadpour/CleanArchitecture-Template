@@ -1,10 +1,12 @@
-﻿using Domain.Entities.Users;
+﻿using Application.Users.Command.CreateUser;
+using Domain.Entities.Users;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Users.Command.CreateUser
+namespace Persistance.CommandHandlers.Users
 {
     internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
     {
@@ -14,8 +16,8 @@ namespace Application.Users.Command.CreateUser
         public CreateUserCommandHandler(UserManager<User> userManager,
                                         RoleManager<Role> roleManager)
         {
-            _userManager = userManager ?? throw new System.ArgumentNullException(nameof(userManager));
-            _roleManager = roleManager ?? throw new System.ArgumentNullException(nameof(roleManager));
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
         }
 
         public async Task<bool> Handle(CreateUserCommand request, CancellationToken cancellationToken)

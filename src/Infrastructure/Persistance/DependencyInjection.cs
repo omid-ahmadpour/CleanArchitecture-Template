@@ -1,16 +1,20 @@
 ﻿namespace Persistance
 {
     using Common.General;
+    using MediatR;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Persistance.Db;
+    using System.Reflection;
 
     public static class DependencyInjection
     {
         public static IServiceCollection AddPersistance(this IServiceCollection services, IConfiguration configuration)
         {
             var appOptions = configuration.GetSection(nameof(AppOptions)).Get<AppOptions>();
+
+            services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped((serviceProvider) =>
             {

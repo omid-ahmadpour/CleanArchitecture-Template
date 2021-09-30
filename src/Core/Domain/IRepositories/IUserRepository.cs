@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Persistance.Contracts
+namespace Domain.IRepositories
 {
     public interface IUserRepository : IRepository<User>
     {

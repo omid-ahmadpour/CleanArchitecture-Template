@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
+using Domain.IRepositories;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Contracts;
 using Persistance.Db;
 using System;
 using System.Collections.Generic;

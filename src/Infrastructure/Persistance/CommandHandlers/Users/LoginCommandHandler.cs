@@ -1,4 +1,5 @@
-﻿using Common;
+﻿using Application.Users.Command.Login;
+using Common;
 using Domain.Entities.Users;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -6,7 +7,7 @@ using Persistance.Jwt;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Users.Command.Login
+namespace Persistance.CommandHandlers.Users
 {
     public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
     {
