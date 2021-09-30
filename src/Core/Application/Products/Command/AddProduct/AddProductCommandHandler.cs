@@ -1,5 +1,5 @@
 ﻿using Application.Common.Exceptions;
-using Domain.Entities.dbo.Products;
+using Domain.Entities.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

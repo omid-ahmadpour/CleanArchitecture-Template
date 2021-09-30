@@ -1,6 +1,6 @@
 ﻿using Common;
 using Common.Utilities;
-using Domain.Entities.dbo.Users;
+using Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Contracts;
 using Persistance.Db;

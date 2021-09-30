@@ -1,5 +1,5 @@
 ﻿using Common;
-using Domain.Entities.dbo.Users;
+using Domain.Entities.Users;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Persistance.Jwt;

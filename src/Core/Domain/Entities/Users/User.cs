@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities.dbo.Users
+namespace Domain.Entities.Users
 {
     public class User : IdentityUser<int>, IEntity<int>
     {

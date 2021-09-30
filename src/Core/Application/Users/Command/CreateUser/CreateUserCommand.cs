@@ -1,4 +1,4 @@
-﻿using Domain.Entities.dbo.Users;
+﻿using Domain.Entities.Users;
 using MediatR;
 
 namespace Application.Users.Command.CreateUser

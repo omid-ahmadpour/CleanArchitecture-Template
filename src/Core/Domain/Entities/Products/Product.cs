@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.dbo.Products
+﻿namespace Domain.Entities.Products
 {
     public class Product : IEntity
     {

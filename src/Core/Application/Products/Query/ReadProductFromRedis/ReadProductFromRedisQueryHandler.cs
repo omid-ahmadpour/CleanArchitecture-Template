@@ -1,4 +1,4 @@
-﻿using Domain.Entities.dbo.Products;
+﻿using Domain.Entities.Products;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Db;

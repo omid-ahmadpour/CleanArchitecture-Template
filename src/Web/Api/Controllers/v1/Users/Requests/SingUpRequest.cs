@@ -1,4 +1,4 @@
-﻿using Domain.Entities.dbo.Users;
+﻿using Domain.Entities.Users;
 
 namespace Api.Controllers.v1.Users.Requests
 {

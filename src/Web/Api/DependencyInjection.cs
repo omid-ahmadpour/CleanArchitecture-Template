@@ -9,7 +9,7 @@
     using Common;
     using Common.General;
     using Common.Utilities;
-    using Domain.Entities.dbo.Users;
+    using Domain.Entities.Users;
     using FluentValidation.AspNetCore;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;

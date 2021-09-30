@@ -1,6 +1,6 @@
 ﻿using Common;
 using Common.General;
-using Domain.Entities.dbo.Users;
+using Domain.Entities.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

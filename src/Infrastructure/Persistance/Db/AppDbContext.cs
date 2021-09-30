@@ -2,7 +2,7 @@
 {
     using Common.Utilities;
     using Domain.Entities;
-    using Domain.Entities.dbo.Users;
+    using Domain.Entities.Users;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using System.Threading;

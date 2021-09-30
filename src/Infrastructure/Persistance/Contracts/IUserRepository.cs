@@ -1,4 +1,4 @@
-﻿using Domain.Entities.dbo.Users;
+﻿using Domain.Entities.Users;
 using System.Threading;
 using System.Threading.Tasks;
 
