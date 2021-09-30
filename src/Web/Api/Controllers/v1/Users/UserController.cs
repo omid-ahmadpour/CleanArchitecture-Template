@@ -7,6 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace Api.Controllers.v1.Users
         { }
 
         [HttpPost("signup")]
+        [SwaggerOperation("sign up user")]
         [AllowAnonymous]
         public virtual async Task<ApiResult<bool>> SingUpAsync(SingUpRequest request, CancellationToken cancellationToken)
         {
@@ -32,6 +34,7 @@ namespace Api.Controllers.v1.Users
         }
 
         [HttpPost("login")]
+        [SwaggerOperation("login by username and password")]
         [AllowAnonymous]
         public virtual async Task<ApiResult<LoginResponse>> LoginAsync([FromForm] LoginRequest request, CancellationToken cancellationToken)
         {

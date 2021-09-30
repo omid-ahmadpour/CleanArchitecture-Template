@@ -7,6 +7,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
 
 namespace Api.Controllers.v1.Products
@@ -21,6 +22,7 @@ namespace Api.Controllers.v1.Products
         {}
 
         [HttpGet]
+        [SwaggerOperation("get a product by id")]
         public async Task<ApiResult<ProductQueryModel>> GetByIdAsync([FromQuery] int productId)
         {
             var result = await _mediator.Send(new GetProductByIdQuery() { ProductId = productId });
@@ -28,6 +30,7 @@ namespace Api.Controllers.v1.Products
         }
 
         [HttpPost]
+        [SwaggerOperation("add a product")]
         public async Task<ApiResult<int>> AddAsync(AddProductRequest request)
         {
             var command = _mapper.Map<AddProductRequest, AddProductCommand>(request);
@@ -38,6 +41,7 @@ namespace Api.Controllers.v1.Products
         }
 
         [HttpGet("cache-redis")]
+        [SwaggerOperation("get a product from cache. this is a example for how to use cache")]
         public async Task<ApiResult<ReadProductFromRedisResponse>> ReadFromCacheAsync([FromQuery] int productId)
         {
             var result = await _mediator.Send(new ReadProductFromRedisQuery(productId));
