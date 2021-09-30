@@ -1,17 +1,17 @@
 ﻿namespace Api
 {
-    using Api.AutoMapperProfiles.Products;
-    using Api.AutoMapperProfiles.Users;
     using Api.Filters;
     using ApiFramework.Attributes;
     using ApiFramework.Swagger;
-    using AutoMapper;
     using Common;
+    using Common.Behaviours;
     using Common.General;
     using Common.Utilities;
     using Domain.Entities.Users;
     using Domain.IRepositories;
+    using FluentValidation;
     using FluentValidation.AspNetCore;
+    using MediatR;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
@@ -21,6 +21,7 @@
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
     using Persistance.Db;
+    using PolyCache;
     using Swashbuckle.AspNetCore.SwaggerGen;
     using Swashbuckle.AspNetCore.SwaggerUI;
     using System;
@@ -50,6 +51,12 @@
             services.AddJwtAuthentication(siteSettings.JwtSettings);
             services.AddCleanArchControllers();
             services.AddAutoMapperConfiguration();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddPolyCache(configuration);
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
 
             return services;
         }

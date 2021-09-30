@@ -1,4 +1,4 @@
-﻿namespace Application.Common.Behaviours
+﻿namespace Common.Behaviours
 {
     using MediatR.Pipeline;
     using Microsoft.Extensions.Logging;
