@@ -37,7 +37,7 @@ namespace Application.Products.Command.AddProduct
                 Price = request.Price
             };
 
-            await dbContext.Set<Product>().AddAsync(product);
+            await dbContext.Set<Product>().AddAsync(product, cancellationToken);
             await dbContext.SaveChangesAsync(cancellationToken);
 
             logger.LogInformation("Product Inserted", product);
