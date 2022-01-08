@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{68887AB6-40EA-4A94-A211-774CA12E5C42}"
 EndProject
@@ -9,23 +9,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3EFAEAD3-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F93E961A-04A5-48BC-8688-85341BA42E36}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Core\Application\Application.csproj", "{92262D71-E9EC-4C42-B7E7-6B3AB4D03A49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Application", "src\Core\Application\CleanTemplate.Application.csproj", "{92262D71-E9EC-4C42-B7E7-6B3AB4D03A49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Core\Domain\Domain.csproj", "{6C2FB35F-7A23-4728-AE8B-6657B3BC406B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Domain", "src\Core\Domain\CleanTemplate.Domain.csproj", "{6C2FB35F-7A23-4728-AE8B-6657B3BC406B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "src\Common\Common.csproj", "{8164FAFB-E319-49A3-940C-5D9B029192CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Common", "src\Common\CleanTemplate.Common.csproj", "{8164FAFB-E319-49A3-940C-5D9B029192CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistance", "src\Infrastructure\Persistance\Persistance.csproj", "{D1768A1F-A59B-4906-804B-7A39F576FEA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Persistance", "src\Infrastructure\Persistance\CleanTemplate.Persistance.csproj", "{D1768A1F-A59B-4906-804B-7A39F576FEA5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{238972C8-A659-488D-9E17-8A1B3E820ECB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFramework", "src\Web\ApiFramework\ApiFramework.csproj", "{4323D8A3-82BB-4C33-8687-AF2E5ADFA191}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.ApiFramework", "src\Web\ApiFramework\CleanTemplate.ApiFramework.csproj", "{4323D8A3-82BB-4C33-8687-AF2E5ADFA191}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "src\Web\Api\Api.csproj", "{91374971-8444-4CF7-A21F-5BF08111848E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Api", "src\Web\Api\CleanTemplate.Api.csproj", "{91374971-8444-4CF7-A21F-5BF08111848E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7C72E0CA-895D-4676-BEBA-2ADB297F1164}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Test", "test\Api.Test\Api.Test.csproj", "{7B57CD7B-9BE2-48D9-972A-DD52EF08F1D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Api.Test", "test\Api.Test\CleanTemplate.Api.Test.csproj", "{7B57CD7B-9BE2-48D9-972A-DD52EF08F1D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

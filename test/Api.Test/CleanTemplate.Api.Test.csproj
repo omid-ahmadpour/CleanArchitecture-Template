@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Web\Api\Api.csproj" />
+    <ProjectReference Include="..\..\src\Web\Api\CleanTemplate.Api.csproj" />
   </ItemGroup>
 
 </Project>

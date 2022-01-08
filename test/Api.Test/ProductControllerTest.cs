@@ -1,14 +1,14 @@
-using Api.Controllers.v1.Products;
-using ApiFramework.Tools;
-using Application.Products.Query.GetProductById;
 using AutoMapper;
+using CleanTemplate.Api.Controllers.v1.Products;
+using CleanTemplate.ApiFramework.Tools;
+using CleanTemplate.Application.Products.Query.GetProductById;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Api.Test
+namespace CleanTemplate.Api.Test
 {
     public class ProductControllerTest
     {
@@ -22,12 +22,12 @@ namespace Api.Test
             mediator = new Mock<IMediator>().Object;
             logger = new Mock<ILogger<ProductController>>().Object;
             mapper = new Mock<IMapper>().Object;
-            productController = new ProductController(logger, mediator,mapper);
+            productController = new ProductController(logger, mediator, mapper);
         }
 
         [Theory]
-        [InlineData(1,20)]
-        public async Task GetByIdAsyncTest(int id1,int id2)
+        [InlineData(1, 20)]
+        public async Task GetByIdAsyncTest(int id1, int id2)
         {
             //arrange
             var validId = id1;
