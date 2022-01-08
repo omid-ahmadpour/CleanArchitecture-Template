@@ -40,6 +40,14 @@ If you like or are using this project to learn or start your solution, please gi
 * Custom Exception Handling
 * PipelineBehavior for Validation and Performance tracking.
 
+# Create your project
+### Create an empty folder and run cmd and then paste the following code:
+### Enter your project name instead of MyNewCleanTemplate
+
+```ruby
+  > dotnet new ASPNETCleanTemplate -n MyNewCleanTemplate
+  ```
+
 ## For Database Migration:
   ### First:
   Set default project to Persistence
