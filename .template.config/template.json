@@ -1,9 +1,9 @@
 {
   "author": "Omid Ahmadpour",
   "classifications": [ "MVC", ".NET Core", "ASP.NET Core" ],
-  "name": "CleanArchitecture-Template",
-  "identity": "Clean-Template",
-  "shortName": "CleanTemplate",
+  "name": "ASPNETCleanArchitecture-Template",
+  "identity": "ASPNET-CleanTemplate",
+  "shortName": "ASPNETCleanTemplate",
   "tags": {
     "language": "C#"
   },
