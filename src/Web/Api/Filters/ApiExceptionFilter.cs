@@ -1,5 +1,5 @@
 ﻿using ApiFramework.Tools;
-using Application.Common.Exceptions;
+using Common.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;

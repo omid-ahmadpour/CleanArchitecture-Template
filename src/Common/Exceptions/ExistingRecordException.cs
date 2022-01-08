@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application.Common.Exceptions
+namespace Common.Exceptions
 {
     public class ExistingRecordException : Exception
     {
