@@ -48,7 +48,7 @@ If you like or are using this project to learn or start your solution, please gi
   > dotnet new ASPNETCleanTemplate -n MyNewCleanTemplate
   ```
 
-## For Database Migration:
+# For Database Migration:
   ### First:
   Set default project to Persistence
   ### Second:
