@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Products
+﻿namespace CleanTemplate.Domain.Entities.Products
 {
     public class Product : IEntity
     {

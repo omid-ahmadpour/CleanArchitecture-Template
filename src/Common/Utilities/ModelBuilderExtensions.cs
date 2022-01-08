@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Common.Utilities
+namespace CleanTemplate.Common.Utilities
 {
     public static class ModelBuilderExtensions
     {

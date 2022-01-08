@@ -1,13 +1,13 @@
 ﻿using Autofac;
-using Common;
-using Common.General;
-using Domain.Entities;
-using Domain.IRepositories;
-using Persistance.Db;
-using Persistance.Jwt;
-using Persistance.Repositories;
+using CleanTemplate.Common;
+using CleanTemplate.Common.General;
+using CleanTemplate.Domain.Entities;
+using CleanTemplate.Domain.IRepositories;
+using CleanTemplate.Persistance.Db;
+using CleanTemplate.Persistance.Jwt;
+using CleanTemplate.Persistance.Repositories;
 
-namespace ApiFramework.Configuration
+namespace CleanTemplate.ApiFramework.Configuration
 {
     public static class AutofacConfigurationExtensions
     {

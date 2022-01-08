@@ -1,8 +1,8 @@
-﻿using Api.Controllers.v1.Products.Requests;
-using Application.Products.Command.AddProduct;
-using AutoMapper;
+﻿using AutoMapper;
+using CleanTemplate.Api.Controllers.v1.Products.Requests;
+using CleanTemplate.Application.Products.Command.AddProduct;
 
-namespace Api.AutoMapperProfiles.Products
+namespace CleanTemplate.Api.AutoMapperProfiles.Products
 {
     public class ProductProfile : Profile
     {

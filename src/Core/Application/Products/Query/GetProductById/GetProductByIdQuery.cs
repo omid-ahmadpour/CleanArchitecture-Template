@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Products.Query.GetProductById
+namespace CleanTemplate.Application.Products.Query.GetProductById
 {
     public class GetProductByIdQuery : IRequest<ProductQueryModel>
     {

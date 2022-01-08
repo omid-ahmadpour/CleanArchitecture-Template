@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Persistance.Db
+namespace CleanTemplate.Persistance.Db
 {
     public class CleanArchReadOnlyDbContext : AppDbContext
     {

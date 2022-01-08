@@ -1,4 +1,4 @@
-﻿namespace Api.Controllers.v1
+﻿namespace CleanTemplate.Api.Controllers.v1
 {
     using ApiFramework.Attributes;
     using AutoMapper;

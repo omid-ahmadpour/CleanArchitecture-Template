@@ -1,7 +1,7 @@
-﻿namespace Persistance
+﻿namespace CleanTemplate.Persistance
 {
+    using CleanTemplate.Persistance.Db;
     using Microsoft.EntityFrameworkCore;
-    using Persistance.Db;
 
     public class AppDbContextFactory : DesignTimeDbContextFactoryBase<AppDbContext>
     {

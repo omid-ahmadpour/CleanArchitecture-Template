@@ -1,4 +1,4 @@
-﻿namespace ApiFramework.Tools
+﻿namespace CleanTemplate.ApiFramework.Tools
 {
     using Microsoft.AspNetCore.Mvc.ApiExplorer;
     using Microsoft.Extensions.DependencyInjection;

@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using CleanTemplate.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Domain.IRepositories
+namespace CleanTemplate.Domain.IRepositories
 {
     public interface IRepository<TEntity> where TEntity : class, IEntity
     {

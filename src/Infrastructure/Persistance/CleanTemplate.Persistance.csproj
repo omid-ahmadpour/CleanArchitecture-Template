@@ -25,9 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.csproj" />
-    <ProjectReference Include="..\..\Core\Application\Application.csproj" />
-    <ProjectReference Include="..\..\Core\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\Common\CleanTemplate.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Application\CleanTemplate.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Domain\CleanTemplate.Domain.csproj" />
   </ItemGroup>
 
 </Project>

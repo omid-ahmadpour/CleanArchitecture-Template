@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Users.Command.Login
+namespace CleanTemplate.Application.Users.Command.Login
 {
     public class LoginCommand : IRequest<LoginResponse>
     {

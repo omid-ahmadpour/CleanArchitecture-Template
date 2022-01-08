@@ -1,9 +1,9 @@
-﻿using Api.Controllers.v1.Users.Requests;
-using Application.Users.Command.CreateUser;
-using Application.Users.Command.Login;
-using AutoMapper;
+﻿using AutoMapper;
+using CleanTemplate.Api.Controllers.v1.Users.Requests;
+using CleanTemplate.Application.Users.Command.CreateUser;
+using CleanTemplate.Application.Users.Command.Login;
 
-namespace Api.AutoMapperProfiles.Users
+namespace CleanTemplate.Api.AutoMapperProfiles.Users
 {
     public class UserProfile : Profile
     {

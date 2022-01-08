@@ -1,12 +1,12 @@
-﻿using Application.Users.Command.CreateUser;
-using Domain.Entities.Users;
+﻿using CleanTemplate.Application.Users.Command.CreateUser;
+using CleanTemplate.Domain.Entities.Users;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Persistance.CommandHandlers.Users
+namespace CleanTemplate.Persistance.CommandHandlers.Users
 {
     internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
     {

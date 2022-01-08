@@ -1,7 +1,7 @@
-﻿using Api.Controllers.v1.Products.Requests;
+﻿using CleanTemplate.Api.Controllers.v1.Products.Requests;
 using FluentValidation;
 
-namespace Api.Controllers.v1.Products.Validators
+namespace CleanTemplate.Api.Controllers.v1.Products.Validators
 {
     public class AddProductRequestValidator : AbstractValidator<AddProductRequest>
     {

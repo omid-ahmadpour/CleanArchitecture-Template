@@ -1,13 +1,13 @@
-﻿using Application.Users.Command.Login;
-using Common;
-using Domain.Entities.Users;
+﻿using CleanTemplate.Application.Users.Command.Login;
+using CleanTemplate.Common;
+using CleanTemplate.Domain.Entities.Users;
+using CleanTemplate.Persistance.Jwt;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Persistance.Jwt;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Persistance.CommandHandlers.Users
+namespace CleanTemplate.Persistance.CommandHandlers.Users
 {
     public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
     {

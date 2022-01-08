@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities
+﻿namespace CleanTemplate.Domain.Entities
 {
     public interface IEntity
     { }

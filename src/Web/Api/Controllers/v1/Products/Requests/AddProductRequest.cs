@@ -1,4 +1,4 @@
-﻿namespace Api.Controllers.v1.Products.Requests
+﻿namespace CleanTemplate.Api.Controllers.v1.Products.Requests
 {
     public class AddProductRequest
     {

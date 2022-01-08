@@ -1,15 +1,15 @@
-﻿using Application.Products.Query.ReadProductFromRedis;
-using Domain.Entities.Products;
+﻿using CleanTemplate.Application.Products.Query.ReadProductFromRedis;
+using CleanTemplate.Domain.Entities.Products;
+using CleanTemplate.Persistance.Db;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Db;
 using PolyCache.Cache;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Persistance.QueryHandlers.Products
+namespace CleanTemplate.Persistance.QueryHandlers.Products
 {
     public class ReadProductFromRedisQueryHandler : IRequestHandler<ReadProductFromRedisQuery, ReadProductFromRedisResponse>
     {

@@ -1,8 +1,8 @@
-﻿using Domain.Entities.Users;
+﻿using CleanTemplate.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistance.Configuration.Users
+namespace CleanTemplate.Persistance.Configuration.Users
 {
     public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {

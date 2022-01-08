@@ -1,4 +1,4 @@
-﻿namespace Common.Behaviours
+﻿namespace CleanTemplate.Common.Behaviours
 {
     using MediatR.Pipeline;
     using Microsoft.Extensions.Logging;

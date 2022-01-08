@@ -1,4 +1,4 @@
-﻿using Common.Utilities;
+﻿using CleanTemplate.Common.Utilities;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using Pluralize.NET;
@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Linq;
 
-namespace ApiFramework.Swagger
+namespace CleanTemplate.ApiFramework.Swagger
 {
     public class ApplySummariesOperationFilter : IOperationFilter
     {

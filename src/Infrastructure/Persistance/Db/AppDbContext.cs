@@ -1,7 +1,7 @@
-﻿namespace Persistance.Db
+﻿namespace CleanTemplate.Persistance.Db
 {
-    using Common.Utilities;
-    using Domain.Entities;
+    using CleanTemplate.Common.Utilities;
+    using CleanTemplate.Domain.Entities;
     using Domain.Entities.Users;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;

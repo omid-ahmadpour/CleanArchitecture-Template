@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace CleanTemplate.Common
 {
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;

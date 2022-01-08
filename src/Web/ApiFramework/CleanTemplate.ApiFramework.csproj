@@ -38,9 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.csproj" />
-    <ProjectReference Include="..\..\Core\Application\Application.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Persistance\Persistance.csproj" />
+    <ProjectReference Include="..\..\Common\CleanTemplate.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Application\CleanTemplate.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Persistance\CleanTemplate.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

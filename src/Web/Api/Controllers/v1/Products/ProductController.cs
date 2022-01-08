@@ -1,16 +1,16 @@
-﻿using Api.Controllers.v1.Products.Requests;
-using ApiFramework.Tools;
-using Application.Products.Command.AddProduct;
-using Application.Products.Query.GetProductById;
-using Application.Products.Query.ReadProductFromRedis;
-using AutoMapper;
+﻿using AutoMapper;
+using CleanTemplate.Api.Controllers.v1.Products.Requests;
+using CleanTemplate.ApiFramework.Tools;
+using CleanTemplate.Application.Products.Command.AddProduct;
+using CleanTemplate.Application.Products.Query.GetProductById;
+using CleanTemplate.Application.Products.Query.ReadProductFromRedis;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
 
-namespace Api.Controllers.v1.Products
+namespace CleanTemplate.Api.Controllers.v1.Products
 {
     [ApiVersion("1")]
     public class ProductController : BaseControllerV1
@@ -19,7 +19,7 @@ namespace Api.Controllers.v1.Products
                                  IMediator mediator,
                                  IMapper mapper)
             : base(logger, mediator, mapper)
-        {}
+        { }
 
         [HttpGet]
         [SwaggerOperation("get a product by id")]

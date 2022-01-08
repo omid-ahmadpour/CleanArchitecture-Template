@@ -1,6 +1,6 @@
-﻿using Common;
-using Common.General;
-using Domain.Entities.Users;
+﻿using CleanTemplate.Common;
+using CleanTemplate.Common.General;
+using CleanTemplate.Domain.Entities.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -11,7 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistance.Jwt
+namespace CleanTemplate.Persistance.Jwt
 {
     public class JwtService : IJwtService, IScopedDependency
     {

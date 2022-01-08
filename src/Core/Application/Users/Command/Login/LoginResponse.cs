@@ -1,4 +1,4 @@
-﻿namespace Application.Users.Command.Login
+﻿namespace CleanTemplate.Application.Users.Command.Login
 {
     public class LoginResponse
     {

@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CleanTemplate.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities.Users
+namespace CleanTemplate.Domain.Entities.Users
 {
     public class User : IdentityUser<int>, IEntity<int>
     {

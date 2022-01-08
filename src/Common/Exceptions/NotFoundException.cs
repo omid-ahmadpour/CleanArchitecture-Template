@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Exceptions
+namespace CleanTemplate.Common.Exceptions
 {
     public class NotFoundException : Exception
     {

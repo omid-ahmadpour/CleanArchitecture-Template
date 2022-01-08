@@ -1,4 +1,4 @@
-﻿namespace Application.Products.Query.GetProductById
+﻿namespace CleanTemplate.Application.Products.Query.GetProductById
 {
     public class ProductQueryModel
     {

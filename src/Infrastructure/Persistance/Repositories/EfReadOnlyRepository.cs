@@ -1,7 +1,7 @@
-﻿using Domain.Entities;
-using Domain.IRepositories;
+﻿using CleanTemplate.Domain.Entities;
+using CleanTemplate.Domain.IRepositories;
+using CleanTemplate.Persistance.Db;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Persistance.Repositories
+namespace CleanTemplate.Persistance.Repositories
 {
     public class EfReadOnlyRepository<TEntity> : IReanOnlyRepository<TEntity>
         where TEntity : class, IEntity

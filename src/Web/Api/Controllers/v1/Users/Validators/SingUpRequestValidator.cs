@@ -1,7 +1,7 @@
-﻿using Api.Controllers.v1.Users.Requests;
+﻿using CleanTemplate.Api.Controllers.v1.Users.Requests;
 using FluentValidation;
 
-namespace Api.Controllers.v1.Users.Validators
+namespace CleanTemplate.Api.Controllers.v1.Users.Validators
 {
     public class SingUpRequestValidator : AbstractValidator<SingUpRequest>
     {

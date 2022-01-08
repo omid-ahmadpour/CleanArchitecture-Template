@@ -1,11 +1,11 @@
-﻿using ApiFramework.Tools;
-using Common.Exceptions;
+﻿using CleanTemplate.ApiFramework.Tools;
+using CleanTemplate.Common.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 
-namespace Api.Filters
+namespace CleanTemplate.Api.Filters
 {
     public class ApiExceptionFilter : ExceptionFilterAttribute
     {

@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiFramework.Tools
+namespace CleanTemplate.ApiFramework.Tools
 {
     public class ApiResult : ApiResult<object>
     {

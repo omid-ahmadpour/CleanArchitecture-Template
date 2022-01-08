@@ -1,4 +1,4 @@
-﻿namespace Persistance.Db
+﻿namespace CleanTemplate.Persistance.Db
 {
     using Microsoft.EntityFrameworkCore;
     using System.Threading;

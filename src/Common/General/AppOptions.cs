@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.General
+namespace CleanTemplate.Common.General
 {
     public class AppOptions
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Utilities
+namespace CleanTemplate.Common.Utilities
 {
     public static class StringExtensions
     {

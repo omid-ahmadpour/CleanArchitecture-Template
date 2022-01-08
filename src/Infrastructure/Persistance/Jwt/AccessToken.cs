@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace Persistance.Jwt
+namespace CleanTemplate.Persistance.Jwt
 {
     public class AccessToken
     {

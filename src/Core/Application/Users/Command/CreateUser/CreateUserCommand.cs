@@ -1,7 +1,7 @@
-﻿using Domain.Entities.Users;
+﻿using CleanTemplate.Domain.Entities.Users;
 using MediatR;
 
-namespace Application.Users.Command.CreateUser
+namespace CleanTemplate.Application.Users.Command.CreateUser
 {
     public class CreateUserCommand : IRequest<bool>
     {

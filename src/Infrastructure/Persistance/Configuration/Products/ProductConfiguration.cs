@@ -1,8 +1,8 @@
-﻿using Domain.Entities.Products;
+﻿using CleanTemplate.Domain.Entities.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistance.Configuration.Products
+namespace CleanTemplate.Persistance.Configuration.Products
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

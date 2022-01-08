@@ -1,16 +1,15 @@
-﻿using Common;
-using Common.Utilities;
-using Domain.Entities.Users;
-using Domain.IRepositories;
+﻿using CleanTemplate.Common;
+using CleanTemplate.Common.Utilities;
+using CleanTemplate.Domain.Entities.Users;
+using CleanTemplate.Domain.IRepositories;
+using CleanTemplate.Persistance.Db;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Db;
-using Persistance.Repositories;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Data.Repositories
+namespace CleanTemplate.Persistance.Repositories
 {
     public class UserRepository : Repository<User>, IUserRepository, IScopedDependency
     {

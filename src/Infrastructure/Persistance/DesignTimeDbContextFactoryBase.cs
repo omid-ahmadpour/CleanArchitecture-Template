@@ -1,4 +1,4 @@
-﻿namespace Persistance
+﻿namespace CleanTemplate.Persistance
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Design;

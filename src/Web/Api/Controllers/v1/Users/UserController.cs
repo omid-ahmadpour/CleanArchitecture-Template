@@ -1,8 +1,8 @@
-﻿using Api.Controllers.v1.Users.Requests;
-using ApiFramework.Tools;
-using Application.Users.Command.CreateUser;
-using Application.Users.Command.Login;
-using AutoMapper;
+﻿using AutoMapper;
+using CleanTemplate.Api.Controllers.v1.Users.Requests;
+using CleanTemplate.ApiFramework.Tools;
+using CleanTemplate.Application.Users.Command.CreateUser;
+using CleanTemplate.Application.Users.Command.Login;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Api.Controllers.v1.Users
+namespace CleanTemplate.Api.Controllers.v1.Users
 {
     [ApiVersion("1")]
     public class UserController : BaseControllerV1

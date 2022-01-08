@@ -1,8 +1,8 @@
-﻿using Domain.Entities.Users;
+﻿using CleanTemplate.Domain.Entities.Users;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Domain.IRepositories
+namespace CleanTemplate.Domain.IRepositories
 {
     public interface IUserRepository : IRepository<User>
     {

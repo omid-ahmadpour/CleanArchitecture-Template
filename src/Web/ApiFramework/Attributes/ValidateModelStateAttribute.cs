@@ -1,8 +1,8 @@
-﻿using ApiFramework.Tools;
+﻿using CleanTemplate.ApiFramework.Tools;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace ApiFramework.Attributes
+namespace CleanTemplate.ApiFramework.Attributes
 {
     public class ValidateModelStateAttribute : ActionFilterAttribute
     {

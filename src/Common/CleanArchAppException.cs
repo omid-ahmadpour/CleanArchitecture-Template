@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Common
+namespace CleanTemplate.Common
 {
     public class CleanArchAppException : Exception
     {

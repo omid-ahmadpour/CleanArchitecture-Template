@@ -1,4 +1,4 @@
-﻿namespace ApiFramework.Tools
+﻿namespace CleanTemplate.ApiFramework.Tools
 {
     using System;
     using Microsoft.AspNetCore.Http;

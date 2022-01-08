@@ -1,4 +1,4 @@
-﻿namespace Common.General
+﻿namespace CleanTemplate.Common.General
 {
     public class SiteSettings
     {

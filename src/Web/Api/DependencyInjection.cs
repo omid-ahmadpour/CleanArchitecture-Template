@@ -1,12 +1,12 @@
-﻿namespace Api
+﻿namespace CleanTemplate.Api
 {
     using Api.Filters;
     using ApiFramework.Attributes;
     using ApiFramework.Swagger;
+    using CleanTemplate.Common.Behaviours;
+    using CleanTemplate.Common.General;
+    using CleanTemplate.Common.Utilities;
     using Common;
-    using Common.Behaviours;
-    using Common.General;
-    using Common.Utilities;
     using Domain.Entities.Users;
     using Domain.IRepositories;
     using FluentValidation;

@@ -1,10 +1,10 @@
-﻿using Domain.Entities;
+﻿using CleanTemplate.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Domain.IRepositories
+namespace CleanTemplate.Domain.IRepositories
 {
     public interface IReanOnlyRepository<TEntity> where TEntity : class, IEntity
     {

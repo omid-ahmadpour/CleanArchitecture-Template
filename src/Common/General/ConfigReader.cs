@@ -1,4 +1,4 @@
-﻿namespace Common.General
+﻿namespace CleanTemplate.Common.General
 {
     using Microsoft.Extensions.Configuration;
     using System.Collections.Generic;

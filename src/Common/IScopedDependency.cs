@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace CleanTemplate.Common
 {
     public interface IScopedDependency
     {

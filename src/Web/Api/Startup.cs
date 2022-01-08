@@ -1,10 +1,10 @@
-namespace Api
+namespace CleanTemplate.Api
 {
     using ApiFramework.Configuration;
     using Application;
     using Autofac;
-    using Common;
-    using Common.General;
+    using CleanTemplate.Common;
+    using CleanTemplate.Common.General;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;

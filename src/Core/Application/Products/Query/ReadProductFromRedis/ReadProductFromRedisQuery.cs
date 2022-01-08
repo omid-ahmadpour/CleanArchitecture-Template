@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Products.Query.ReadProductFromRedis
+namespace CleanTemplate.Application.Products.Query.ReadProductFromRedis
 {
     public class ReadProductFromRedisQuery : IRequest<ReadProductFromRedisResponse>
     {

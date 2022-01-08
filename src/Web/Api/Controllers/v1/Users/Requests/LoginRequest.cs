@@ -1,4 +1,4 @@
-﻿namespace Api.Controllers.v1.Users.Requests
+﻿namespace CleanTemplate.Api.Controllers.v1.Users.Requests
 {
     public class LoginRequest
     {
