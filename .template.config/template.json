@@ -1,0 +1,11 @@
+{
+  "author": "Omid Ahmadpour",
+  "classifications": [ "MVC", ".NET Core", "ASP.NET Core" ],
+  "name": "CleanArchitecture-Template",
+  "identity": "Clean-Template",
+  "shortName": "CleanTemplate",
+  "tags": {
+    "language": "C#"
+  },
+  "sourceName": "CleanTemplate"
+}
