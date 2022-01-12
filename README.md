@@ -40,9 +40,14 @@ If you like or are using this project to learn or start your solution, please gi
 * Custom Exception Handling
 * PipelineBehavior for Validation and Performance tracking.
 
-# Create your project
-### Create an empty folder and run cmd and then paste the following code:
-### Enter your project name instead of MyNewCleanTemplate
+# The easiest way to create your project
+### 1. Open CMD
+### 2. Run
+```ruby
+  > dotnet new --install ASPNETCleanTemplate.nuspec::3.0.5
+  ```
+### 3. Create an empty folder for your solution and cd into it.
+### 4. Run the following code and enter your project name instead of MyNewCleanTemplate
 
 ```ruby
   > dotnet new ASPNETCleanTemplate -n MyNewCleanTemplate
