@@ -6,6 +6,28 @@ This is a solution template for [Clean Architecture](https://blog.cleancoder.com
 ## Give a Star! ⭐
 If you like or are using this project to learn or start your solution, please give it a star. Thanks!
 
+# The easiest way to create your project
+### 1. Open CMD
+### 2. Run
+```ruby
+  > dotnet new --install ASPNETCleanTemplate.nuspec::3.0.5
+  ```
+### 3. Create an empty folder for your solution and cd into it.
+### 4. Run the following code and enter your project name instead of MyNewCleanTemplate
+
+```ruby
+  > dotnet new ASPNETCleanTemplate -n MyNewCleanTemplate
+  ```
+
+# For Database Migration:
+  ### First:
+  Set default project to Persistence
+  ### Second:
+  Run following code in Package Manager Console
+  ```ruby
+  > Update-Database -Context AppDbContext
+  ```
+
 ## Technologies used:
 
 * ASP.NET Core
@@ -40,27 +62,6 @@ If you like or are using this project to learn or start your solution, please gi
 * Custom Exception Handling
 * PipelineBehavior for Validation and Performance tracking.
 
-# The easiest way to create your project
-### 1. Open CMD
-### 2. Run
-```ruby
-  > dotnet new --install ASPNETCleanTemplate.nuspec::3.0.5
-  ```
-### 3. Create an empty folder for your solution and cd into it.
-### 4. Run the following code and enter your project name instead of MyNewCleanTemplate
-
-```ruby
-  > dotnet new ASPNETCleanTemplate -n MyNewCleanTemplate
-  ```
-
-# For Database Migration:
-  ### First:
-  Set default project to Persistence
-  ### Second:
-  Run following code in Package Manager Console
-  ```ruby
-  > Update-Database -Context AppDbContext
-  ```
 ## Read More
 1. https://virgool.io/@ahmadpooromid/%D9%85%D9%81%D9%87%D9%88%D9%85-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-scalability-%D8%AF%D8%B1-cqrs-peixkgrbdgff
 2. https://medium.com/@omid-ahmadpour/clean-architecture-template-with-net-and-its-importance-e5b3b97a6e48
