@@ -1,11 +1,13 @@
 {
+  "$schema": "http://json.schemastore.org/template",
   "author": "Omid Ahmadpour",
   "classifications": [ "MVC", ".NET Core", "ASP.NET Core" ],
   "name": "ASPNETCleanArchitecture-Template",
   "identity": "ASPNET-CleanTemplate",
   "shortName": "ASPNETCleanTemplate",
   "tags": {
-    "language": "C#"
+    "language": "C#",
+	"type":"project"
   },
   "sourceName": "CleanTemplate"
 }
