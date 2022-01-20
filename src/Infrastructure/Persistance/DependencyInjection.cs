@@ -2,12 +2,10 @@
 {
     using CleanTemplate.Common.General;
     using CleanTemplate.Persistance.Db;
-    using Common.General;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Persistance.Db;
     using System.Reflection;
 
     public static class DependencyInjection
