@@ -12,21 +12,21 @@ namespace CleanTemplate.Persistance.QueryHandlers.Products
 {
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductQueryModel>
     {
-        private readonly CleanArchReadOnlyDbContext dbContext;
+        private readonly CleanArchReadOnlyDbContext _dbContext;
 
         public GetProductByIdQueryHandler(CleanArchReadOnlyDbContext dbContext)
         {
-            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<ProductQueryModel> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            var existingProduct = await dbContext.Set<Product>().Where(a => a.Id == request.ProductId).Select(a =>
+            var existingProduct = await _dbContext.Set<Product>().Where(a => a.Id == request.ProductId).Select(a =>
                new ProductQueryModel
                {
                    Name = a.Name,
                    Price = a.Price
-               }).FirstOrDefaultAsync();
+               }).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
             return existingProduct;
         }

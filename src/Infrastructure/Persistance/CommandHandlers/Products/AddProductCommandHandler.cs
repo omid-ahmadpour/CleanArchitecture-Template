@@ -13,18 +13,21 @@ namespace CleanTemplate.Persistance.CommandHandlers.Products
 {
     public class AddProductCommandHandler : IRequestHandler<AddProductCommand, int>
     {
-        private readonly CleanArchWriteDbContext dbContext;
-        private readonly ILogger<AddProductCommandHandler> logger;
+        private readonly CleanArchWriteDbContext _dbContext;
+        private readonly ILogger<AddProductCommandHandler> _logger;
 
         public AddProductCommandHandler(CleanArchWriteDbContext dbContext, ILogger<AddProductCommandHandler> logger)
         {
-            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<int> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
-            var existingProduct = await dbContext.Set<Product>().FirstOrDefaultAsync(a => a.Name == request.Name, cancellationToken);
+            if (request is null)
+                throw new ArgumentNullException(nameof(request));
+
+            var existingProduct = await _dbContext.Set<Product>().FirstOrDefaultAsync(a => a.Name == request.Name, cancellationToken);
 
             if (existingProduct != null)
             {
@@ -37,10 +40,10 @@ namespace CleanTemplate.Persistance.CommandHandlers.Products
                 Price = request.Price
             };
 
-            await dbContext.Set<Product>().AddAsync(product, cancellationToken);
-            await dbContext.SaveChangesAsync(cancellationToken);
+            await _dbContext.Set<Product>().AddAsync(product, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
-            logger.LogInformation("Product Inserted", product);
+            _logger.LogInformation("Product Inserted", product);
 
             return product.Id;
         }

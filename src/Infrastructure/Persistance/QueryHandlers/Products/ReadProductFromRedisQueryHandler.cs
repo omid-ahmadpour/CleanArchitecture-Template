@@ -13,37 +13,38 @@ namespace CleanTemplate.Persistance.QueryHandlers.Products
 {
     public class ReadProductFromRedisQueryHandler : IRequestHandler<ReadProductFromRedisQuery, ReadProductFromRedisResponse>
     {
-        private readonly CleanArchReadOnlyDbContext dbContext;
-        private readonly IStaticCacheManager staticCacheManager;
-        private const string CachePrefix = "product_";
-        private const int CacheExpiryTime = 2; //minitues
+        private readonly CleanArchReadOnlyDbContext _dbContext;
+        private readonly IStaticCacheManager _staticCacheManager;
+
+        private const string _cachePrefix = "product_";
+        private const int _cacheExpiryTime = 2; //minitues
 
         public ReadProductFromRedisQueryHandler(CleanArchReadOnlyDbContext dbContext,
                                                 IStaticCacheManager staticCacheManager)
         {
-            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-            this.staticCacheManager = staticCacheManager ?? throw new ArgumentNullException(nameof(staticCacheManager));
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            _staticCacheManager = staticCacheManager ?? throw new ArgumentNullException(nameof(staticCacheManager));
         }
 
         public async Task<ReadProductFromRedisResponse> Handle(ReadProductFromRedisQuery request, CancellationToken cancellationToken)
         {
             var productId = request.ProductId;
 
-            var result = await staticCacheManager.GetWithExpireTimeAsync(
-                new CacheKey(CachePrefix + productId),
-                CacheExpiryTime,
+            var result = await _staticCacheManager.GetWithExpireTimeAsync(
+                new CacheKey(_cachePrefix + productId),
+                _cacheExpiryTime,
                 async () => await GetProductAsync());
 
             return result;
 
             async Task<ReadProductFromRedisResponse> GetProductAsync()
             {
-                var product = await dbContext.Set<Product>().Where(a => a.Id == productId).Select(a =>
+                var product = await _dbContext.Set<Product>().Where(a => a.Id == productId).Select(a =>
                        new ReadProductFromRedisResponse
                        {
                            Name = a.Name,
                            Price = a.Price
-                       }).FirstOrDefaultAsync();
+                       }).FirstOrDefaultAsync(cancellationToken: cancellationToken);
 
                 return product;
             }

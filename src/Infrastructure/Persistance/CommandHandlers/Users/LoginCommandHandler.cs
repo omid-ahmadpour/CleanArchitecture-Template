@@ -25,11 +25,11 @@ namespace CleanTemplate.Persistance.CommandHandlers.Users
         {
             var user = await _userManager.FindByNameAsync(request.Username);
             if (user == null)
-                throw new CleanArchAppException("نام کاربری یا رمز عبور اشتباه است");
+                throw new CleanArchAppException("username or password is incorrect");
 
             var isPasswordValid = await _userManager.CheckPasswordAsync(user, request.Password);
             if (!isPasswordValid)
-                throw new CleanArchAppException("نام کاربری یا رمز عبور اشتباه است");
+                throw new CleanArchAppException("username or password is incorrect");
 
             var jwt = await _jwtService.GenerateAsync(user);
 
