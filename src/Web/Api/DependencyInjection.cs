@@ -148,7 +148,7 @@
                                      Id = "Bearer"
                                  }
                              },
-                             new string[] {}
+                             Array.Empty<string>()
                      }
                  });
 
@@ -170,44 +170,16 @@
                 });
                 #endregion
 
-                //options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey,
-                //    Scheme = "Bearer"
-                //});
-
                 //If use FluentValidation then must be use this package to show validation in swagger (MicroElements.Swashbuckle.FluentValidation)
                 //options.AddFluentValidationRules();
                 #endregion
             });
-
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo
-            //    {
-            //        Version = "v1",
-            //        Title = "CleanTemplate.WebUI",
-            //        Description = "This is a solution template for Clean Architecture implementation with ASP.NET Core Web Api",
-            //        Contact = new OpenApiContact
-            //        {
-            //            Name = "Omid Ahmadpour",
-            //            Email = "ahmadpooromid@gmail.com",
-            //            Url = new Uri("https://github.com/omidah"),
-            //        },
-            //    });
-            //});
 
             return services;
         }
 
         public static IApplicationBuilder UseAppSwagger(this IApplicationBuilder app, IConfiguration configuration)
         {
-            //app.UseSwagger();
-            //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanTemplate.WebUI v1"));
-
             app.UseSwagger();
 
             //Swagger middleware for generate UI from swagger.json
