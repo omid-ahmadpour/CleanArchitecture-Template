@@ -24,7 +24,7 @@ namespace CleanTemplate.Persistance.CommandHandlers.Products
 
         public async Task<int> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
-            var existingProduct = await dbContext.Set<Product>().FirstOrDefaultAsync(a => a.Name == request.Name);
+            var existingProduct = await dbContext.Set<Product>().FirstOrDefaultAsync(a => a.Name == request.Name, cancellationToken);
 
             if (existingProduct != null)
             {
