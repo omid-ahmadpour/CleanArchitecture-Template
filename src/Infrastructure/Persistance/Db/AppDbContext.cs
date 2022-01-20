@@ -8,12 +8,14 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class AppDbContext : IdentityDbContext<User, Role, int>, IAppDbContext
+    public class AppDbContext : IdentityDbContext<User, Role, int>, IAppDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }
+
+        public AppDbContext() { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

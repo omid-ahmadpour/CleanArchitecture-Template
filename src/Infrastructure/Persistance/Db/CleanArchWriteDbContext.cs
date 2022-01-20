@@ -8,5 +8,7 @@ namespace CleanTemplate.Persistance.Db
         {
 
         }
+
+        public CleanArchWriteDbContext() { }
     }
 }
