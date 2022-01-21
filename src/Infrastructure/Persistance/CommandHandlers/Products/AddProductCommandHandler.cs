@@ -25,7 +25,7 @@ namespace CleanTemplate.Persistance.CommandHandlers.Products
         public async Task<int> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
             if (request is null)
-                throw new ArgumentNullException(nameof(request));
+                throw new InvalidNullInputException(nameof(request));
 
             var existingProduct = await _dbContext.Set<Product>().FirstOrDefaultAsync(a => a.Name == request.Name, cancellationToken);
 
