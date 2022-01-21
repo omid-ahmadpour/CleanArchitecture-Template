@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CleanTemplate.Persistance.CommandHandlers.Users
 {
-    internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
