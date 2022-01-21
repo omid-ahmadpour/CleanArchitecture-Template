@@ -13,7 +13,7 @@ namespace CleanTemplate.CommandHandler.Test
     public class AddProductCommandHandlerTest
     {
         [Fact]
-        public async Task AddProductCommandHandler_Should_ThrowException()
+        public async Task Should_ThrowException_When_InputIsNull()
         {
             var dbContext = new Mock<CleanArchWriteDbContext>();
             var logger = new Mock<ILogger<AddProductCommandHandler>>();
