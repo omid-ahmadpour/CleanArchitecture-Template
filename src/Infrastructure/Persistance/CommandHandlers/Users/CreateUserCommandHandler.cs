@@ -1,4 +1,5 @@
 ﻿using CleanTemplate.Application.Users.Command.CreateUser;
+using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -22,6 +23,9 @@ namespace CleanTemplate.Persistance.CommandHandlers.Users
 
         public async Task<bool> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+            if (request is null)
+                throw new InvalidNullInputException(nameof(request));
+
             var user = new User
             {
                 Age = request.Age,
