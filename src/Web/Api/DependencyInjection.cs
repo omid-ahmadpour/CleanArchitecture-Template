@@ -57,7 +57,8 @@
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddPolyCache(configuration);
 
-            services.AddHealthChecks();
+            services.AddHealthChecks()
+                    .AddSqlServer(appOptions.WriteDatabaseConnectionString);
             services.AddHealthChecksUI()
                     .AddInMemoryStorage();
 
