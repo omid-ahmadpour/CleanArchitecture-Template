@@ -27,6 +27,11 @@ If you like or are using this project to learn or start your solution, please gi
   ```ruby
   > Update-Database -Context AppDbContext
   ```
+  
+ # HealthCheck
+ ### use the following url to open health check admin ui
+ 
+ https://Url:Port/healthchecks-ui
 
 ## Technologies used:
 
