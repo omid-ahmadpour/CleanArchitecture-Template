@@ -11,9 +11,11 @@
     using Domain.IRepositories;
     using FluentValidation;
     using FluentValidation.AspNetCore;
+    using HealthChecks.UI.Client;
     using MediatR;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Diagnostics.HealthChecks;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
@@ -37,6 +39,7 @@
         public static IServiceCollection AddWebApi(this IServiceCollection services, IConfiguration configuration, SiteSettings siteSettings)
         {
             services.Configure<SiteSettings>(configuration.GetSection(nameof(SiteSettings)));
+            var appOptions = configuration.GetSection(nameof(AppOptions)).Get<AppOptions>();
 
             services.AddApiVersioning(o =>
             {
@@ -53,6 +56,10 @@
             services.AddAutoMapperConfiguration();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddPolyCache(configuration);
+
+            services.AddHealthChecks();
+            services.AddHealthChecksUI()
+                    .AddInMemoryStorage();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
@@ -81,6 +88,11 @@
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecksUI();
+                endpoints.MapHealthChecks("/health", new HealthCheckOptions()
+                {
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
             });
 
             return app;
