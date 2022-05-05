@@ -40,6 +40,7 @@
         {
             services.Configure<SiteSettings>(configuration.GetSection(nameof(SiteSettings)));
             var appOptions = configuration.GetSection(nameof(AppOptions)).Get<AppOptions>();
+            var distributedCacheConfig = configuration.GetSection(nameof(DistributedCacheConfig)).Get<DistributedCacheConfig>();
 
             services.AddApiVersioning(o =>
             {
@@ -58,7 +59,8 @@
             services.AddPolyCache(configuration);
 
             services.AddHealthChecks()
-                    .AddSqlServer(appOptions.WriteDatabaseConnectionString);
+                    .AddSqlServer(appOptions.WriteDatabaseConnectionString)
+                    .AddRedis(distributedCacheConfig.ConnectionString);
             services.AddHealthChecksUI()
                     .AddInMemoryStorage();
 
