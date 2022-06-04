@@ -4,23 +4,31 @@
     using AutoMapper;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using System;
 
     [ValidateModelState]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class BaseControllerV1 : ControllerBase
     {
-        internal readonly IMediator _mediator;
-        internal readonly IMapper _mapper;
-        internal readonly ILogger _logger;
-
-        protected BaseControllerV1(ILogger logger,
-                                   IMediator mediator,
-                                   IMapper mapper)
+        protected IServiceProvider Resolver
         {
-            _logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
-            _mediator = mediator ?? throw new System.ArgumentNullException(nameof(mediator));
-            _mapper = mapper ?? throw new System.ArgumentNullException(nameof(mapper));
+            get
+            {
+                return HttpContext.RequestServices;
+            }
         }
+
+        protected T GetService<T>()
+        {
+            return Resolver.GetService<T>();
+        }
+
+        protected IMapper Mapper => GetService<IMapper>();
+
+        protected IMediator Mediator => GetService<IMediator>();
+
+        protected ILogger Logger => GetService<ILogger>();
     }
 }

@@ -13,16 +13,10 @@ namespace CleanTemplate.Api.Test
     public class ProductControllerTest
     {
         ProductController productController;
-        IMediator mediator;
-        ILogger<ProductController> logger;
-        IMapper mapper;
 
         public ProductControllerTest()
         {
-            mediator = new Mock<IMediator>().Object;
-            logger = new Mock<ILogger<ProductController>>().Object;
-            mapper = new Mock<IMapper>().Object;
-            productController = new ProductController(logger, mediator, mapper);
+            productController = new ProductController();
         }
 
         [Theory]
