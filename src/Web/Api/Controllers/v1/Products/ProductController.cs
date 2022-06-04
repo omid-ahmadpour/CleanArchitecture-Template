@@ -1,12 +1,9 @@
-﻿using AutoMapper;
-using CleanTemplate.Api.Controllers.v1.Products.Requests;
+﻿using CleanTemplate.Api.Controllers.v1.Products.Requests;
 using CleanTemplate.ApiFramework.Tools;
 using CleanTemplate.Application.Products.Command.AddProduct;
 using CleanTemplate.Application.Products.Query.GetProductById;
 using CleanTemplate.Application.Products.Query.ReadProductFromRedis;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
 
