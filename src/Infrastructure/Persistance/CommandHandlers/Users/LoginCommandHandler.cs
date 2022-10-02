@@ -37,7 +37,9 @@ namespace CleanTemplate.Persistance.CommandHandlers.Users
                 throw new CleanArchAppException("username or password is incorrect");
 
             var jwt = await _jwtService.GenerateAsync(user);
-
+            user.RefreshToken = jwt.refresh_token;
+            user.RefreshTokenExpiryTime = DateTime.Now.AddDays(jwt.refreshToken_expiresIn);
+            await _userManager.UpdateAsync(user);
             return new LoginResponse
             {
                 accessToken = jwt.access_token,

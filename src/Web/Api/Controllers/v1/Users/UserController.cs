@@ -2,6 +2,7 @@
 using CleanTemplate.ApiFramework.Tools;
 using CleanTemplate.Application.Users.Command.CreateUser;
 using CleanTemplate.Application.Users.Command.Login;
+using CleanTemplate.Application.Users.Command.RefreshToken;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -33,6 +34,17 @@ namespace CleanTemplate.Api.Controllers.v1.Users
 
             var result = await Mediator.Send(command, cancellationToken);
             return new ApiResult<LoginResponse>(result);
+        }
+
+        [HttpPost("refreshToken")]
+        [SwaggerOperation("get new refresh and access token")]
+        [AllowAnonymous]
+        public virtual async Task<ApiResult<RefreshTokenResponse>> RefreshTokenAsync([FromBody] RefreshTokenRequest request, CancellationToken cancellationToken)
+        {
+            var command = Mapper.Map<RefreshTokenRequest, RefreshTokenCommand>(request);
+
+            var result = await Mediator.Send(command, cancellationToken);
+            return new ApiResult<RefreshTokenResponse>(result);
         }
     }
 }

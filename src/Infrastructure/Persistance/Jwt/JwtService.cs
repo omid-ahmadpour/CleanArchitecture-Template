@@ -7,7 +7,9 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,7 +53,38 @@ namespace CleanTemplate.Persistance.Jwt
 
             var securityToken = tokenHandler.CreateJwtSecurityToken(descriptor);
 
-            return new AccessToken(securityToken);
+            return new AccessToken(securityToken: securityToken,
+                refreshToken: GenerateRefreshToken(),
+                refreshTokenExpiresIn: _siteSetting.JwtSettings.RefreshTokenValidityInDays);
+        }
+
+        public int? ValidateJwtAccessTokenAsync(string token)
+        {
+            var secretKey = Encoding.UTF8.GetBytes(_siteSetting.JwtSettings.SecretKey); // longer that 16 character
+            var encryptionkey = Encoding.UTF8.GetBytes(_siteSetting.JwtSettings.EncryptKey); //must be 16 character
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+                    TokenDecryptionKey = new SymmetricSecurityKey(encryptionkey), 
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+
+                var jwtSecurityToken = (JwtSecurityToken)validatedToken;
+                var userId = int.Parse(jwtSecurityToken.Claims.First(claim => claim.Type == "nameid").Value);
+                return userId;
+            }
+            catch 
+            {
+                return null;
+            }
         }
 
         private async Task<IEnumerable<Claim>> GetClaimsAsync(User user)
@@ -68,6 +101,13 @@ namespace CleanTemplate.Persistance.Jwt
             }
 
             return claims;
+        }
+        private static string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[64];
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
         }
     }
 }
