@@ -2,6 +2,7 @@
 using CleanTemplate.Common;
 using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
+using CleanTemplate.Domain.IRepositories;
 using CleanTemplate.Persistance.Jwt;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -15,12 +16,15 @@ namespace CleanTemplate.Persistance.CommandHandlers.Users
     {
         private readonly UserManager<User> _userManager;
         private readonly IJwtService _jwtService;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
 
         public LoginCommandHandler(UserManager<User> userManager,
-                                   IJwtService jwtService)
+                                   IJwtService jwtService,
+                                   IRefreshTokenRepository refreshTokenRepository)
         {
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
             _jwtService = jwtService ?? throw new ArgumentNullException(nameof(jwtService));
+            _refreshTokenRepository = refreshTokenRepository ?? throw new ArgumentNullException(nameof(refreshTokenRepository));
         }
 
         public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -37,9 +41,13 @@ namespace CleanTemplate.Persistance.CommandHandlers.Users
                 throw new CleanArchAppException("username or password is incorrect");
 
             var jwt = await _jwtService.GenerateAsync(user);
-            user.RefreshToken = jwt.refresh_token;
-            user.RefreshTokenExpiryTime = DateTime.Now.AddDays(jwt.refreshToken_expiresIn);
-            await _userManager.UpdateAsync(user);
+            var refreshToken = new RefreshToken
+            {
+                UserId = user.Id,
+                ExpiryTime = DateTime.Now.AddDays(jwt.refreshToken_expiresIn),
+                Token = jwt.refresh_token
+            };
+            await _refreshTokenRepository.UpsertRefreshToken(refreshToken: refreshToken, cancellationToken);
             return new LoginResponse
             {
                 accessToken = jwt.access_token,
