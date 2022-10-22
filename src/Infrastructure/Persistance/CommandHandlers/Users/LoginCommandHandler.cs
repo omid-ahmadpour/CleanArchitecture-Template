@@ -47,7 +47,7 @@ namespace CleanTemplate.Persistance.CommandHandlers.Users
                 ExpiryTime = DateTime.Now.AddDays(jwt.refreshToken_expiresIn),
                 Token = jwt.refresh_token
             };
-            await _refreshTokenRepository.UpsertRefreshToken(refreshToken: refreshToken, cancellationToken);
+            await _refreshTokenRepository.AddOrUpdateRefreshTokenAsync(refreshToken: refreshToken, cancellationToken);
             return new LoginResponse
             {
                 accessToken = jwt.access_token,

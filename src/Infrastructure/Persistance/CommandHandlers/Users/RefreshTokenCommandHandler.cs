@@ -6,12 +6,7 @@ using CleanTemplate.Domain.IRepositories;
 using CleanTemplate.Persistance.Jwt;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -45,7 +40,7 @@ namespace CleanTemplate.Persistance.CommandHandlers.Users
                 UserId = userId.Value,
                 Token = request.RefreshToken
             };
-            await _refreshTokenRepository.ValidateRefreshToken(refreshToken, cancellationToken);
+            await _refreshTokenRepository.ValidateRefreshTokenAsync(refreshToken, cancellationToken);
 
             var user = await _userManager.FindByIdAsync(userId.ToString());
             var jwt = await _jwtService.GenerateAsync(user);
@@ -55,7 +50,7 @@ namespace CleanTemplate.Persistance.CommandHandlers.Users
                 ExpiryTime = DateTime.Now.AddDays(jwt.refreshToken_expiresIn),
                 Token = jwt.refresh_token
             };
-            await _refreshTokenRepository.UpsertRefreshToken(refreshToken: updateRefreshToken, cancellationToken);
+            await _refreshTokenRepository.AddOrUpdateRefreshTokenAsync(refreshToken: updateRefreshToken, cancellationToken);
             return new RefreshTokenResponse
             {
                 AccessToken = jwt.access_token,

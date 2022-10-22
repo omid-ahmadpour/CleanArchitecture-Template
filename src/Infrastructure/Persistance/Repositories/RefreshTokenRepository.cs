@@ -2,12 +2,9 @@
 using CleanTemplate.Domain.Entities.Users;
 using CleanTemplate.Domain.IRepositories;
 using CleanTemplate.Persistance.Db;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,9 +16,9 @@ namespace CleanTemplate.Persistance.Repositories
            : base(dbContext)
         {
         }
-        public async Task UpsertRefreshToken(RefreshToken refreshToken, CancellationToken cancellationToken)
+        public async Task AddOrUpdateRefreshTokenAsync(RefreshToken refreshToken, CancellationToken cancellationToken)
         {
-            var token = await Table.Where(x => x.UserId == refreshToken.UserId).AsNoTracking().SingleOrDefaultAsync(cancellationToken);
+            var token = await TableNoTracking.SingleOrDefaultAsync(x => x.UserId == refreshToken.UserId,cancellationToken);
             if (token == null)
             {
                 refreshToken.Created = DateTime.Now;
@@ -34,10 +31,10 @@ namespace CleanTemplate.Persistance.Repositories
                 await base.UpdateAsync(refreshToken, cancellationToken);
             }
         }
-        public async Task<bool> ValidateRefreshToken(RefreshToken refreshToken, CancellationToken cancellationToken)
+        public async Task<bool> ValidateRefreshTokenAsync(RefreshToken refreshToken, CancellationToken cancellationToken)
         {
-            var result = await Table.Where(x => x.UserId == refreshToken.UserId).AsNoTracking().SingleOrDefaultAsync(cancellationToken);
-            if (result.Token != refreshToken.Token)
+            var result = await TableNoTracking.SingleOrDefaultAsync(x => x.UserId == refreshToken.UserId, cancellationToken);
+            if (result == null || result.Token != refreshToken.Token)
                 throw new CleanArchAppException("RefreshToken is not valid");
             return true;
         }
