@@ -11,7 +11,7 @@ using Xunit;
 
 namespace CleanTemplate.CommandHandler.Test
 {
-    public class LoginCommandHandlerTest
+    public class RefreshTokenCommandHandlerTest
     {
         [Fact]
         public async Task Should_ThrowException_When_InputIsNull()
@@ -29,11 +29,11 @@ namespace CleanTemplate.CommandHandler.Test
             var jwtService = new Mock<IJwtService>();
             var refreshTokenRepository = new Mock<IRefreshTokenRepository>();
 
-            // Act
-            var commandHandler = new LoginCommandHandler(userManager, jwtService.Object, refreshTokenRepository.Object);
+            //Act
+            var commadHandler = new RefreshTokenCommandHandler(userManager, jwtService.Object, refreshTokenRepository.Object);
 
-            // Assert
-            await Assert.ThrowsAsync<InvalidNullInputException>(() => commandHandler.Handle(null, CancellationToken.None));
+            //Assert
+            await Assert.ThrowsAsync<InvalidNullInputException>(()=>commadHandler.Handle(null,CancellationToken.None));
         }
     }
 }
