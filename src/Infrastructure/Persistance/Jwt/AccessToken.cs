@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace CleanTemplate.Persistance.Jwt
+namespace CleanTemplate.Persistence.Jwt
 {
     public class AccessToken
     {
@@ -17,7 +17,7 @@ namespace CleanTemplate.Persistance.Jwt
             token_type = "Bearer";
             expires_in = (int)(securityToken.ValidTo - DateTime.UtcNow).TotalSeconds;
         }
-        public AccessToken(JwtSecurityToken securityToken,string refreshToken, int refreshTokenExpiresIn)
+        public AccessToken(JwtSecurityToken securityToken, string refreshToken, int refreshTokenExpiresIn)
         {
             access_token = new JwtSecurityTokenHandler().WriteToken(securityToken);
             token_type = "Bearer";

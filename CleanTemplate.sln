@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Domain", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Common", "src\Common\CleanTemplate.Common.csproj", "{8164FAFB-E319-49A3-940C-5D9B029192CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Persistance", "src\Infrastructure\Persistance\CleanTemplate.Persistance.csproj", "{D1768A1F-A59B-4906-804B-7A39F576FEA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Persistence", "src\Infrastructure\Persistance\CleanTemplate.Persistence.csproj", "{D1768A1F-A59B-4906-804B-7A39F576FEA5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{238972C8-A659-488D-9E17-8A1B3E820ECB}"
 EndProject
@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7C72E0CA-8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Api.Test", "test\Api.Test\CleanTemplate.Api.Test.csproj", "{7B57CD7B-9BE2-48D9-972A-DD52EF08F1D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanTemplate.CommandHandler.Test", "test\CleanTemplate.CommandHandler.Test\CleanTemplate.CommandHandler.Test.csproj", "{917A5A94-07E5-4045-964C-F7DF48B22FF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.CommandHandler.Test", "test\CleanTemplate.CommandHandler.Test\CleanTemplate.CommandHandler.Test.csproj", "{917A5A94-07E5-4045-964C-F7DF48B22FF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

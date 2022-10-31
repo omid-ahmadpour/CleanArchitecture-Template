@@ -7,7 +7,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.CommandHandlers.Users
+namespace CleanTemplate.Persistence.CommandHandlers.Users
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
     {

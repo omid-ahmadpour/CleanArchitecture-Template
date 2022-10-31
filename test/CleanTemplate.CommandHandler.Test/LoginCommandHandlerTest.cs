@@ -1,8 +1,8 @@
 ﻿using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
 using CleanTemplate.Domain.IRepositories;
-using CleanTemplate.Persistance.CommandHandlers.Users;
-using CleanTemplate.Persistance.Jwt;
+using CleanTemplate.Persistence.CommandHandlers.Users;
+using CleanTemplate.Persistence.Jwt;
 using Microsoft.AspNetCore.Identity;
 using Moq;
 using System.Threading;

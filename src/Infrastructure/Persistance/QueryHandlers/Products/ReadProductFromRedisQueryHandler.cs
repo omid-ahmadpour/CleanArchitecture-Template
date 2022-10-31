@@ -1,6 +1,6 @@
 ﻿using CleanTemplate.Application.Products.Query.ReadProductFromRedis;
 using CleanTemplate.Domain.Entities.Products;
-using CleanTemplate.Persistance.Db;
+using CleanTemplate.Persistence.Db;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using PolyCache.Cache;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.QueryHandlers.Products
+namespace CleanTemplate.Persistence.QueryHandlers.Products
 {
     public class ReadProductFromRedisQueryHandler : IRequestHandler<ReadProductFromRedisQuery, ReadProductFromRedisResponse>
     {

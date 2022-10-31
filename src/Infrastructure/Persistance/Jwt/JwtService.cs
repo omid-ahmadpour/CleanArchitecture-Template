@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.Jwt
+namespace CleanTemplate.Persistence.Jwt
 {
     public class JwtService : IJwtService, IScopedDependency
     {
@@ -70,7 +70,7 @@ namespace CleanTemplate.Persistance.Jwt
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(secretKey),
-                    TokenDecryptionKey = new SymmetricSecurityKey(encryptionKey), 
+                    TokenDecryptionKey = new SymmetricSecurityKey(encryptionKey),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
@@ -81,7 +81,7 @@ namespace CleanTemplate.Persistance.Jwt
                 var userId = int.Parse(jwtSecurityToken.Claims.First(claim => claim.Type == "nameid").Value);
                 return userId;
             }
-            catch 
+            catch
             {
                 return null;
             }

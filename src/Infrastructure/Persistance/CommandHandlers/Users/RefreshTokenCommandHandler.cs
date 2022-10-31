@@ -3,14 +3,14 @@ using CleanTemplate.Common;
 using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
 using CleanTemplate.Domain.IRepositories;
-using CleanTemplate.Persistance.Jwt;
+using CleanTemplate.Persistence.Jwt;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.CommandHandlers.Users
+namespace CleanTemplate.Persistence.CommandHandlers.Users
 {
     public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, RefreshTokenResponse>
     {

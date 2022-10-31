@@ -1,10 +1,10 @@
 ﻿using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
-using CleanTemplate.Persistance.CommandHandlers.Users;
 using Microsoft.AspNetCore.Identity;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
+using CleanTemplate.Persistence.CommandHandlers.Users;
 using Xunit;
 
 namespace CleanTemplate.CommandHandler.Test

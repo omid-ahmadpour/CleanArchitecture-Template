@@ -3,9 +3,9 @@ using CleanTemplate.Common;
 using CleanTemplate.Common.General;
 using CleanTemplate.Domain.Entities;
 using CleanTemplate.Domain.IRepositories;
-using CleanTemplate.Persistance.Db;
-using CleanTemplate.Persistance.Jwt;
-using CleanTemplate.Persistance.Repositories;
+using CleanTemplate.Persistence.Db;
+using CleanTemplate.Persistence.Jwt;
+using CleanTemplate.Persistence.Repositories;
 
 namespace CleanTemplate.ApiFramework.Configuration
 {

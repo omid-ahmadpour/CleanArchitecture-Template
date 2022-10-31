@@ -2,14 +2,14 @@
 using CleanTemplate.Common.Utilities;
 using CleanTemplate.Domain.Entities.Users;
 using CleanTemplate.Domain.IRepositories;
-using CleanTemplate.Persistance.Db;
+using CleanTemplate.Persistence.Db;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.Repositories
+namespace CleanTemplate.Persistence.Repositories
 {
     public class UserRepository : Repository<User>, IUserRepository, IScopedDependency
     {

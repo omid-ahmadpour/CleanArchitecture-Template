@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Infrastructure\Persistance\CleanTemplate.Persistance.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\Persistance\CleanTemplate.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CleanTemplate.Persistance.Configuration.Products
+namespace CleanTemplate.Persistence.Configuration.Products
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

@@ -1,7 +1,7 @@
 ﻿using CleanTemplate.Application.Products.Command.AddProduct;
 using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Products;
-using CleanTemplate.Persistance.Db;
+using CleanTemplate.Persistence.Db;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -9,7 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.CommandHandlers.Products
+namespace CleanTemplate.Persistence.CommandHandlers.Products
 {
     public class AddProductCommandHandler : IRequestHandler<AddProductCommand, int>
     {

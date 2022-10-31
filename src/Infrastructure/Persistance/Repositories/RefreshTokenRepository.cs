@@ -1,14 +1,14 @@
 ﻿using CleanTemplate.Common;
 using CleanTemplate.Domain.Entities.Users;
 using CleanTemplate.Domain.IRepositories;
-using CleanTemplate.Persistance.Db;
+using CleanTemplate.Persistence.Db;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.Repositories
+namespace CleanTemplate.Persistence.Repositories
 {
     public class RefreshTokenRepository : Repository<RefreshToken>, IRefreshTokenRepository, IScopedDependency
     {
@@ -18,7 +18,7 @@ namespace CleanTemplate.Persistance.Repositories
         }
         public async Task AddOrUpdateRefreshTokenAsync(RefreshToken refreshToken, CancellationToken cancellationToken)
         {
-            var token = await TableNoTracking.SingleOrDefaultAsync(x => x.UserId == refreshToken.UserId,cancellationToken);
+            var token = await TableNoTracking.SingleOrDefaultAsync(x => x.UserId == refreshToken.UserId, cancellationToken);
             if (token == null)
             {
                 refreshToken.Created = DateTime.Now;

@@ -1,11 +1,12 @@
 ﻿namespace CleanTemplate.Api
 {
-    using Api.Filters;
+    using Filters;
     using ApiFramework.Attributes;
     using ApiFramework.Swagger;
-    using CleanTemplate.Common.Behaviours;
-    using CleanTemplate.Common.General;
-    using CleanTemplate.Common.Utilities;
+    using Common.Behaviours;
+    using Common.General;
+    using Common.Utilities;
+    using Persistence.Db;
     using Common;
     using Domain.Entities.Users;
     using Domain.IRepositories;
@@ -22,7 +23,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
-    using Persistance.Db;
     using PolyCache;
     using Swashbuckle.AspNetCore.SwaggerGen;
     using Swashbuckle.AspNetCore.SwaggerUI;

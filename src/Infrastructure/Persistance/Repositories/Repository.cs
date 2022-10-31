@@ -1,6 +1,6 @@
 ﻿using CleanTemplate.Domain.Entities;
 using CleanTemplate.Domain.IRepositories;
-using CleanTemplate.Persistance.Db;
+using CleanTemplate.Persistence.Db;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.Repositories
+namespace CleanTemplate.Persistence.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class, IEntity

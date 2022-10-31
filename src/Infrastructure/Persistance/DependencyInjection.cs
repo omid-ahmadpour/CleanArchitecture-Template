@@ -1,7 +1,7 @@
-﻿namespace CleanTemplate.Persistance
+﻿namespace CleanTemplate.Persistence
 {
     using CleanTemplate.Common.General;
-    using CleanTemplate.Persistance.Db;
+    using CleanTemplate.Persistence.Db;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;

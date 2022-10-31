@@ -1,7 +1,7 @@
 ﻿using CleanTemplate.Domain.Entities.Users;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.Jwt
+namespace CleanTemplate.Persistence.Jwt
 {
     public interface IJwtService
     {

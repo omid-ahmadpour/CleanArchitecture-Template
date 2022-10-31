@@ -1,6 +1,6 @@
 ﻿using CleanTemplate.Application.Products.Query.GetProductById;
 using CleanTemplate.Domain.Entities.Products;
-using CleanTemplate.Persistance.Db;
+using CleanTemplate.Persistence.Db;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistance.QueryHandlers.Products
+namespace CleanTemplate.Persistence.QueryHandlers.Products
 {
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductQueryModel>
     {

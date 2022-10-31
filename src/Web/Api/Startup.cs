@@ -3,6 +3,7 @@ namespace CleanTemplate.Api
     using ApiFramework.Configuration;
     using Application;
     using Autofac;
+    using CleanTemplate.Persistence;
     using Common;
     using Common.General;
     using Microsoft.AspNetCore.Builder;

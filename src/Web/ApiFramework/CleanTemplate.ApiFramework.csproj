@@ -46,7 +46,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\CleanTemplate.Common.csproj" />
     <ProjectReference Include="..\..\Core\Application\CleanTemplate.Application.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\Persistance\CleanTemplate.Persistance.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Persistance\CleanTemplate.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

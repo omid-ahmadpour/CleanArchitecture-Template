@@ -1,4 +1,4 @@
-﻿namespace CleanTemplate.Persistance.Db
+﻿namespace CleanTemplate.Persistence.Db
 {
     using CleanTemplate.Common.Utilities;
     using CleanTemplate.Domain.Entities;

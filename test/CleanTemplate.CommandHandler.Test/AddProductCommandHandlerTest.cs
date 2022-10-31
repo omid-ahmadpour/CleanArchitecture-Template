@@ -1,7 +1,7 @@
 using CleanTemplate.Application.Products.Command.AddProduct;
 using CleanTemplate.Common.Exceptions;
-using CleanTemplate.Persistance.CommandHandlers.Products;
-using CleanTemplate.Persistance.Db;
+using CleanTemplate.Persistence.CommandHandlers.Products;
+using CleanTemplate.Persistence.Db;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System.Threading;

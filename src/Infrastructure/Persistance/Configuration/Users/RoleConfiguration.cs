@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CleanTemplate.Persistance.Configuration.Users
+namespace CleanTemplate.Persistence.Configuration.Users
 {
     public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
