@@ -12,13 +12,7 @@
     [Route("api/v{version:apiVersion}/[controller]")]
     public class BaseControllerV1 : ControllerBase
     {
-        protected IServiceProvider Resolver
-        {
-            get
-            {
-                return HttpContext.RequestServices;
-            }
-        }
+        protected IServiceProvider Resolver => HttpContext.RequestServices;
 
         protected T GetService<T>()
         {
