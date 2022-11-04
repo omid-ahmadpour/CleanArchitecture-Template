@@ -4,7 +4,6 @@ using CleanTemplate.Domain.IRepositories;
 using CleanTemplate.Persistence.Db;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
