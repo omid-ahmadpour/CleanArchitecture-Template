@@ -117,7 +117,7 @@
                     {
                         Name = "Omid Ahmadpour",
                         Email = "ahmadpooromid@gmail.com",
-                        Url = new Uri("https://github.com/omidah"),
+                        Url = new Uri("https://github.com/omid-ahmadpour"),
                     },
                 });
                 options.SwaggerDoc("v2", new OpenApiInfo
@@ -129,7 +129,7 @@
                     {
                         Name = "Omid Ahmadpour",
                         Email = "ahmadpooromid@gmail.com",
-                        Url = new Uri("https://github.com/omidah"),
+                        Url = new Uri("https://github.com/omid-ahmadpour"),
                     },
                 });
 
