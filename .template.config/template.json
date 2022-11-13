@@ -2,12 +2,39 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Omid Ahmadpour",
   "classifications": [ ".NET Core", "ASP.NET", "WEB API" ],
-  "name": "ASPNETCleanArchitectureTemplate",
-  "identity": "ASPNET-CleanTemplate",
-  "shortName": "ASPNETCleanTemplate",
+  "name": "ASPNET Clean Template",
+  "identity": "ASPNETCleanTemplate",
+  "groupIdentity": "ASPNETCleanTemplate",
+  "shortName": "ACT",
   "tags": {
     "language": "C#",
 	"type":"project"
   },
-  "sourceName": "CleanTemplate"
+  "sourceName": "CleanTemplate",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        "**/README.md",
+        "**/nuget.config",
+        "**/LICENSE",
+        "**/.gitattributes",
+        "**/.gitignore",
+        "**/*.nupkg",
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        ".template.config/**/*",
+        ".vs/**/*",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json",
+        "**/.git/**",
+        "**/.github/**",
+        "*.nuspec",
+        "**/node_modules/**"
+      ]
+    }
+  ]
 }
