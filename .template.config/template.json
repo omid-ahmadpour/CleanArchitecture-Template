@@ -3,9 +3,9 @@
   "author": "Omid Ahmadpour",
   "classifications": [ ".NET Core", "ASP.NET", "WEB API" ],
   "name": "ASPNET Clean Template",
-  "identity": "ASPNETCleanTemplate",
+  "identity": "ASPNETCleanTemplate.nuspec",
   "groupIdentity": "ASPNETCleanTemplate",
-  "shortName": "ACT",
+  "shortName": "aspnetcleantemplate",
   "tags": {
     "language": "C#",
 	"type":"project"
