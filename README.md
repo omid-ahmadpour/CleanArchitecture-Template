@@ -10,13 +10,13 @@ If you like or are using this project to learn or start your solution, please gi
 ### 1. Open CMD
 ### 2. Run
 ```ruby
-  > dotnet new --install ASPNETCleanTemplate.nuspec::3.1.0
+  dotnet new --install ASPNETCleanTemplate.nuspec::3.2.5
   ```
 ### 3. Create an empty folder for your solution and cd into it.
 ### 4. Run the following code and enter your project name instead of MyNewCleanTemplate
 
 ```ruby
-  > dotnet new ASPNETCleanTemplate -n MyNewCleanTemplate
+  dotnet new aspnetcleantemplate -n MyNewCleanTemplate
   ```
 
 # For Database Migration:
@@ -25,7 +25,7 @@ If you like or are using this project to learn or start your solution, please gi
   ### Second:
   Run following code in Package Manager Console
   ```ruby
-  > Update-Database -Context AppDbContext
+  Update-Database -Context AppDbContext
   ```
   
  # HealthCheck
