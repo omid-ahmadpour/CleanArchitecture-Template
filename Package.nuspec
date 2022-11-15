@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ASPNETCleanTemplate.nuspec</id>
-    <version>3.2.4</version>
+    <version>3.2.5</version>
     <authors>Omid Ahmadpour</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
