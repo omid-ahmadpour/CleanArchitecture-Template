@@ -1,47 +1,36 @@
-using AutoMapper;
-using CleanTemplate.Api.Controllers.v1.Products;
-using CleanTemplate.ApiFramework.Tools;
-using CleanTemplate.Application.Products.Query.GetProductById;
-using MediatR;
-using Microsoft.Extensions.Logging;
-using Moq;
+using CleanTemplate.Api.Controllers.v1.Products.Requests;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanTemplate.Api.Test
+namespace CleanTemplate.Api.IntegrationTest
 {
-    public class ProductControllerTest
+    public class ProductControllerTest : IClassFixture<WebApplicationFactory<Program>>
     {
-        ProductController productController;
+        private readonly WebApplicationFactory<Program> _factory;
 
-        public ProductControllerTest()
+        public ProductControllerTest(WebApplicationFactory<Program> factory)
         {
-            productController = new ProductController();
+            _factory = factory;
         }
 
         [Theory]
-        [InlineData(1, 20)]
-        public async Task GetByIdAsyncTest(int id1, int id2)
+        [InlineData("/api/v1/Product?productId=1")]
+        public async Task GetByIdEndpoint_Should_ReturnOk(string url)
         {
-            //arrange
-            var validId = id1;
-            var invalidId = id2;
+            // Arrange
+            var client = _factory.CreateClient();
 
-            //act
-            var result = await productController.GetByIdAsync(validId);
-            var nullResult = await productController.GetByIdAsync(invalidId);
+            // Act
+            var response = await client.GetAsync(url);
 
-            //assert
-            Assert.IsType<ApiResult<ProductQueryModel>>(result);
-
-            var nullItem = nullResult.Data;
-            Assert.Null(nullItem);
-
-            //var item = result.Data as ProductQueryModel;
-            //Assert.IsType<ProductQueryModel>(item);
-
-            //var productItem = item as ProductQueryModel;
-            //Assert.Equal(validId, productItem.ProductId);
+            // Assert
+            Assert.True(response.IsSuccessStatusCode);
         }
     }
 }
