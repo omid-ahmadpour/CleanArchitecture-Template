@@ -32,5 +32,35 @@ namespace CleanTemplate.Api.IntegrationTest
             // Assert
             Assert.True(response.IsSuccessStatusCode);
         }
+
+        [Theory, ClassData(typeof(AddProductTestData))]
+        public async Task AddEndpoint_Should_ReturnOk(string name, decimal price)
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+            var url = "/api/v1/Product";
+            var request = new AddProductRequest { Name = name, Price = price };
+            var json = JsonConvert.SerializeObject(request);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await client.PostAsync(url, data);
+
+            // Assert
+            Assert.True(response.IsSuccessStatusCode);
+        }
+
+        public class AddProductTestData : IEnumerable<object[]>
+        {
+            public IEnumerator<object[]> GetEnumerator()
+            {
+                yield return new object[] { "sampe product name", 1000 };
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+        }
     }
 }
