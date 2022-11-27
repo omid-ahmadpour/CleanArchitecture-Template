@@ -6,11 +6,16 @@ This is a solution template for [Clean Architecture](https://blog.cleancoder.com
 ## Give a Star! ⭐
 If you like or are using this project to learn or start your solution, please give it a star. Thanks!
 
+# Prerequisites
+Visual Studio 2022
+
+.NET 6.0 Runtime
+
 # The easiest way to create your project
 ### 1. Open CMD
 ### 2. Run
 ```ruby
-  dotnet new --install ASPNETCleanTemplate.nuspec::3.2.5
+  dotnet new --install ASPNETCleanTemplate.nuspec::3.2.6
   ```
 ### 3. Create an empty folder for your solution and cd into it.
 ### 4. Run the following code and enter your project name instead of MyNewCleanTemplate
