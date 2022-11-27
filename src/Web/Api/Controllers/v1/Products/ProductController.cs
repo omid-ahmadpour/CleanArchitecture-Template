@@ -22,7 +22,7 @@ namespace CleanTemplate.Api.Controllers.v1.Products
 
         [HttpPost]
         [SwaggerOperation("add a product")]
-        public async Task<ApiResult<int>> AddAsync(AddProductRequest request)
+        public async Task<ApiResult<int>> AddAsync([FromBody] AddProductRequest request)
         {
             var command = Mapper.Map<AddProductRequest, AddProductCommand>(request);
 
