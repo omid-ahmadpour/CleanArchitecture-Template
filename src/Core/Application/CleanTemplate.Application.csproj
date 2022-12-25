@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\CleanTemplate.Common.csproj" />
     <ProjectReference Include="..\Domain\CleanTemplate.Domain.csproj" />
   </ItemGroup>
 
