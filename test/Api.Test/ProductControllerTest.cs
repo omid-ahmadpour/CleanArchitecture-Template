@@ -33,6 +33,20 @@ namespace CleanTemplate.Api.IntegrationTest
             Assert.True(response.IsSuccessStatusCode);
         }
 
+        [Theory]
+        [InlineData("/api/v1/Product/all?Page=1&PageSize=1")]
+        public async Task GetAllEndpoint_Should_ReturnOk(string url)
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            // Act
+            var response = await client.GetAsync(url);
+
+            // Assert
+            Assert.True(response.IsSuccessStatusCode);
+        }
+
         [Theory, ClassData(typeof(AddProductTestData))]
         public async Task AddEndpoint_Should_ReturnOk(string name, decimal price)
         {
