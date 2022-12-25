@@ -8,7 +8,6 @@ using CleanTemplate.Common.Utilities;
 using CleanTemplate.Domain.Entities.Products;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Collections;
 using System.Threading.Tasks;
 
 namespace CleanTemplate.Api.Controllers.v1.Products
