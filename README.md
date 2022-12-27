@@ -54,6 +54,7 @@ Visual Studio 2022
 * Elasticsearch (for writing Logs)
 * AutoMapper
 * Docker
+* xUnit
 
 ## Software Development Best Practices and Design Principles used:
 
@@ -70,6 +71,8 @@ Visual Studio 2022
 * Modular Design
 * Custom Exceptions
 * Custom Exception Handling
+* Unit tests
+* Integration tests
 * PipelineBehavior for Validation and Performance tracking.
 
 ## Read More
