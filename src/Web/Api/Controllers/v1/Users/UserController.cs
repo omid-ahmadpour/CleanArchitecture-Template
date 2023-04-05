@@ -3,6 +3,7 @@ using CleanTemplate.ApiFramework.Tools;
 using CleanTemplate.Application.Users.Command.CreateUser;
 using CleanTemplate.Application.Users.Command.Login;
 using CleanTemplate.Application.Users.Command.RefreshToken;
+using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -19,7 +20,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
         [AllowAnonymous]
         public virtual async Task<ApiResult<bool>> SingUpAsync(SingUpRequest request, CancellationToken cancellationToken)
         {
-            var command = Mapper.Map<SingUpRequest, CreateUserCommand>(request);
+            var command = request.Adapt<CreateUserCommand>();
 
             var result = await Mediator.Send(command, cancellationToken);
             return new ApiResult<bool>(result);
@@ -30,7 +31,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
         [AllowAnonymous]
         public virtual async Task<ApiResult<LoginResponse>> LoginAsync([FromForm] LoginRequest request, CancellationToken cancellationToken)
         {
-            var command = Mapper.Map<LoginRequest, LoginCommand>(request);
+            var command = request.Adapt<LoginCommand>();
 
             var result = await Mediator.Send(command, cancellationToken);
             return new ApiResult<LoginResponse>(result);
@@ -41,7 +42,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
         [AllowAnonymous]
         public virtual async Task<ApiResult<RefreshTokenResponse>> RefreshTokenAsync([FromBody] RefreshTokenRequest request, CancellationToken cancellationToken)
         {
-            var command = Mapper.Map<RefreshTokenRequest, RefreshTokenCommand>(request);
+            var command = request.Adapt<RefreshTokenCommand>();
 
             var result = await Mediator.Send(command, cancellationToken);
             return new ApiResult<RefreshTokenResponse>(result);

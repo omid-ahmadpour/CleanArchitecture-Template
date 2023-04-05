@@ -1,7 +1,6 @@
 ﻿namespace CleanTemplate.Api.Controllers.v1
 {
     using ApiFramework.Attributes;
-    using AutoMapper;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
@@ -18,8 +17,6 @@
         {
             return Resolver.GetService<T>();
         }
-
-        protected IMapper Mapper => GetService<IMapper>();
 
         protected IMediator Mediator => GetService<IMediator>();
 

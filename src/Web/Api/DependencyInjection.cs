@@ -1,20 +1,20 @@
-﻿namespace CleanTemplate.Api
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+namespace CleanTemplate.Api
 {
-    using Filters;
     using ApiFramework.Attributes;
     using ApiFramework.Swagger;
+    using Common;
     using Common.Behaviours;
     using Common.General;
     using Common.Utilities;
-    using Persistence.Db;
-    using Common;
     using Domain.Entities.Users;
     using Domain.IRepositories;
+    using Filters;
     using FluentValidation;
     using FluentValidation.AspNetCore;
     using HealthChecks.UI.Client;
     using MediatR;
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Diagnostics.HealthChecks;
     using Microsoft.AspNetCore.Identity;
@@ -23,6 +23,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.OpenApi.Models;
+    using Persistence.Db;
     using PolyCache;
     using Swashbuckle.AspNetCore.SwaggerGen;
     using Swashbuckle.AspNetCore.SwaggerUI;
@@ -54,7 +55,6 @@
             services.AddCustomIdentity(siteSettings.IdentitySettings);
             services.AddJwtAuthentication(siteSettings.JwtSettings);
             services.AddCleanArchControllers();
-            services.AddAutoMapperConfiguration();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddPolyCache(configuration);
 
@@ -343,7 +343,7 @@
                 //Password Settings
                 identityOptions.Password.RequireDigit = settings.PasswordRequireDigit;
                 identityOptions.Password.RequiredLength = settings.PasswordRequiredLength;
-                identityOptions.Password.RequireNonAlphanumeric = settings.PasswordRequireNonAlphanumeric; //#@!
+                identityOptions.Password.RequireNonAlphanumeric = settings.PasswordRequireNonAlphanumeric;
                 identityOptions.Password.RequireUppercase = settings.PasswordRequireUppercase;
                 identityOptions.Password.RequireLowercase = settings.PasswordRequireLowercase;
 
@@ -352,11 +352,6 @@
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
-        }
-
-        public static void AddAutoMapperConfiguration(this IServiceCollection services)
-        {
-            services.AddAutoMapper(typeof(Startup));
         }
     }
 }

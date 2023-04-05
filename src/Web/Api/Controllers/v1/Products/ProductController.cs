@@ -6,6 +6,7 @@ using CleanTemplate.Application.Products.Query.GetProducts;
 using CleanTemplate.Application.Products.Query.ReadProductFromRedis;
 using CleanTemplate.Common.Utilities;
 using CleanTemplate.Domain.Entities.Products;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace CleanTemplate.Api.Controllers.v1.Products
         [SwaggerOperation("add a product")]
         public async Task<IActionResult> AddAsync([FromBody] AddProductRequest request)
         {
-            var command = Mapper.Map<AddProductRequest, AddProductCommand>(request);
+            var command = request.Adapt<AddProductCommand>();
 
             var result = await Mediator.Send(command);
 
@@ -38,7 +39,8 @@ namespace CleanTemplate.Api.Controllers.v1.Products
         [SwaggerOperation("get all products")]
         public async Task<IActionResult> GetAllAsync(GetProductsRequest request)
         {
-            var query = Mapper.Map<GetProductsQuery>(request);
+            var query = request.Adapt<GetProductsQuery>();
+
             var result = await Mediator.Send(query);
             return new ApiResult<PagedResult<Product>>(result);
         }

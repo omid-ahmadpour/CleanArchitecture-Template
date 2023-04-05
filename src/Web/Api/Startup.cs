@@ -3,7 +3,6 @@ namespace CleanTemplate.Api
     using ApiFramework.Configuration;
     using Application;
     using Autofac;
-    using CleanTemplate.Persistence;
     using Common;
     using Common.General;
     using Microsoft.AspNetCore.Builder;
@@ -11,7 +10,7 @@ namespace CleanTemplate.Api
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Persistance;
+    using Persistence;
 
     public class Startup
     {
