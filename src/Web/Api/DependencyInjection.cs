@@ -57,6 +57,7 @@ namespace CleanTemplate.Api
             services.AddCleanArchControllers();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddPolyCache(configuration);
+            services.AddCustomFluentValidation();
 
             services.AddHealthChecks()
                     .AddSqlServer(appOptions.WriteDatabaseConnectionString)
@@ -327,10 +328,6 @@ namespace CleanTemplate.Api
             {
                 options.Filters.Add(typeof(ValidateModelStateAttribute));
                 options.Filters.Add(new ApiExceptionFilter());
-            })
-            .AddFluentValidation(options =>
-            {
-                options.RegisterValidatorsFromAssemblyContaining<Startup>();
             });
 
             services.AddCors();
@@ -352,6 +349,11 @@ namespace CleanTemplate.Api
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
+        }
+
+        public static void AddCustomFluentValidation(this IServiceCollection services)
+        {
+            services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
         }
     }
 }
