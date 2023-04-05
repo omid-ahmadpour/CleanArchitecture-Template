@@ -52,7 +52,7 @@ Visual Studio 2022
 * PolyCache (for caching)
 * Serilog
 * Elasticsearch (for writing Logs)
-* AutoMapper
+* Mapper
 * Docker
 * xUnit
 
