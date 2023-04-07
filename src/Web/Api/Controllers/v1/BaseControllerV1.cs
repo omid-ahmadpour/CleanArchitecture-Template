@@ -1,4 +1,6 @@
-﻿namespace CleanTemplate.Api.Controllers.v1
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace CleanTemplate.Api.Controllers.v1
 {
     using ApiFramework.Attributes;
     using MediatR;
@@ -8,6 +10,7 @@
     using System;
 
     [ValidateModelState]
+    [Authorize]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class BaseControllerV1 : ControllerBase
     {
