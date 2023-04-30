@@ -45,7 +45,7 @@ namespace CleanTemplate.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseWebApi(Configuration);
+            app.UseWebApi(Configuration, env);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Hosting;
 
 namespace CleanTemplate.Api
 {
@@ -17,6 +18,7 @@ namespace CleanTemplate.Api
     using MediatR;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
@@ -72,7 +74,8 @@ namespace CleanTemplate.Api
             return services;
         }
 
-        public static IApplicationBuilder UseWebApi(this IApplicationBuilder app, IConfiguration configuration)
+        public static IApplicationBuilder UseWebApi(this IApplicationBuilder app, IConfiguration configuration,
+            IWebHostEnvironment env)
         {
             app.UseCors(builder =>
             {
@@ -91,7 +94,15 @@ namespace CleanTemplate.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                if (env.IsDevelopment() || env.IsStaging())
+                {
+                    endpoints.MapControllers().AllowAnonymous();
+                }
+                else
+                {
+                    endpoints.MapControllers();
+                }
+                
                 endpoints.MapHealthChecksUI();
                 endpoints.MapHealthChecks("/health", new HealthCheckOptions()
                 {
