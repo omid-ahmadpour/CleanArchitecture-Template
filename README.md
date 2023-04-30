@@ -15,7 +15,7 @@ Visual Studio 2022
 ### 1. Open CMD
 ### 2. Run
 ```ruby
-  dotnet new --install ASPNETCleanTemplate.nuspec::3.3.0
+  dotnet new --install ASPNETCleanTemplate.nuspec::3.4.0
   ```
 ### 3. Create an empty folder for your solution and cd into it.
 ### 4. Run the following code and enter your project name instead of MyNewCleanTemplate
