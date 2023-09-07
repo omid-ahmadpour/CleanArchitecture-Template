@@ -77,5 +77,6 @@ For health check administration, utilize the following URL:
 ## Further Reading
 1. [The Significance of Clean Architecture Template with .NET](https://medium.com/@omid-ahmadpour/clean-architecture-template-with-net-and-its-importance-e5b3b97a6e48)
 2. [Understanding and Implementing Scalability in CQRS](https://virgool.io/@ahmadpooromid/%D9%85%D9%81%D9%87%D9%88%D9%85-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-scalability-%D8%AF%D8%B1-cqrs-peixkgrbdgff)
+3. [Why We Need Clean Architecture?]([https://virgool.io/@ahmadpooromid/%D9%85%D9%81%D9%87%D9%88%D9%85-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-scalability-%D8%AF%D8%B1-cqrs-peixkgrbdgff](https://www.youtube.com/watch?v=GO61-MiWirk&t=17s))
 
 Elevate your development journey with the CleanArchitecture-Template Plus!
