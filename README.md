@@ -1,4 +1,4 @@
-# CleanArchitecture-Template Plus
+# CleanArchitecture-Template
 Welcome to the **CleanArchitecture-Template** repository, a powerful solution template that exemplifies the principles of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and incorporates the robustness of CQRS implementation using ASP.NET Core.
 
 ![CleanArchitecture](https://user-images.githubusercontent.com/42376112/110762993-a61b1580-8266-11eb-9ac1-438072319971.jpg)
