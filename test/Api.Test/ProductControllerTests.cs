@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanTemplate.Api.IntegrationTest
+namespace CleanTemplate.Api.IntegrationTests
 {
-    public class ProductControllerTest : IClassFixture<WebApplicationFactory<Program>>
+    public class ProductControllerTests : IClassFixture<WebApplicationFactory<Program>>
     {
         private readonly WebApplicationFactory<Program> _factory;
 
-        public ProductControllerTest(WebApplicationFactory<Program> factory)
+        public ProductControllerTests(WebApplicationFactory<Program> factory)
         {
             _factory = factory;
         }

@@ -25,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Api", "src\We
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7C72E0CA-895D-4676-BEBA-2ADB297F1164}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Api.IntegrationTest", "test\Api.Test\CleanTemplate.Api.IntegrationTest.csproj", "{7B57CD7B-9BE2-48D9-972A-DD52EF08F1D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.Api.IntegrationTests", "test\Api.Test\CleanTemplate.Api.IntegrationTests.csproj", "{7B57CD7B-9BE2-48D9-972A-DD52EF08F1D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.CommandHandler.Test", "test\CleanTemplate.CommandHandler.Test\CleanTemplate.CommandHandler.Test.csproj", "{917A5A94-07E5-4045-964C-F7DF48B22FF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanTemplate.CommandHandler.Tests", "test\CleanTemplate.CommandHandler.Test\CleanTemplate.CommandHandler.Tests.csproj", "{917A5A94-07E5-4045-964C-F7DF48B22FF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

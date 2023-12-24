@@ -1,17 +1,15 @@
 ﻿using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
-using CleanTemplate.Domain.IRepositories;
-using CleanTemplate.Persistence.CommandHandlers.Users;
-using CleanTemplate.Persistence.Jwt;
 using Microsoft.AspNetCore.Identity;
 using Moq;
 using System.Threading;
 using System.Threading.Tasks;
+using CleanTemplate.Persistence.CommandHandlers.Users;
 using Xunit;
 
-namespace CleanTemplate.CommandHandler.Test
+namespace CleanTemplate.CommandHandler.Tests
 {
-    public class LoginCommandHandlerTest
+    public class CreateUserCommandHandlerTests
     {
         [Fact]
         public async Task Should_ThrowException_When_InputIsNull()
@@ -25,14 +23,20 @@ namespace CleanTemplate.CommandHandler.Test
                     Id = 123
                 });
 
+            var roleStore = new Mock<IRoleStore<Role>>();
+            roleStore.Setup(x => x.FindByIdAsync("123", CancellationToken.None))
+                .ReturnsAsync(new Role()
+                {
+                    Name = "testRole",
+                    Id = 123,
+
+                });
+
             var userManager = new UserManager<User>(userStore.Object, null, null, null, null, null, null, null, null);
-            var jwtService = new Mock<IJwtService>();
-            var refreshTokenRepository = new Mock<IRefreshTokenRepository>();
+            var roleManager = new RoleManager<Role>(roleStore.Object, null, null, null, null);
 
-            // Act
-            var commandHandler = new LoginCommandHandler(userManager, jwtService.Object, refreshTokenRepository.Object);
+            var commandHandler = new CreateUserCommandHandler(userManager, roleManager);
 
-            // Assert
             await Assert.ThrowsAsync<InvalidNullInputException>(() => commandHandler.Handle(null, CancellationToken.None));
         }
     }

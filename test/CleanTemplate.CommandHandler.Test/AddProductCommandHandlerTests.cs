@@ -8,9 +8,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanTemplate.CommandHandler.Test
+namespace CleanTemplate.CommandHandler.Tests
 {
-    public class AddProductCommandHandlerTest
+    public class AddProductCommandHandlerTests
     {
         [Fact]
         public async Task Should_ThrowException_When_InputIsNull()

@@ -9,9 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanTemplate.CommandHandler.Test
+namespace CleanTemplate.CommandHandler.Tests
 {
-    public class RefreshTokenCommandHandlerTest
+    public class RefreshTokenCommandHandlerTests
     {
         [Fact]
         public async Task Should_ThrowException_When_InputIsNull()
@@ -33,7 +33,7 @@ namespace CleanTemplate.CommandHandler.Test
             var commadHandler = new RefreshTokenCommandHandler(userManager, jwtService.Object, refreshTokenRepository.Object);
 
             //Assert
-            await Assert.ThrowsAsync<InvalidNullInputException>(()=>commadHandler.Handle(null,CancellationToken.None));
+            await Assert.ThrowsAsync<InvalidNullInputException>(() => commadHandler.Handle(null, CancellationToken.None));
         }
     }
 }
