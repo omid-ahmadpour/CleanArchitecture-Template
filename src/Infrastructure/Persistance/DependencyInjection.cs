@@ -1,12 +1,12 @@
-﻿namespace CleanTemplate.Persistence
+﻿using System.Reflection;
+
+namespace CleanTemplate.Persistence
 {
     using Common.General;
     using Db;
-    using MediatR;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using System.Reflection;
 
     public static class DependencyInjection
     {
@@ -14,7 +14,7 @@
         {
             var appOptions = configuration.GetSection(nameof(AppOptions)).Get<AppOptions>();
 
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
             services.AddScoped((serviceProvider) =>
             {
