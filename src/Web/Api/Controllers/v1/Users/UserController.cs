@@ -15,7 +15,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
     [ApiVersion("1")]
     public class UserController : BaseControllerV1
     {
-        [HttpPost("signup")]
+        [HttpPost("sign-up")]
         [SwaggerOperation("sign up user")]
         [AllowAnonymous]
         public virtual async Task<ApiResult<bool>> SingUpAsync(SingUpRequest request, CancellationToken cancellationToken)
