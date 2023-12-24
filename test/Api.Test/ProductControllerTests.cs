@@ -52,7 +52,7 @@ namespace CleanTemplate.Api.IntegrationTests
         {
             // Arrange
             var client = _factory.CreateClient();
-            var url = "/api/v1/Product";
+            const string url = "/api/v1/Product";
             var request = new AddProductRequest { Name = name, Price = price };
             var json = JsonConvert.SerializeObject(request);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
@@ -68,7 +68,7 @@ namespace CleanTemplate.Api.IntegrationTests
         {
             public IEnumerator<object[]> GetEnumerator()
             {
-                yield return new object[] { "sampe product name", 1000 };
+                yield return new object[] { "sample product name", 1000 };
             }
 
             IEnumerator IEnumerable.GetEnumerator()

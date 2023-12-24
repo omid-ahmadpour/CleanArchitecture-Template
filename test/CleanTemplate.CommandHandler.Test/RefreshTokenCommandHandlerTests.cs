@@ -30,10 +30,10 @@ namespace CleanTemplate.CommandHandler.Tests
             var refreshTokenRepository = new Mock<IRefreshTokenRepository>();
 
             //Act
-            var commadHandler = new RefreshTokenCommandHandler(userManager, jwtService.Object, refreshTokenRepository.Object);
+            var commandHandler = new RefreshTokenCommandHandler(userManager, jwtService.Object, refreshTokenRepository.Object);
 
             //Assert
-            await Assert.ThrowsAsync<InvalidNullInputException>(() => commadHandler.Handle(null, CancellationToken.None));
+            await Assert.ThrowsAsync<InvalidNullInputException>(() => commandHandler.Handle(null, CancellationToken.None));
         }
     }
 }
