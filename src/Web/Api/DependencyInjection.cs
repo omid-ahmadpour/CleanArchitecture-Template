@@ -102,7 +102,7 @@ namespace CleanTemplate.Api
                 {
                     endpoints.MapControllers();
                 }
-                
+
                 endpoints.MapHealthChecksUI();
                 endpoints.MapHealthChecks("/health", new HealthCheckOptions()
                 {
@@ -299,8 +299,8 @@ namespace CleanTemplate.Api
                         //var signInManager = context.HttpContext.RequestServices.GetRequiredService<SignInManager<User>>();
                         var userRepository = context.HttpContext.RequestServices.GetRequiredService<IUserRepository>();
 
-                        var claimsIdentity = context.Principal.Identity as ClaimsIdentity;
-                        if (claimsIdentity.Claims?.Any() != true)
+                        var claimsIdentity = context.Principal?.Identity as ClaimsIdentity;
+                        if (claimsIdentity?.Claims.Any() != true)
                             context.Fail("This token has no claims.");
 
                         //var securityStamp = claimsIdentity.FindFirstValue(new ClaimsIdentityOptions().SecurityStampClaimType);
