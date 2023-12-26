@@ -8,7 +8,7 @@ If you find value in this project, whether you're using it for learning or kicks
 
 # Prerequisites
 - Visual Studio 2022
-- .NET 7.0 Runtime
+- .NET 8.0 Runtime
 
 # Effortless Project Creation
 Here's the simplest way to get started with your project:
@@ -16,7 +16,7 @@ Here's the simplest way to get started with your project:
 1. Open your command-line interface.
 2. Execute the following command:
    ```shell
-   dotnet new install ASPNETCleanTemplate.nuspec::3.4.0
+   dotnet new install ASPNETCleanTemplate.nuspec::3.5.0
    ```
 3. Create an empty folder to house your solution and navigate into it.
 4. Run the subsequent command, replacing `MyNewCleanTemplate` with your desired project name:
