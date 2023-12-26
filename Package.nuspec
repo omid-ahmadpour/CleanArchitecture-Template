@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package >
+<package>
   <metadata>
     <id>ASPNETCleanTemplate.nuspec</id>
-    <version>3.2.5</version>
+    <version>3.5.0</version>
     <authors>Omid Ahmadpour</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <!-- <icon>icon.png</icon> -->
     <projectUrl>https://github.com/omid-ahmadpour/CleanArchitecture-Template</projectUrl>
+	<repository type="git" url="https://github.com/omid-ahmadpour/CleanArchitecture-Template.git" />
     <description>This is a solution template for Clean Architecture and CQRS implementation with ASP.NET Core.</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <releaseNotes>Upgraded to .NET 8.0, renamed test project and classes, and cleaned up and improved code.</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>dotnet-new clean-template clean-architecture</tags>
 	<packageTypes>
       <packageType name="Template" />
     </packageTypes>
+	<readme>README.md</readme>
   </metadata>
   <files>
+	<file src="README.md" target="" />
     <file src="**" exclude="**\bin\**\*;**\obj\**\*;**\*.user;**\*.lock.json;**\.DS_Store;**\.git\**\*;**\.github\**\*;**\.vs\**\*;**\*LICENSE;**\*.gitattributes;**\*README.md;**\*.gitignore;**\*nuget.config;" target="/content" />
   </files>
 </package>
