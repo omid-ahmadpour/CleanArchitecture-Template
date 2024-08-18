@@ -18,7 +18,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
         [HttpPost("sign-up")]
         [SwaggerOperation("sign up user")]
         [AllowAnonymous]
-        public virtual async Task<ApiResult<bool>> SingUpAsync(SingUpRequest request, CancellationToken cancellationToken)
+        public virtual async Task<ApiResult<bool>> SingUpAsync([FromBody] SingUpRequest request, CancellationToken cancellationToken)
         {
             var command = request.Adapt<CreateUserCommand>();
 
@@ -29,7 +29,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
         [HttpPost("login")]
         [SwaggerOperation("login by username and password")]
         [AllowAnonymous]
-        public virtual async Task<ApiResult<LoginResponse>> LoginAsync([FromForm] LoginRequest request, CancellationToken cancellationToken)
+        public virtual async Task<ApiResult<LoginResponse>> LoginAsync([FromBody] LoginRequest request, CancellationToken cancellationToken)
         {
             var command = request.Adapt<LoginCommand>();
 
