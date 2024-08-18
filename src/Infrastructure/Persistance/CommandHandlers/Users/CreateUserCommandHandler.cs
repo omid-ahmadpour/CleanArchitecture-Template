@@ -37,15 +37,15 @@ namespace CleanTemplate.Persistence.CommandHandlers.Users
 
             var createUserResult = await _userManager.CreateAsync(user, request.Password);
 
-            var addRoleResult = await _roleManager.CreateAsync(new Role
-            {
-                Name = "Admin",
-                Description = "admin role"
-            });
+            return createUserResult.Succeeded;
 
-            var assignRoleResult = await _userManager.AddToRoleAsync(user, "Admin");
-
-            return true;
+            // In case you want to work with role management features
+            //var addRoleResult = await _roleManager.CreateAsync(new Role
+            //{
+            //    Name = "Admin",
+            //    Description = "admin role"
+            //});
+            //var assignRoleResult = await _userManager.AddToRoleAsync(user, "Admin");
         }
     }
 }
