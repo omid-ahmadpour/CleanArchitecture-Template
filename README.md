@@ -16,7 +16,7 @@ Here's the simplest way to get started with your project:
 1. Open your command-line interface.
 2. Execute the following command:
    ```shell
-   dotnet new install ASPNETCleanTemplate.nuspec::3.5.0
+   dotnet new install ASPNETCleanTemplate.nuspec::3.5.1
    ```
 3. Create an empty folder to house your solution and navigate into it.
 4. Run the subsequent command, replacing `MyNewCleanTemplate` with your desired project name:
