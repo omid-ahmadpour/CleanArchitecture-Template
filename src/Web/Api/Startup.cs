@@ -14,19 +14,19 @@ namespace CleanTemplate.Api
 
     public class Startup
     {
-        private readonly SiteSettings siteSetting;
+        private readonly SiteSettings _siteSetting;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            siteSetting = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
+            _siteSetting = configuration.GetSection(nameof(SiteSettings)).Get<SiteSettings>();
         }
 
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddWebApi(Configuration, siteSetting);
+            services.AddWebApi(Configuration, _siteSetting);
             services.AddPersistance(Configuration);
             services.AddCommon(Configuration);
             services.AddApplication(Configuration);
