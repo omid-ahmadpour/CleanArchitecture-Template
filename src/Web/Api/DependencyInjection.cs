@@ -71,10 +71,14 @@ namespace CleanTemplate.Api
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
 
+            // Register the MigrationService
+            services.AddScoped<IMigrationService, MigrationService>();
+
             return services;
         }
 
-        public static IApplicationBuilder UseWebApi(this IApplicationBuilder app, IConfiguration configuration,
+        public static IApplicationBuilder UseWebApi(this IApplicationBuilder app,
+            IConfiguration configuration,
             IWebHostEnvironment env)
         {
             app.UseCors(builder =>
@@ -91,6 +95,13 @@ namespace CleanTemplate.Api
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+                var migrationSvc = serviceProvider.GetRequiredService<IMigrationService>();
+                migrationSvc.ApplyMigrations();
+            }
 
             app.UseEndpoints(endpoints =>
             {
