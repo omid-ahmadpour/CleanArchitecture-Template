@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CleanTemplate.Api.IntegrationTests
+namespace CleanTemplate.Api.EndToEndTests
 {
     public class ProductControllerTests : IClassFixture<WebApplicationFactory<Program>>
     {
