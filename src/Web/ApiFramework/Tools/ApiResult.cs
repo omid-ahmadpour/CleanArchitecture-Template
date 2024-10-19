@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CleanTemplate.ApiFramework.Tools
@@ -17,6 +18,7 @@ namespace CleanTemplate.ApiFramework.Tools
 
     public class ApiResult<T> : IActionResult, IDisposable, IStatusCodeActionResult
     {
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string[] Errors { get; set; }
 
         public T Data { get; set; }
@@ -27,7 +29,7 @@ namespace CleanTemplate.ApiFramework.Tools
         {
             Data = data;
             StatusCode = statusCode;
-            Errors = errors;
+            Errors = errors != null && errors.Length > 0 ? errors : null;
         }
 
         public async Task ExecuteResultAsync(ActionContext context)
