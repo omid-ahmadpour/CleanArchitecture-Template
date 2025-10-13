@@ -1,14 +1,17 @@
 # CleanArchitecture-Template
-Welcome to the **CleanArchitecture-Template** repository, a powerful solution template that exemplifies the principles of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and incorporates the robustness of CQRS implementation using ASP.NET Core.
+Welcome to the **CleanArchitecture-Template** repository, a powerful solution template that exemplifies the principles of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and integrates them seamlessly with [CQRS](https://martinfowler.com/bliki/CQRS.html) using **ASP.NET Core**.
 
 ![CleanArchitecture](https://user-images.githubusercontent.com/42376112/110762993-a61b1580-8266-11eb-9ac1-438072319971.jpg)
 
 ## Show Your Appreciation! ⭐
 If you find value in this project, whether you're using it for learning or kickstarting your solution, a star is a wonderful way to express your support. Thank you in advance!
 
-# Architecture
+# Prerequisites
+- Visual Studio 2022
+- .NET 8.0 Runtime
 
-This template follows Clean Architecture principles with CQRS and EF Core. For detailed notes and explanations, see [docs/architecture.md](docs/architecture.md).
+# Architecture
+For full notes and explanations, see [docs/architecture.md](docs/architecture.md).
 
 ```mermaid
 flowchart TB
@@ -52,13 +55,13 @@ flowchart TB
 
   %% FLOWS
   Client["Client (HTTP / Swagger UI)"] --> Controllers
-  Controllers --> CQRS
+  Controllers -->|Command/Query| CQRS
   Middleware -. cross-cutting .-> Controllers
   Versioning -. applies .-> Controllers
   Swagger -. docs/ui .-> Client
 
   CQRS --> Handlers
-  Handlers --> Domain
+  Handlers -->|invokes| Domain
   Validators --> Behaviors
   Behaviors -. cross-cutting .-> Handlers
 
@@ -82,10 +85,6 @@ flowchart TB
   ValueObjects --- Entities
   AppPorts --- Handlers
 ```
-
-# Prerequisites
-- Visual Studio 2022
-- .NET 8.0 Runtime
 
 # Effortless Project Creation
 Here's the simplest way to get started with your project:
@@ -153,7 +152,7 @@ For health check administration, utilize the following URL:
 
 ## Further Reading
 1. [The Significance of Clean Architecture Template with .NET](https://medium.com/@omid-ahmadpour/clean-architecture-template-with-net-and-its-importance-e5b3b97a6e48)
-2. [Understanding and Implementing Scalability in CQRS](https://virgool.io/@ahmadpooromid/%D9%85%D9%81%D9%87%D9%88%D9%85-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-scalability-%D8%AF%D8%B1-cqrs-peixkgrbdgff)
+2. [Understanding and Implementing Scalability in CQRS](https://virgool.io/@ahmadpooromid/%D9%85%D9%81%D9%87%D9%88%D9%85-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-scalability-%D8%AF%D8%B1-cqrs-0b88dca33476)
 3. [Why We Need Clean Architecture?](https://www.youtube.com/watch?v=GO61-MiWirk&t=17s)
 
 Elevate your development journey with the CleanArchitecture-Template Plus!
