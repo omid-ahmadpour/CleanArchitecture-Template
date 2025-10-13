@@ -1,5 +1,5 @@
 # CleanArchitecture-Template
-Welcome to the **CleanArchitecture-Template** repository, a powerful solution template that exemplifies the principles of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and incorporates the robustness of CQRS implementation using ASP.NET Core.
+Welcome to the **CleanArchitecture-Template** repository, a powerful solution template that exemplifies the principles of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and integrates them seamlessly with [CQRS](https://martinfowler.com/bliki/CQRS.html) using **ASP.NET Core**.
 
 ![CleanArchitecture](https://user-images.githubusercontent.com/42376112/110762993-a61b1580-8266-11eb-9ac1-438072319971.jpg)
 
@@ -9,6 +9,82 @@ If you find value in this project, whether you're using it for learning or kicks
 # Prerequisites
 - Visual Studio 2022
 - .NET 8.0 Runtime
+
+# Architecture
+For full notes and explanations, see [docs/architecture.md](docs/architecture.md).
+
+```mermaid
+flowchart TB
+  %% LAYERS
+  subgraph Presentation["Presentation Layer (ASP.NET Core Web API)"]
+    Controllers["API Controllers"]
+    Middleware["Middleware / Filters"]
+    Versioning["API Versioning"]
+    Swagger["Swagger / OpenAPI"]
+  end
+
+  subgraph Application["Application Layer (CQRS, Use Cases)"]
+    CQRS["Commands / Queries (DTOs)"]
+    Handlers["Handlers (Use Cases)"]
+    Behaviors["Pipeline Behaviors (Validation / Logging / Caching)"]
+    Validators["Validators"]
+    AppPorts["Application Interfaces (Ports)"]
+  end
+
+  subgraph Domain["Domain Layer (Enterprise Logic)"]
+    Entities["Entities / Aggregates"]
+    ValueObjects["Value Objects"]
+    DomainEvents["Domain Events"]
+    RepoPorts["Repository Interfaces (Ports)"]
+    DomainServices["Domain Services"]
+  end
+
+  subgraph Infrastructure["Infrastructure Layer (Implementations)"]
+    Repositories["Repository Implementations (Adapters)"]
+    DbContext["EF Core DbContext + Configurations"]
+    External["External Integrations (e.g., Email, Cache, Message Bus)"]
+    Auth["Authentication / Authorization"]
+  end
+
+  subgraph Testing["Testing"]
+    UnitTests["Unit Tests"]
+    IntegrationTests["Integration Tests"]
+  end
+
+  Database[("Relational Database")]
+
+  %% FLOWS
+  Client["Client (HTTP / Swagger UI)"] --> Controllers
+  Controllers -->|Command/Query| CQRS
+  Middleware -. cross-cutting .-> Controllers
+  Versioning -. applies .-> Controllers
+  Swagger -. docs/ui .-> Client
+
+  CQRS --> Handlers
+  Handlers -->|invokes| Domain
+  Validators --> Behaviors
+  Behaviors -. cross-cutting .-> Handlers
+
+  %% PORTS AND ADAPTERS
+  Handlers -->|via ports| RepoPorts
+  RepoPorts --> Repositories
+  Repositories --> DbContext
+  DbContext --> Database
+
+  %% DOMAIN EVENTS
+  DomainEvents -. publish/handle .-> Handlers
+
+  %% TESTING SURFACES
+  UnitTests --> Domain
+  UnitTests --> Application
+  IntegrationTests --> Presentation
+  IntegrationTests --> Infrastructure
+
+  %% INTERNAL RELATIONSHIPS
+  DomainServices --- Entities
+  ValueObjects --- Entities
+  AppPorts --- Handlers
+```
 
 # Effortless Project Creation
 Here's the simplest way to get started with your project:
@@ -76,7 +152,7 @@ For health check administration, utilize the following URL:
 
 ## Further Reading
 1. [The Significance of Clean Architecture Template with .NET](https://medium.com/@omid-ahmadpour/clean-architecture-template-with-net-and-its-importance-e5b3b97a6e48)
-2. [Understanding and Implementing Scalability in CQRS](https://virgool.io/@ahmadpooromid/%D9%85%D9%81%D9%87%D9%88%D9%85-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-scalability-%D8%AF%D8%B1-cqrs-peixkgrbdgff)
+2. [Understanding and Implementing Scalability in CQRS](https://virgool.io/@ahmadpooromid/%D9%85%D9%81%D9%87%D9%88%D9%85-%D9%88-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-scalability-%D8%AF%D8%B1-cqrs-0b88dca33476)
 3. [Why We Need Clean Architecture?](https://www.youtube.com/watch?v=GO61-MiWirk&t=17s)
 
 Elevate your development journey with the CleanArchitecture-Template Plus!
