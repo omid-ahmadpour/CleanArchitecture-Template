@@ -6,6 +6,83 @@ Welcome to the **CleanArchitecture-Template** repository, a powerful solution te
 ## Show Your Appreciation! ⭐
 If you find value in this project, whether you're using it for learning or kickstarting your solution, a star is a wonderful way to express your support. Thank you in advance!
 
+# Architecture
+
+This template follows Clean Architecture principles with CQRS and EF Core. For detailed notes and explanations, see [docs/architecture.md](docs/architecture.md).
+
+```mermaid
+flowchart TB
+  %% LAYERS
+  subgraph Presentation["Presentation Layer (ASP.NET Core Web API)"]
+    Controllers["API Controllers"]
+    Middleware["Middleware / Filters"]
+    Versioning["API Versioning"]
+    Swagger["Swagger / OpenAPI"]
+  end
+
+  subgraph Application["Application Layer (CQRS, Use Cases)"]
+    CQRS["Commands / Queries (DTOs)"]
+    Handlers["Handlers (Use Cases)"]
+    Behaviors["Pipeline Behaviors (Validation / Logging / Caching)"]
+    Validators["Validators"]
+    AppPorts["Application Interfaces (Ports)"]
+  end
+
+  subgraph Domain["Domain Layer (Enterprise Logic)"]
+    Entities["Entities / Aggregates"]
+    ValueObjects["Value Objects"]
+    DomainEvents["Domain Events"]
+    RepoPorts["Repository Interfaces (Ports)"]
+    DomainServices["Domain Services"]
+  end
+
+  subgraph Infrastructure["Infrastructure Layer (Implementations)"]
+    Repositories["Repository Implementations (Adapters)"]
+    DbContext["EF Core DbContext + Configurations"]
+    External["External Integrations (e.g., Email, Cache, Message Bus)"]
+    Auth["Authentication / Authorization"]
+  end
+
+  subgraph Testing["Testing"]
+    UnitTests["Unit Tests"]
+    IntegrationTests["Integration Tests"]
+  end
+
+  Database[("Relational Database")]
+
+  %% FLOWS
+  Client["Client (HTTP / Swagger UI)"] --> Controllers
+  Controllers --> CQRS
+  Middleware -. cross-cutting .-> Controllers
+  Versioning -. applies .-> Controllers
+  Swagger -. docs/ui .-> Client
+
+  CQRS --> Handlers
+  Handlers --> Domain
+  Validators --> Behaviors
+  Behaviors -. cross-cutting .-> Handlers
+
+  %% PORTS AND ADAPTERS
+  Handlers -->|via ports| RepoPorts
+  RepoPorts --> Repositories
+  Repositories --> DbContext
+  DbContext --> Database
+
+  %% DOMAIN EVENTS
+  DomainEvents -. publish/handle .-> Handlers
+
+  %% TESTING SURFACES
+  UnitTests --> Domain
+  UnitTests --> Application
+  IntegrationTests --> Presentation
+  IntegrationTests --> Infrastructure
+
+  %% INTERNAL RELATIONSHIPS
+  DomainServices --- Entities
+  ValueObjects --- Entities
+  AppPorts --- Handlers
+```
+
 # Prerequisites
 - Visual Studio 2022
 - .NET 8.0 Runtime
