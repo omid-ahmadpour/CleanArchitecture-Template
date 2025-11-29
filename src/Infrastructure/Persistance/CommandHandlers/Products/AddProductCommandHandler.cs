@@ -43,7 +43,7 @@ namespace CleanTemplate.Persistence.CommandHandlers.Products
             await _dbContext.Set<Product>().AddAsync(product, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
-            _logger.LogInformation("Product Inserted", product);
+            _logger.LogInformation("Product Inserted");
 
             return product.Id;
         }
