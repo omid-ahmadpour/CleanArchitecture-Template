@@ -1,4 +1,4 @@
-﻿using CleanTemplate.Common.Exceptions;
+using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
 using CleanTemplate.Persistence.CommandHandlers.Users;
 using Microsoft.AspNetCore.Identity;
@@ -29,11 +29,10 @@ namespace CleanTemplate.CommandHandler.Tests
                 {
                     Name = "testRole",
                     Id = 123,
-
                 });
 
-            var userManager = new UserManager<User>(userStore.Object, null, null, null, null, null, null, null, null);
-            var roleManager = new RoleManager<Role>(roleStore.Object, null, null, null, null);
+            var userManager = TestHelpers.CreateMockUserManager(userStore.Object);
+            var roleManager = TestHelpers.CreateMockRoleManager(roleStore.Object);
 
             var commandHandler = new CreateUserCommandHandler(userManager, roleManager);
 
