@@ -29,9 +29,10 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.0.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.0.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
-		<PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
-		<PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0" />
-		<PackageReference Include="Serilog.Sinks.Elasticsearch" Version="10.0.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="10.0.0" />
+		<PackageReference Include="Elastic.Serilog.Sinks" Version="9.0.0" />
+		<PackageReference Include="KubernetesClient" Version="18.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>
