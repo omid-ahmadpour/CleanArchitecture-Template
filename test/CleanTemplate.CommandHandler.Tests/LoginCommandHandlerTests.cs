@@ -1,4 +1,4 @@
-﻿using CleanTemplate.Common.Exceptions;
+using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
 using CleanTemplate.Domain.IRepositories;
 using CleanTemplate.Persistence.CommandHandlers.Users;
@@ -25,14 +25,12 @@ namespace CleanTemplate.CommandHandler.Tests
                     Id = 123
                 });
 
-            var userManager = new UserManager<User>(userStore.Object, null, null, null, null, null, null, null, null);
+            var userManager = TestHelpers.CreateMockUserManager(userStore.Object);
             var jwtService = new Mock<IJwtService>();
             var refreshTokenRepository = new Mock<IRefreshTokenRepository>();
 
-            // Act
             var commandHandler = new LoginCommandHandler(userManager, jwtService.Object, refreshTokenRepository.Object);
 
-            // Assert
             await Assert.ThrowsAsync<InvalidNullInputException>(() => commandHandler.Handle(null, CancellationToken.None));
         }
     }
