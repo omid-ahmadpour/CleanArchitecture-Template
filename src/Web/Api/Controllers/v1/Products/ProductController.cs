@@ -1,4 +1,5 @@
-﻿using CleanTemplate.Api.Controllers.v1.Products.Requests;
+﻿using Asp.Versioning;
+using CleanTemplate.Api.Controllers.v1.Products.Requests;
 using CleanTemplate.ApiFramework.Tools;
 using CleanTemplate.Application.Products.Command.AddProduct;
 using CleanTemplate.Application.Products.Query.GetProductById;

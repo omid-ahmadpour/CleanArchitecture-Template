@@ -1,30 +1,33 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 
 namespace CleanTemplate.Api
 {
     using ApiFramework.Attributes;
     using ApiFramework.Swagger;
+    using Asp.Versioning;
     using Common;
     using Common.Behaviours;
     using Common.General;
     using Common.Utilities;
+    using Controllers.v1.Products.Requests;
+    using Controllers.v1.Products.Validators;
+    using Controllers.v1.Users.Requests;
+    using Controllers.v1.Users.Validators;
     using Domain.Entities.Users;
     using Domain.IRepositories;
     using Filters;
     using FluentValidation;
-    using FluentValidation.AspNetCore;
     using HealthChecks.UI.Client;
     using MediatR;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Diagnostics.HealthChecks;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
-    using Microsoft.OpenApi.Models;
+    using Microsoft.OpenApi;
     using Persistence.Db;
     using PolyCache;
     using Swashbuckle.AspNetCore.SwaggerGen;
@@ -57,9 +60,8 @@ namespace CleanTemplate.Api
             services.AddCustomIdentity(siteSettings.IdentitySettings);
             services.AddJwtAuthentication(siteSettings.JwtSettings);
             services.AddCleanArchControllers();
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddPolyCache(configuration);
             services.AddCustomFluentValidation();
+            services.AddPolyCache(configuration);
 
             services.AddHealthChecks()
                     .AddSqlServer(appOptions.WriteDatabaseConnectionString)
@@ -175,20 +177,20 @@ namespace CleanTemplate.Api
                     Description = "JWT Authorization header using the Bearer scheme."
                 });
 
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement
-                 {
-                     {
-                           new OpenApiSecurityScheme
-                             {
-                                 Reference = new OpenApiReference
-                                 {
-                                     Type = ReferenceType.SecurityScheme,
-                                     Id = "Bearer"
-                                 }
-                             },
-                             Array.Empty<string>()
-                     }
-                 });
+                //options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                // {
+                //     {
+                //           new OpenApiSecurityScheme
+                //             {
+                //                 Reference = new OpenApiReference
+                //                 {
+                //                     Type = ReferenceType.SecurityScheme,
+                //                     Id = "Bearer"
+                //                 }
+                //             },
+                //             Array.Empty<string>()
+                //     }
+                // });
 
                 #region Versioning
 
@@ -375,7 +377,10 @@ namespace CleanTemplate.Api
 
         public static void AddCustomFluentValidation(this IServiceCollection services)
         {
-            services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+            services.AddScoped<IValidator<AddProductRequest>, AddProductRequestValidator>();
+            services.AddScoped<IValidator<SingUpRequest>, SingUpRequestValidator>();
+            services.AddScoped<IValidator<LoginRequest>, LoginRequestValidator>();
+            services.AddScoped<IValidator<RefreshTokenRequest>, RefreshTokenRequestValidator>();
         }
     }
 }

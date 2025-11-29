@@ -1,4 +1,5 @@
-﻿using CleanTemplate.Api.Controllers.v1.Users.Requests;
+﻿using Asp.Versioning;
+using CleanTemplate.Api.Controllers.v1.Users.Requests;
 using CleanTemplate.ApiFramework.Tools;
 using CleanTemplate.Application.Users.Command.CreateUser;
 using CleanTemplate.Application.Users.Command.Login;
