@@ -30,6 +30,8 @@
 
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
 
+		<PackageReference Include="KubernetesClient" Version="18.0.5" />
+
 		<None Include="README.md" Pack="true" PackagePath="\" />
 
 	</ItemGroup>
