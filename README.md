@@ -8,7 +8,7 @@ If you find value in this project, whether you're using it for learning or kicks
 
 # Prerequisites
 - Visual Studio 2022
-- .NET 8.0 Runtime
+- .NET 10.0 Runtime
 
 # Architecture
 For full notes and explanations, see [docs/architecture.md](docs/architecture.md).
