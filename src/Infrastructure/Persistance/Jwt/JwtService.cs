@@ -19,21 +19,22 @@ namespace CleanTemplate.Persistence.Jwt
     {
         private readonly SiteSettings _siteSetting;
         private readonly UserManager<User> _userManager;
+        private readonly Lazy<byte[]> _secretKey;
+        private readonly Lazy<byte[]> _encryptionKey;
 
         public JwtService(IOptionsSnapshot<SiteSettings> settings,
                           UserManager<User> userManager)
         {
             _siteSetting = settings.Value;
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            _secretKey = new Lazy<byte[]>(() => Encoding.UTF8.GetBytes(_siteSetting.JwtSettings.SecretKey));
+            _encryptionKey = new Lazy<byte[]>(() => Encoding.UTF8.GetBytes(_siteSetting.JwtSettings.EncryptKey));
         }
 
         public async Task<AccessToken> GenerateAsync(User user)
         {
-            var secretKey = Encoding.UTF8.GetBytes(_siteSetting.JwtSettings.SecretKey); // longer that 16 character
-            var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKey), SecurityAlgorithms.HmacSha256Signature);
-
-            var encryptionKey = Encoding.UTF8.GetBytes(_siteSetting.JwtSettings.EncryptKey); //must be 16 character
-            var encryptingCredentials = new EncryptingCredentials(new SymmetricSecurityKey(encryptionKey), SecurityAlgorithms.Aes128KW, SecurityAlgorithms.Aes128CbcHmacSha256);
+            var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(_secretKey.Value), SecurityAlgorithms.HmacSha256Signature);
+            var encryptingCredentials = new EncryptingCredentials(new SymmetricSecurityKey(_encryptionKey.Value), SecurityAlgorithms.Aes128KW, SecurityAlgorithms.Aes128CbcHmacSha256);
 
             var claims = await GetClaimsAsync(user);
 
@@ -60,17 +61,14 @@ namespace CleanTemplate.Persistence.Jwt
 
         public int? ValidateJwtAccessTokenAsync(string token)
         {
-            var secretKey = Encoding.UTF8.GetBytes(_siteSetting.JwtSettings.SecretKey); // longer that 16 character
-            var encryptionKey = Encoding.UTF8.GetBytes(_siteSetting.JwtSettings.EncryptKey); //must be 16 character
-
             var tokenHandler = new JwtSecurityTokenHandler();
             try
             {
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(secretKey),
-                    TokenDecryptionKey = new SymmetricSecurityKey(encryptionKey),
+                    IssuerSigningKey = new SymmetricSecurityKey(_secretKey.Value),
+                    TokenDecryptionKey = new SymmetricSecurityKey(_encryptionKey.Value),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)

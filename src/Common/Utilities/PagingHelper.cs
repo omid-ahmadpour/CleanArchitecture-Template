@@ -15,7 +15,7 @@ namespace CleanTemplate.Common.Utilities
             {
                 CurrentPage = page,
                 PageSize = pageSize,
-                RowCount = query.Count()
+                RowCount = await query.CountAsync()
             };
 
             var pageCount = (double)result.RowCount / pageSize;
