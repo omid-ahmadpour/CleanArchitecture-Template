@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CleanTemplate.Api.Filters
 {
@@ -52,13 +53,9 @@ namespace CleanTemplate.Api.Filters
         private void HandleValidationException(ExceptionContext context)
         {
             var exception = context.Exception as ValidationException;
-            List<string> errorList = new List<string>();
-            foreach (var error in exception.Errors.Values)
-            {
-                errorList.AddRange(error);
-            }
+            var errorList = exception.Errors.Values.SelectMany(errors => errors).ToArray();
 
-            context.Result = new ApiResult<int>(-1, StatusCodes.Status400BadRequest, errorList.ToArray());
+            context.Result = new ApiResult<int>(-1, StatusCodes.Status400BadRequest, errorList);
 
             context.ExceptionHandled = true;
         }

@@ -15,7 +15,7 @@
                 configuration.GetSection(nameof(Options)).Bind(Options);
 
                 var propsInfo = Options.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
-                var propInfo = propsInfo.FirstOrDefault(c => c.Name.ToLower() == key.ToLower());
+                var propInfo = propsInfo.FirstOrDefault(c => c.Name.Equals(key, System.StringComparison.OrdinalIgnoreCase));
                 if (propInfo is null) throw new KeyNotFoundException($"config property '{key}' not found.");
 
                 var value = propInfo.GetValue(Options);

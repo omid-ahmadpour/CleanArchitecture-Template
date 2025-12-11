@@ -21,7 +21,7 @@ namespace CleanTemplate.ApiFramework.Swagger
             var singularizeName = pluralizer.Singularize(controllerActionDescriptor.ControllerName);
             var pluralizeName = pluralizer.Pluralize(singularizeName);
 
-            var parameterCount = operation.Parameters.Where(p => p.Name != "version" && p.Name != "api-version").Count();
+            var parameterCount = operation.Parameters.Count(p => p.Name != "version" && p.Name != "api-version");
 
             if (IsGetAllAction())
             {

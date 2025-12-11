@@ -30,7 +30,9 @@ namespace CleanTemplate.Common.Utilities
         /// <param name="assemblies">Assemblies contains Entities</param>
         public static void RegisterEntityTypeConfiguration(this ModelBuilder modelBuilder, params Assembly[] assemblies)
         {
-            MethodInfo applyGenericMethod = typeof(ModelBuilder).GetMethods().First(m => m.Name == nameof(ModelBuilder.ApplyConfiguration));
+            MethodInfo applyGenericMethod = typeof(ModelBuilder).GetMethods().FirstOrDefault(m => m.Name == nameof(ModelBuilder.ApplyConfiguration));
+            if (applyGenericMethod == null)
+                throw new InvalidOperationException($"Method '{nameof(ModelBuilder.ApplyConfiguration)}' not found on type {nameof(ModelBuilder)}.");
 
             IEnumerable<Type> types = assemblies.SelectMany(a => a.GetExportedTypes())
                 .Where(c => c.IsClass && !c.IsAbstract && c.IsPublic);
