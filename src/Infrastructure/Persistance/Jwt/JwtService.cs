@@ -87,11 +87,12 @@ namespace CleanTemplate.Persistence.Jwt
 
         private async Task<IEnumerable<Claim>> GetClaimsAsync(User user)
         {
-            var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
-            claims.Add(new Claim(ClaimTypes.Name, user.UserName));
-
             var userRoles = await _userManager.GetRolesAsync(user);
+            var claims = new List<Claim>(capacity: 2 + userRoles.Count)
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName)
+            };
 
             foreach (var role in userRoles)
             {
