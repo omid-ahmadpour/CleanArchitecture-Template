@@ -19,6 +19,8 @@ namespace CleanTemplate.Persistence.Jwt
     {
         private readonly SiteSettings _siteSetting;
         private readonly UserManager<User> _userManager;
+        // Lazy initialization of byte arrays from configuration keys (scoped lifetime, thread-safe by default)
+        // JWT keys are intentionally cached as they should not change at runtime (would invalidate all tokens)
         private readonly Lazy<byte[]> _secretKey;
         private readonly Lazy<byte[]> _encryptionKey;
 
