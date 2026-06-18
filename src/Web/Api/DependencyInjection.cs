@@ -66,8 +66,6 @@ namespace CleanTemplate.Api
             services.AddHealthChecks()
                     .AddSqlServer(appOptions.WriteDatabaseConnectionString)
                     .AddRedis(distributedCacheConfig.ConnectionString);
-            services.AddHealthChecksUI()
-                    .AddInMemoryStorage();
 
             services.AddTransient(typeof(IRequestPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
             services.AddTransient(typeof(IRequestPipelineBehavior<,>), typeof(ValidationBehavior<,>));
@@ -116,7 +114,6 @@ namespace CleanTemplate.Api
                     endpoints.MapControllers();
                 }
 
-                endpoints.MapHealthChecksUI();
                 endpoints.MapHealthChecks("/health", new HealthCheckOptions()
                 {
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse

@@ -10,30 +10,20 @@
 		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.Redis" Version="9.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="9.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="9.0.0" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
-		<PackageReference Include="Duende.AccessTokenManagement" Version="4.0.1" />
 		<PackageReference Include="Mapster" Version="7.4.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.11" />
 		<PackageReference Include="Pluralize.NET" Version="1.0.2" />
-		<PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="10.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="10.2.1" />
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.0.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.0.1" />
-		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.2.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.2.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.2.1" />
 		<PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
-		<PackageReference Include="Serilog.Settings.Configuration" Version="10.0.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="10.0.1" />
 		<PackageReference Include="Elastic.Serilog.Sinks" Version="9.0.0" />
-		<PackageReference Include="KubernetesClient" Version="18.0.5" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.7" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
