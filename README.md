@@ -11,79 +11,44 @@ If you find value in this project, whether you're using it for learning or kicks
 - .NET 10.0 Runtime
 
 # Architecture
-For full notes and explanations, see [docs/architecture.md](docs/architecture.md).
+For the full architecture notes and runtime request flow, see [docs/architecture.md](docs/architecture.md).
 
 ```mermaid
-flowchart TB
-  %% LAYERS
-  subgraph Presentation["Presentation Layer (ASP.NET Core Web API)"]
-    Controllers["API Controllers"]
-    Middleware["Middleware / Filters"]
-    Versioning["API Versioning"]
-    Swagger["Swagger / OpenAPI"]
-  end
+flowchart LR
+  classDef web fill:#dbeafe,stroke:#2563eb,color:#172554
+  classDef core fill:#dcfce7,stroke:#16a34a,color:#14532d
+  classDef infra fill:#fef3c7,stroke:#d97706,color:#78350f
+  classDef shared fill:#f3e8ff,stroke:#9333ea,color:#3b0764
+  classDef external fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
 
-  subgraph Application["Application Layer (CQRS, Use Cases)"]
-    CQRS["Commands / Queries (DTOs)"]
-    Handlers["Handlers (Use Cases)"]
-    Behaviors["Pipeline Behaviors (Validation / Logging / Caching)"]
-    Validators["Validators"]
-    AppPorts["Application Interfaces (Ports)"]
-  end
+  Client["HTTP Client / Swagger UI"]:::external
+  Api["CleanTemplate.Api<br/>Controllers, auth, versioning,<br/>Swagger/ReDoc, health checks"]:::web
+  ApiFramework["CleanTemplate.ApiFramework<br/>API results, Swagger filters,<br/>Autofac helpers"]:::web
+  Application["CleanTemplate.Application<br/>Command/query contracts<br/>and response models"]:::core
+  Domain["CleanTemplate.Domain<br/>Entities and repository contracts"]:::core
+  Persistence["CleanTemplate.Persistence<br/>EF Core, read/write DbContexts,<br/>handlers, repositories, migrations"]:::infra
+  Dispatching["CleanTemplate.Dispatching<br/>Custom dispatcher and pipeline"]:::shared
+  Common["CleanTemplate.Common<br/>Options, exceptions, utilities,<br/>pipeline behaviors"]:::shared
+  SqlServer[("SQL Server")]:::external
+  Redis[("Redis / PolyCache")]:::external
 
-  subgraph Domain["Domain Layer (Enterprise Logic)"]
-    Entities["Entities / Aggregates"]
-    ValueObjects["Value Objects"]
-    DomainEvents["Domain Events"]
-    RepoPorts["Repository Interfaces (Ports)"]
-    DomainServices["Domain Services"]
-  end
-
-  subgraph Infrastructure["Infrastructure Layer (Implementations)"]
-    Repositories["Repository Implementations (Adapters)"]
-    DbContext["EF Core DbContext + Configurations"]
-    External["External Integrations (e.g., Email, Cache, Message Bus)"]
-    Auth["Authentication / Authorization"]
-  end
-
-  subgraph Testing["Testing"]
-    UnitTests["Unit Tests"]
-    IntegrationTests["Integration Tests"]
-  end
-
-  Database[("Relational Database")]
-
-  %% FLOWS
-  Client["Client (HTTP / Swagger UI)"] --> Controllers
-  Controllers -->|Command/Query| CQRS
-  Middleware -. cross-cutting .-> Controllers
-  Versioning -. applies .-> Controllers
-  Swagger -. docs/ui .-> Client
-
-  CQRS --> Handlers
-  Handlers -->|invokes| Domain
-  Validators --> Behaviors
-  Behaviors -. cross-cutting .-> Handlers
-
-  %% PORTS AND ADAPTERS
-  Handlers -->|via ports| RepoPorts
-  RepoPorts --> Repositories
-  Repositories --> DbContext
-  DbContext --> Database
-
-  %% DOMAIN EVENTS
-  DomainEvents -. publish/handle .-> Handlers
-
-  %% TESTING SURFACES
-  UnitTests --> Domain
-  UnitTests --> Application
-  IntegrationTests --> Presentation
-  IntegrationTests --> Infrastructure
-
-  %% INTERNAL RELATIONSHIPS
-  DomainServices --- Entities
-  ValueObjects --- Entities
-  AppPorts --- Handlers
+  Client --> Api
+  Api --> ApiFramework
+  Api --> Application
+  Api --> Dispatching
+  Api --> Common
+  ApiFramework --> Persistence
+  Application --> Domain
+  Application --> Dispatching
+  Application --> Common
+  Persistence --> Application
+  Persistence --> Domain
+  Persistence --> Dispatching
+  Persistence --> Common
+  Persistence --> SqlServer
+  Persistence --> Redis
+  Api -.health checks.-> SqlServer
+  Api -.health checks.-> Redis
 ```
 
 # Effortless Project Creation
