@@ -1,0 +1,106 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Resolve package version
+        id: version
+        run: |
+          project_file="src/Web/Api/CleanTemplate.Api.csproj"
+          version="$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' "$project_file" | head -n 1)"
+
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid or missing <Version> in $project_file. Expected format: X.Y.Z"
+            exit 1
+          fi
+
+          if [ "$GITHUB_REF_NAME" != "v$version" ]; then
+            echo "Release tag '$GITHUB_REF_NAME' must match $project_file <Version> value '$version'."
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Validate publish secrets
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          if [ -z "$NUGET_API_KEY" ]; then
+            echo "Repository secret NUGET_API_KEY is required to publish to nuget.org."
+            exit 1
+          fi
+
+      - name: Restore dependencies
+        run: dotnet restore CleanTemplate.sln
+
+      - name: Build
+        run: dotnet build CleanTemplate.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test CleanTemplate.sln --configuration Release --no-build --verbosity normal
+
+      - name: Pack template
+        run: dotnet pack Package.nuspec --configuration Release --output artifacts/packages --version "${{ steps.version.outputs.version }}"
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ASPNETCleanTemplate.nuspec-${{ steps.version.outputs.version }}
+          path: artifacts/packages/*.nupkg
+          if-no-files-found: error
+
+      - name: Publish to GitHub Releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" artifacts/packages/*.nupkg --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" artifacts/packages/*.nupkg \
+              --title "ASPNETCleanTemplate.nuspec ${{ steps.version.outputs.version }}" \
+              --notes "Release ${{ steps.version.outputs.version }}" \
+              --verify-tag
+          fi
+
+      - name: Publish to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dotnet nuget add source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
+            --name github \
+            --username "${{ github.actor }}" \
+            --password "$GITHUB_TOKEN" \
+            --store-password-in-clear-text
+
+          dotnet nuget push artifacts/packages/*.nupkg \
+            --source github \
+            --api-key "$GITHUB_TOKEN" \
+            --skip-duplicate
+
+      - name: Publish to nuget.org
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push artifacts/packages/*.nupkg \
+            --source "https://api.nuget.org/v3/index.json" \
+            --api-key "$NUGET_API_KEY" \
+            --skip-duplicate
