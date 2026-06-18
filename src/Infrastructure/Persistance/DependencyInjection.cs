@@ -1,9 +1,10 @@
-﻿using System.Reflection;
+using System.Reflection;
 
 namespace CleanTemplate.Persistence
 {
     using Common.General;
     using Db;
+    using Dispatching;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,7 @@ namespace CleanTemplate.Persistence
         {
             var appOptions = configuration.GetSection(nameof(AppOptions)).Get<AppOptions>();
 
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddDispatching(Assembly.GetExecutingAssembly());
 
             services.AddScoped((serviceProvider) =>
             {

@@ -117,7 +117,7 @@ For health check administration, utilize the following URL:
 
 * ASP.NET Core
 * Entity Framework Core
-* MediatR
+* CleanTemplate.Dispatching
 * Swagger
 * Redis (for distributed caching)
 * Jwt Token Authentication

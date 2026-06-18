@@ -1,8 +1,8 @@
-﻿using CleanTemplate.Application.Products.Query.GetProducts;
+using CleanTemplate.Application.Products.Query.GetProducts;
 using CleanTemplate.Common.Utilities;
 using CleanTemplate.Domain.Entities.Products;
 using CleanTemplate.Persistence.Db;
-using MediatR;
+using CleanTemplate.Dispatching;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

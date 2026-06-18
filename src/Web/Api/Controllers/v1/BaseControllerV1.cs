@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CleanTemplate.Api.Controllers.v1
 {
     using ApiFramework.Attributes;
-    using MediatR;
+    using CleanTemplate.Dispatching;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
@@ -21,7 +21,7 @@ namespace CleanTemplate.Api.Controllers.v1
             return Resolver.GetService<T>();
         }
 
-        protected IMediator Mediator => GetService<IMediator>();
+        protected IDispatcher Dispatcher => GetService<IDispatcher>();
 
         protected ILogger Logger => GetService<ILogger>();
     }

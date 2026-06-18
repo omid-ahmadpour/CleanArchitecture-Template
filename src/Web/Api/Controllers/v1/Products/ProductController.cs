@@ -23,7 +23,7 @@ namespace CleanTemplate.Api.Controllers.v1.Products
         {
             var command = request.Adapt<AddProductCommand>();
 
-            var result = await Mediator.Send(command);
+            var result = await Dispatcher.Send(command);
 
             return new ApiResult<int>(result);
         }
@@ -32,7 +32,7 @@ namespace CleanTemplate.Api.Controllers.v1.Products
         [SwaggerOperation("get a product by id")]
         public async Task<IActionResult> GetByIdAsync([FromQuery] int productId)
         {
-            var result = await Mediator.Send(new GetProductByIdQuery { ProductId = productId });
+            var result = await Dispatcher.Send(new GetProductByIdQuery { ProductId = productId });
             return new ApiResult<ProductQueryModel>(result);
         }
 
@@ -42,7 +42,7 @@ namespace CleanTemplate.Api.Controllers.v1.Products
         {
             var query = request.Adapt<GetProductsQuery>();
 
-            var result = await Mediator.Send(query);
+            var result = await Dispatcher.Send(query);
             return new ApiResult<PagedResult<Product>>(result);
         }
 
@@ -50,7 +50,7 @@ namespace CleanTemplate.Api.Controllers.v1.Products
         [SwaggerOperation("get a product from cache. this is a example for how to use cache")]
         public async Task<IActionResult> ReadFromCacheAsync([FromQuery] int productId)
         {
-            var result = await Mediator.Send(new ReadProductFromRedisQuery(productId));
+            var result = await Dispatcher.Send(new ReadProductFromRedisQuery(productId));
             return new ApiResult<ReadProductFromRedisResponse>(result);
         }
     }

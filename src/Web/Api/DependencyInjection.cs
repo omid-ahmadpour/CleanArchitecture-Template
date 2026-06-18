@@ -18,7 +18,7 @@ namespace CleanTemplate.Api
     using Filters;
     using FluentValidation;
     using HealthChecks.UI.Client;
-    using MediatR;
+    using CleanTemplate.Dispatching;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -69,9 +69,9 @@ namespace CleanTemplate.Api
             services.AddHealthChecksUI()
                     .AddInMemoryStorage();
 
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
+            services.AddTransient(typeof(IRequestPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+            services.AddTransient(typeof(IRequestPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IRequestPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
 
             // Register the MigrationService
             services.AddScoped<IMigrationService, MigrationService>();

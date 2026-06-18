@@ -1,7 +1,7 @@
-﻿using CleanTemplate.Application.Users.Command.CreateUser;
+using CleanTemplate.Application.Users.Command.CreateUser;
 using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
-using MediatR;
+using CleanTemplate.Dispatching;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading;

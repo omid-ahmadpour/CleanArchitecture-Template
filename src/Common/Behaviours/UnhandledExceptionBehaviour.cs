@@ -1,12 +1,12 @@
 ﻿namespace CleanTemplate.Common.Behaviours
 {
-    using MediatR;
+    using Dispatching;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Logging;
 
-    public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+    public class UnhandledExceptionBehaviour<TRequest, TResponse> : IRequestPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly ILogger<TRequest> _logger;
 

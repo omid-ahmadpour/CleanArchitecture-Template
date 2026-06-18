@@ -1,4 +1,4 @@
-﻿using MediatR;
+using CleanTemplate.Dispatching;
 
 namespace CleanTemplate.Application.Users.Command.RefreshToken
 {

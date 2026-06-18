@@ -23,7 +23,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
         {
             var command = request.Adapt<CreateUserCommand>();
 
-            var result = await Mediator.Send(command, cancellationToken);
+            var result = await Dispatcher.Send(command, cancellationToken);
             return new ApiResult<bool>(result);
         }
 
@@ -34,7 +34,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
         {
             var command = request.Adapt<LoginCommand>();
 
-            var result = await Mediator.Send(command, cancellationToken);
+            var result = await Dispatcher.Send(command, cancellationToken);
             return new ApiResult<LoginResponse>(result);
         }
 
@@ -45,7 +45,7 @@ namespace CleanTemplate.Api.Controllers.v1.Users
         {
             var command = request.Adapt<RefreshTokenCommand>();
 
-            var result = await Mediator.Send(command, cancellationToken);
+            var result = await Dispatcher.Send(command, cancellationToken);
             return new ApiResult<RefreshTokenResponse>(result);
         }
     }

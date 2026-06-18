@@ -1,7 +1,7 @@
-﻿using CleanTemplate.Application.Products.Query.GetProductById;
+using CleanTemplate.Application.Products.Query.GetProductById;
 using CleanTemplate.Domain.Entities.Products;
 using CleanTemplate.Persistence.Db;
-using MediatR;
+using CleanTemplate.Dispatching;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;

@@ -1,10 +1,10 @@
-﻿using CleanTemplate.Application.Users.Command.RefreshToken;
+using CleanTemplate.Application.Users.Command.RefreshToken;
 using CleanTemplate.Common;
 using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Users;
 using CleanTemplate.Domain.IRepositories;
 using CleanTemplate.Persistence.Jwt;
-using MediatR;
+using CleanTemplate.Dispatching;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading;

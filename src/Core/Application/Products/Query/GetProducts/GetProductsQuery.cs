@@ -1,6 +1,6 @@
-﻿using CleanTemplate.Common.Utilities;
+using CleanTemplate.Common.Utilities;
 using CleanTemplate.Domain.Entities.Products;
-using MediatR;
+using CleanTemplate.Dispatching;
 
 namespace CleanTemplate.Application.Products.Query.GetProducts
 {

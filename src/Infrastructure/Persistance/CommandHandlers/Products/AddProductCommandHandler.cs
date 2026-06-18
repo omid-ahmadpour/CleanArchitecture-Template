@@ -2,7 +2,7 @@
 using CleanTemplate.Common.Exceptions;
 using CleanTemplate.Domain.Entities.Products;
 using CleanTemplate.Persistence.Db;
-using MediatR;
+using CleanTemplate.Dispatching;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;

@@ -1,5 +1,5 @@
-﻿using CleanTemplate.Domain.Entities.Users;
-using MediatR;
+using CleanTemplate.Domain.Entities.Users;
+using CleanTemplate.Dispatching;
 
 namespace CleanTemplate.Application.Users.Command.CreateUser
 {

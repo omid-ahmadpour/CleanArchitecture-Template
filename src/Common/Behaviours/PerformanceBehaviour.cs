@@ -1,11 +1,11 @@
 ﻿namespace CleanTemplate.Common.Behaviours
 {
-    using MediatR;
+    using Dispatching;
     using Microsoft.Extensions.Logging;
     using System.Diagnostics;
     using System.Threading;
     using System.Threading.Tasks;
-    public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+    public class PerformanceBehaviour<TRequest, TResponse> : IRequestPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly Stopwatch _timer;
         private readonly ILogger<TRequest> _logger;
