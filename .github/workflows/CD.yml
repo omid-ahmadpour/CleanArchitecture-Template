@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "v*.*.*"
+      - "V*.*.*"
 
 permissions:
   contents: write
@@ -16,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
@@ -33,12 +36,13 @@ jobs:
             exit 1
           fi
 
-          if [ "$GITHUB_REF_NAME" != "v$version" ]; then
-            echo "Release tag '$GITHUB_REF_NAME' must match $project_file <Version> value '$version'."
+          if [[ "$GITHUB_REF_NAME" != "v$version" && "$GITHUB_REF_NAME" != "V$version" ]]; then
+            echo "Release tag '$GITHUB_REF_NAME' must match $project_file <Version> value '$version' as v$version or V$version."
             exit 1
           fi
 
           echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "release_title=V $version" >> "$GITHUB_OUTPUT"
 
       - name: Validate publish secrets
         env:
@@ -68,16 +72,42 @@ jobs:
           path: artifacts/packages/*.nupkg
           if-no-files-found: error
 
+      - name: Build GitHub release notes
+        run: |
+          release_notes="$(sed -n 's:.*<releaseNotes>\(.*\)</releaseNotes>.*:\1:p' Package.nuspec | head -n 1)"
+          previous_tag="$(git describe --tags --abbrev=0 "$GITHUB_SHA^" 2>/dev/null || true)"
+
+          if [ -z "$release_notes" ]; then
+            release_notes="Release ${{ steps.version.outputs.version }}"
+          fi
+
+          {
+            echo "## What's Changed"
+            echo "$release_notes"
+            echo "Improved and tidied up the overall code"
+            echo
+
+            if [ -n "$previous_tag" ]; then
+              echo "Full Changelog: [$previous_tag...$GITHUB_REF_NAME](https://github.com/${GITHUB_REPOSITORY}/compare/${previous_tag}...${GITHUB_REF_NAME})"
+              echo
+            fi
+
+            echo "Corresponding Nuget Package: [https://www.nuget.org/packages/ASPNETCleanTemplate.nuspec/](https://www.nuget.org/packages/ASPNETCleanTemplate.nuspec/)"
+          } > release-notes.md
+
       - name: Publish to GitHub Releases
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release edit "$GITHUB_REF_NAME" \
+              --title "${{ steps.version.outputs.release_title }}" \
+              --notes-file release-notes.md
             gh release upload "$GITHUB_REF_NAME" artifacts/packages/*.nupkg --clobber
           else
             gh release create "$GITHUB_REF_NAME" artifacts/packages/*.nupkg \
-              --title "ASPNETCleanTemplate.nuspec ${{ steps.version.outputs.version }}" \
-              --notes "Release ${{ steps.version.outputs.version }}" \
+              --title "${{ steps.version.outputs.release_title }}" \
+              --notes-file release-notes.md \
               --verify-tag
           fi
 
